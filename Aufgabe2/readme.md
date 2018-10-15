@@ -18,7 +18,8 @@ npm start
 
 ## UI Components
 The prototype is using UI components from semantic UI: https://semantic-ui.com/
-**Install Semantic UI**:
+
+#### Install Semantic UI
 
 ```
 sh install_semantic.sh
