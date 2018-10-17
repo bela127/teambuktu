@@ -26,6 +26,10 @@ The prototype is using UI components from semantic UI: https://semantic-ui.com/
 - Based on react for desktop: http://reactdesktop.js.org/
 - Based on react:             https://reactstrap.github.io/components
 
+React: Facebook, flexiebler, abgewandeltes JS, Architektur recht frei, the js way
+
+Angular: Google, Architektur vorgegeben, basiert auf Type Script, oop
+
 #### Install Semantic UI
 
 ```
