@@ -24,6 +24,7 @@ The prototype is using UI components from semantic UI: https://semantic-ui.com/
 - Based on angular:           https://material.angular.io/components
 - Based on react:             https://v0.material-ui.com/#/
 - Based on react for desktop: http://reactdesktop.js.org/
+- Based on react:             https://reactstrap.github.io/components
 
 #### Install Semantic UI
 
