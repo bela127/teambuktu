@@ -19,6 +19,12 @@ npm start
 ## UI Components
 The prototype is using UI components from semantic UI: https://semantic-ui.com/
 
+#### Alternative UI libraries
+
+- Based on angular:           https://material.angular.io/components
+- Based on react:             https://v0.material-ui.com/#/
+- Based on react for desktop: http://reactdesktop.js.org/
+
 #### Install Semantic UI
 
 ```
