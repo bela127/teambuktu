@@ -1,3 +1,7 @@
+const os = require('os')
+const $ = require('jQuery');
+
+console.log(os.cpus())
 
 $( document ).ready(function() {
     console.log( "ready!" );

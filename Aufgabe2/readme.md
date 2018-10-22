@@ -30,6 +30,8 @@ React: Facebook, flexiebler, abgewandeltes JS, Architektur recht frei, the js wa
 
 Angular: Google, Architektur vorgegeben, basiert auf Type Script, oop
 
+Entscheidung fuer angular
+
 #### Install Semantic UI
 
 ```
