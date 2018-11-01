@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { Technician } from '../Technician';
+import { Technician } from '../globals/Technician';
 import {Router} from "@angular/router";
+import { SidenavService } from '../globals/SidenavService';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -17,7 +18,9 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.css']
 })
 export class LoginComponent {
-  constructor(private router: Router, private session: Technician){ }
+  constructor(private router: Router, private session: Technician, private sideNav:SidenavService){
+    
+  }
 
    emailFormControl = new FormControl('', [
     Validators.required,
@@ -30,6 +33,7 @@ export class LoginComponent {
     console.log(email + " " + password);
     if(this.session.login(email, password)){
       console.log("Login succesful, navigating...")
+      this.sideNav.open()
       this.router.navigate(["/appointments"])      
     }
   }

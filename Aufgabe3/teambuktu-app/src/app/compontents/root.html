@@ -1,3 +1,16 @@
-<router-outlet></router-outlet>
-<a [routerLink]="['/tasks']">tasks</a>
-<a [routerLink]="['/appointments']">appointments</a>
+
+
+<mat-sidenav-container class="container">
+    <mat-sidenav closed #sidenav mode="side" class="sidenav"
+                 [fixedInViewport]="true" [fixedTopGap]="0"
+                 [fixedBottomGap]="0">
+    
+        <a [routerLink]="['/tasks']">tasks</a>
+        <a [routerLink]="['/appointments']">appointments</a>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

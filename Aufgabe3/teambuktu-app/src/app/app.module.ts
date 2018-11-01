@@ -9,9 +9,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { MaterialModule } from './material-module';
 import { RootComponent } from './compontents/root';
-import { Technician } from './Technician';
+import { Technician } from './globals/Technician';
 import { TasksComponent } from './compontents/tasks';
 import { AppointmentsComponent } from './compontents/appointments';
+import { SidenavService } from './globals/SidenavService';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { AppointmentsComponent } from './compontents/appointments';
     ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [Technician],
+  providers: [Technician,SidenavService],
   bootstrap: [RootComponent]
 })
 export class AppModule { }
