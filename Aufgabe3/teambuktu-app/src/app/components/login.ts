@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { Technician } from '../globals/Technician';
+import { SessionService } from '../services/SessionService';
 import {Router} from "@angular/router";
-import { SidenavService } from '../globals/SidenavService';
+import { SidenavService } from '../services/SidenavService';
 import {MatSnackBar, MatSnackBarHorizontalPosition} from '@angular/material';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -20,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent {
   constructor(private router: Router, 
-    private session: Technician, 
+    private session: SessionService, 
     private sideNav:SidenavService, 
     public snackBar: MatSnackBar){
 

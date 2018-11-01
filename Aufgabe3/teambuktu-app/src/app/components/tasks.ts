@@ -1,16 +1,16 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import { Technician } from '../globals/Technician';
+import { SessionService } from '../services/SessionService';
 import {Router} from "@angular/router";
 
 @Component({
-  selector: 'appointments-component',
-  templateUrl: './appointments.html',
-  styleUrls: ['./appointments.css']
+  selector: 'tasks-component',
+  templateUrl: './tasks.html',
+  styleUrls: ['./tasks.css']
 })
-export class AppointmentsComponent {
-   constructor(private session:Technician, private router:Router){
+export class TasksComponent {
+  constructor(private session:SessionService, private router:Router){
     this.session.checkLogin(router);
   }
 }

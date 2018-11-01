@@ -1,6 +1,6 @@
 import {Router} from "@angular/router";
 
-export class Technician{
+export class SessionService{
     private loggedIn:Boolean = false;
     private router:Router;
 

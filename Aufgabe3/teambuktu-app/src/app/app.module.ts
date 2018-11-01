@@ -2,17 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './compontents/login';
+import { LoginComponent } from './components/login';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { MaterialModule } from './material-module';
-import { RootComponent } from './compontents/root';
-import { Technician } from './globals/Technician';
-import { TasksComponent } from './compontents/tasks';
-import { AppointmentsComponent } from './compontents/appointments';
-import { SidenavService } from './globals/SidenavService';
+import { RootComponent } from './components/root';
+import { SessionService } from './services/SessionService';
+import { TasksComponent } from './components/tasks';
+import { AppointmentsComponent } from './components/appointments';
+import { SidenavService } from './services/SidenavService';
+import { DataService } from './services/DataService';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { SidenavService } from './globals/SidenavService';
     ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [Technician,SidenavService],
+  providers: [SessionService,SidenavService, DataService],
   bootstrap: [RootComponent]
 })
 export class AppModule { }
