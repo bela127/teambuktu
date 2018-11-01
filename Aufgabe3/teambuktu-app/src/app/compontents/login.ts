@@ -4,6 +4,7 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import { Technician } from '../globals/Technician';
 import {Router} from "@angular/router";
 import { SidenavService } from '../globals/SidenavService';
+import {MatSnackBar, MatSnackBarHorizontalPosition} from '@angular/material';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -18,8 +19,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.css']
 })
 export class LoginComponent {
-  constructor(private router: Router, private session: Technician, private sideNav:SidenavService){
-    
+  constructor(private router: Router, 
+    private session: Technician, 
+    private sideNav:SidenavService, 
+    public snackBar: MatSnackBar){
+
   }
 
    emailFormControl = new FormControl('', [
@@ -28,13 +32,26 @@ export class LoginComponent {
   ]);
 
   matcher = new MyErrorStateMatcher(); 
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
 
   login(email: String, password: String){
     console.log(email + " " + password);
     if(this.session.login(email, password)){
-      console.log("Login succesful, navigating...")
+      this.snackBar.open("Login successful!", "", {
+        duration: 2000,
+        panelClass: ['snack-bar-success'],
+        horizontalPosition: this.horizontalPosition
+      });
+      console.log("Login successful, navigating...")
       this.sideNav.open()
       this.router.navigate(["/appointments"])      
+    }
+    else {
+      this.snackBar.open("Login failed...", "", {
+        panelClass: ['snack-bar-warning'],
+        duration: 2000,
+        horizontalPosition: this.horizontalPosition
+      });
     }
   }
 }

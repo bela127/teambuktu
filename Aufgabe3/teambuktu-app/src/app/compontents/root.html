@@ -5,8 +5,10 @@
                  [fixedInViewport]="true" [fixedTopGap]="0"
                  [fixedBottomGap]="0">
     
-        <a [routerLink]="['/tasks']">tasks</a>
-        <a [routerLink]="['/appointments']">appointments</a>
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="['/tasks']">Tasks</a>
+            <a mat-list-item [routerLink]="['/appointments']">Appointments</a>
+        </mat-nav-list>
 
     </mat-sidenav>
 
