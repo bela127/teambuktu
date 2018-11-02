@@ -19,7 +19,7 @@ function createWindow() {
   //Remove menu when shipping
   win.setMenu(null);
   
-  win.setTitle("Teambuktu")
+  win.setTitle(" ")
 
   // The following is optional and will open the DevTools:
   // win.webContents.openDevTools()
