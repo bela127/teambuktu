@@ -6,7 +6,7 @@ let win;
 
 function createWindow() {
   win = new BrowserWindow({ width: 800, height: 600 });
-
+  
   // load the dist folder from Angular
   win.loadURL(
     url.format({
@@ -15,6 +15,11 @@ function createWindow() {
       slashes: true
     })
   );
+
+  //Remove menu when shipping
+  win.setMenu(null);
+  
+  win.setTitle("Teambuktu")
 
   // The following is optional and will open the DevTools:
   // win.webContents.openDevTools()
