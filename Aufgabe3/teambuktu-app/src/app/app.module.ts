@@ -14,13 +14,15 @@ import { TasksComponent } from './components/tasks';
 import { AppointmentsComponent } from './components/appointments';
 import { SidenavService } from './services/SidenavService';
 import { DataService } from './services/DataService';
+import { AppointmentComponent } from './components/appointment';
 
 @NgModule({
   declarations: [
     LoginComponent,
     RootComponent,
     TasksComponent,
-    AppointmentsComponent
+    AppointmentsComponent,
+    AppointmentComponent
   ],
   imports: [
     ReactiveFormsModule,

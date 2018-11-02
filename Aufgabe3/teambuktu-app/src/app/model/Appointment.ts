@@ -3,4 +3,7 @@ export class Appointment{
     getName():String{
         return this.name;
     }
+    getId(){
+        return this.name;
+    }
 }
