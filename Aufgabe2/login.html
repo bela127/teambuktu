@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="styles.css">
 
         <script>
+            const os = require('os')
             //window.nodeRequire = require;
             //delete window.require;
             delete window.exports;
@@ -31,6 +32,9 @@
                     <i class="lock icon"></i>
                     <input placeholder="Password..." type="password">
                     <button class="ui button" id="loginBtn">Login</button>
+                </div>
+                <div>
+                    <script>document.write(os.cpus()[0].model)</script>
                 </div>
             </div>
         </div>

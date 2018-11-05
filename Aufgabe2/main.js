@@ -3,10 +3,9 @@ const path = require('path')
 const url = require('url')
 
 let win
-
-function createWindow () {
+  
+app.on('ready', function(){
     win = new BrowserWindow({ width: 800, height: 600 })
-    //win.loadFile('login.html')
     
     win.loadURL(url.format({
         pathname: path.join(__dirname, 'login.html'),
@@ -14,16 +13,12 @@ function createWindow () {
         slashes: true
     }))
 
-    win.webContents.openDevTools()
+    //win.webContents.openDevTools()
     Menu.setApplicationMenu(null)
 
     win.on('closed', () => {
         win = null
     })
-}
-  
-app.on('ready', createWindow)
+})
 
-function aMethod(){
-    console.log("Yep!")
-}
+
