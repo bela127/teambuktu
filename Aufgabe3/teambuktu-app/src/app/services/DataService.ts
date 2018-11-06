@@ -2,7 +2,7 @@ import { Appointment } from "../model/Appointment";
 
 export class DataService {
 
-    getAppointments(): Appointment[]{
+    getAppointments(): Appointment[] {
         return [
             new Appointment("Appointment 1"),
             new Appointment("Appointment 2"),
@@ -10,7 +10,7 @@ export class DataService {
         ];
     }
 
-    getAppointment(id:String): Appointment{
+    getAppointment(id:String): Appointment {
         for (let entry of this.getAppointments()) {
             if(entry.getId() == id)
                 return entry;    
@@ -18,7 +18,7 @@ export class DataService {
         return null;
     }
 
-    getTasks(): any{
+    getTasks(): any {
         return [
             {name:"Hallo", link:"Welt"},
             {name:"Hallo", link:"Welt"},
