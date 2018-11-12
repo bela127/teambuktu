@@ -1,9 +1,15 @@
-export class Appointment{
-    constructor(private name:String) {}
-    getName():String{
-        return this.name;
-    }
-    getId(){
-        return this.name;
-    }
+import {Task} from "./Task";
+import {Customer} from "./Customer";
+
+export class Appointment extends Task{
+
+  constructor(private name: String, private customer: Customer) {
+    super(name);
+  }
+
+  getCustomer(): Customer {
+    return this.customer;
+  }
+
+
 }
