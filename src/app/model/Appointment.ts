@@ -3,7 +3,7 @@ import {Customer} from "./Customer";
 
 export class Appointment extends Task{
 
-  constructor(private name: String, private customer: Customer) {
+  constructor(name: string, private customer: Customer) {
     super(name);
   }
 

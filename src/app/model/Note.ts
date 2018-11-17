@@ -3,11 +3,11 @@ import {Info} from "./Info";
 export class Note extends Info{
   private text: string;
 
-  getText(): String {
+  getText(): string {
     return this.text;
   }
 
-  setText(text : String){
+  setText(text : string){
     this.text = text;
   }
 }

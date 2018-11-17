@@ -2,15 +2,15 @@ import {Customer} from "./Customer";
 
 class UserData {
 
-  constructor(private userName: String, private userPwHash: String) {
+  constructor(private userName: string, private userPwHash: string) {
 
   }
 
-  getName() : String{
+  getName() : string{
     return this.userName;
   }
 
-  verifyPw(pwHash: String) : boolean{
+  verifyPw(pwHash: string) : boolean{
     return this.userPwHash == pwHash;
   }
 

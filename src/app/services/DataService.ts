@@ -1,12 +1,14 @@
 import { Appointment } from "../model/Appointment";
+import {Customer} from "../model/Customer";
 
 export class DataService {
 
     getAppointments(): Appointment[] {
+      var c1 = new Customer("HSKA")
         return [
-            new Appointment("Appointment 1"),
-            new Appointment("Appointment 2"),
-            new Appointment("Appointment 3"),
+            new Appointment("Appointment 1", c1),
+            new Appointment("Appointment 2", c1),
+            new Appointment("Appointment 3", c1),
         ];
     }
 

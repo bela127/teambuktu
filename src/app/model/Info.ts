@@ -1,8 +1,8 @@
 export class Info {
-  constructor(private name: String) {
+  constructor(private name: string) {
   }
 
-  getName(): String {
+  getName(): string {
     return this.name;
   }
 
