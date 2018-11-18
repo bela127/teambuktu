@@ -15,6 +15,7 @@ import { AppointmentsComponent } from './components/appointments';
 import { SidenavService } from './services/SidenavService';
 import { DataService } from './services/DataService';
 import { AppointmentComponent } from './components/appointment';
+import {DataBaseService} from "./services/DataBaseService";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,11 @@ import { AppointmentComponent } from './components/appointment';
     ReactiveFormsModule,
     MaterialModule
   ],
-  providers: [SessionService,SidenavService, DataService],
+  providers: [
+    SessionService,
+    SidenavService,
+    DataService,
+    DataBaseService],
   bootstrap: [RootComponent]
 })
 export class AppModule { }

@@ -5,6 +5,8 @@ import { SessionService } from '../services/SessionService';
 import {Router} from "@angular/router";
 import { SidenavService } from '../services/SidenavService';
 import {MatSnackBar, MatSnackBarHorizontalPosition} from '@angular/material';
+import {DataBaseService} from "../services/DataBaseService";
+import {DataService} from "../services/DataService";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -20,7 +22,9 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent {
   constructor(private router: Router, 
-    private session: SessionService, 
+    private session: SessionService,
+    private dataBase: DataBaseService,
+    private data: DataService,
     private sideNav:SidenavService, 
     public snackBar: MatSnackBar){
 
@@ -34,9 +38,11 @@ export class LoginComponent {
   matcher = new MyErrorStateMatcher(); 
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
 
-  login(email: String, password: String){
+  login(email: string, password: string){
     console.log(email + " " + password);
-    if(this.session.login(email, password)){
+    if(this.dataBase.validateUser(email, password)){
+      this.data.setUserData(this.dataBase.loadUserData(email, password));
+      this.session.login();
       this.snackBar.open("Login successful!", "", {
         duration: 2000,
         panelClass: ['snack-bar-success'],

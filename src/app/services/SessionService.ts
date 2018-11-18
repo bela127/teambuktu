@@ -12,12 +12,13 @@ export class SessionService{
         return this.loggedIn;
     }
 
-    public login(email:String, password:String):Boolean{
-        if(email == "a" && password == "a"){
-            this.loggedIn = true;
-        }
-        return this.loggedIn;
+    public login(){
+      this.loggedIn = true;
     }
+
+  public logout(){
+    this.loggedIn = false;
+  }
 
     setRouter(router:Router){
         this.router = router;
