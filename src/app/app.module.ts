@@ -10,7 +10,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MaterialModule } from './material-module';
 import { RootComponent } from './components/root';
 import { SessionService } from './services/SessionService';
-import { TasksComponent } from './components/tasks';
+import { TasksComponent } from './components/tasksnotes';
 import {TaskComponent} from "./components/task";
 import { AppointmentsComponent } from './components/appointments';
 import { SidenavService } from './services/SidenavService';

@@ -7,8 +7,8 @@ import { DataService } from '../services/DataService';
 
 @Component({
   selector: 'tasks-component',
-  templateUrl: './tasks.html',
-  styleUrls: ['./tasks.css']
+  templateUrl: './tasksnotes.html',
+  styleUrls: ['./tasksnotes.css']
 })
 export class TasksComponent {
 

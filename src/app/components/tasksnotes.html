@@ -7,3 +7,11 @@
     <mat-divider></mat-divider>
   </mat-list-item>
 </mat-nav-list>
+
+<h1>Notes</h1>
+<mat-nav-list>
+  <mat-list-item *ngFor="let note of dataService.getNotes()">
+    {{note.getText()}}
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</mat-nav-list>

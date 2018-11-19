@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './components/login';
 import {AppointmentsComponent} from './components/appointments';
-import {TasksComponent} from './components/tasks';
+import {TasksComponent} from './components/tasksnotes';
 import {TaskComponent} from "./components/task";
 import {AppointmentComponent} from './components/appointment';
 
