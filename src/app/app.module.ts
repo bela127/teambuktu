@@ -1,21 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { LoginComponent } from './components/login';
+import {AppRoutingModule} from './app-routing.module';
+import {LoginComponent} from './components/login';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import { MaterialModule } from './material-module';
-import { RootComponent } from './components/root';
-import { SessionService } from './services/SessionService';
-import { TasksComponent } from './components/tasksnotes';
+import {MaterialModule} from './material-module';
+import {RootComponent} from './components/root';
+import {SessionService} from './services/SessionService';
+import {TasksComponent} from './components/tasksnotes';
 import {TaskComponent} from "./components/task";
-import { AppointmentsComponent } from './components/appointments';
-import { SidenavService } from './services/SidenavService';
-import { DataService } from './services/DataService';
-import { AppointmentComponent } from './components/appointment';
+import {AppointmentsComponent} from './components/appointments';
+import {SidenavService} from './services/SidenavService';
+import {DataService} from './services/DataService';
+import {AppointmentComponent} from './components/appointment';
+import {CustomerlistComponent} from "./components/customerlist";
+import {CustomerdetailComponent} from "./components/customerdetail";
 import {DataBaseService} from "./services/DataBaseService";
 
 @NgModule({
@@ -25,7 +27,9 @@ import {DataBaseService} from "./services/DataBaseService";
     TasksComponent,
     TaskComponent,
     AppointmentsComponent,
-    AppointmentComponent
+    AppointmentComponent,
+    CustomerlistComponent,
+    CustomerdetailComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -43,4 +47,5 @@ import {DataBaseService} from "./services/DataBaseService";
     DataBaseService],
   bootstrap: [RootComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
