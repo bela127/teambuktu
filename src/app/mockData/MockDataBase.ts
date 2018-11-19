@@ -76,7 +76,7 @@ export class MockDataBase {
       new Note("Note1"),
       new Note("Note2", "The appointments should maybe have more descriptive names."),
       new Note("Note3", "Maybe there should be a 'back' button somewhere in this ui..."),
-      new Note("Note4", "Contructor overloading is quite hacky in TypeScript")
+      new Note("Note4", "Constructor overloading is quite hacky in TypeScript")
     ]);
 
     let t1 = new Task("Task1");
