@@ -11,9 +11,9 @@ import { DataService } from '../services/DataService';
   styleUrls: ['./appointments.css']
 })
 export class AppointmentsComponent {
+
   constructor(private session:SessionService, private router:Router, private dataService:DataService){
     this.session.checkLogin(router);
   }
-
   
 }
