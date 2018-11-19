@@ -60,9 +60,9 @@ export class MockDataBase {
       c4,
     ]);
 
-    let d1 = new Device("Device1", c1);
-    let d2 = new Device("Device2", c1);
-    let d3 = new Device("Device3", c2);
+    let d1 = new Device("Device1", c1, [0,0]);
+    let d2 = new Device("Device2", c1, [42,1337]);
+    let d3 = new Device("Device3", c2, [1234567,9876543]);
     c1.setDevices([d1,d2]);
     c2.setDevices([d3]);
 

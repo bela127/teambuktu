@@ -3,7 +3,7 @@ import {Customer} from "./Customer";
 
 export class Device extends Info{
 
-  constructor(name: string, private customer: Customer){
+  constructor(name: string, private customer: Customer, private location?: [number,number]){
     super(name);
   }
 
@@ -11,7 +11,6 @@ export class Device extends Info{
     return this.customer;
   }
 
-  private location: [number,number];
   getLocation(){
     return this.location;
   }

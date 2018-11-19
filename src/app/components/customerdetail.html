@@ -3,7 +3,7 @@
 <mat-nav-list>
   <mat-list-item *ngFor="let device of getCustomer().getDevices()">
     <a mat-list-item [routerLink]="['/device/' + device.getId()]">
-      {{device.getName()}}
+      {{device.getName()}}: {{device.getLocation()}}
     </a>
   </mat-list-item>
 </mat-nav-list>
