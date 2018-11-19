@@ -37,11 +37,14 @@ export class MockDataBase {
 
   constructor(){
     this.user = new User("a","a");
+
     this.userData = new UserData(this.user);
+
     let c1 = new Customer("HSKA");
     let c2 = new Customer("KIT");
     let c3 = new Customer("DHBW");
     let c4 = new Customer("PH");
+
     this.userData.setAppointments([
       new Appointment("Appointment 1", c1),
       new Appointment("Appointment 2", c1),
@@ -49,28 +52,37 @@ export class MockDataBase {
       new Appointment("Appointment 4", c1),
       new Appointment("Appointment 5", c4),
     ]);
+
     this.userData.setCustomers([
       c1,
       c2,
       c3,
       c4,
     ]);
+
     let d1 = new Device("Device1", c1);
     let d2 = new Device("Device2", c1);
     let d3 = new Device("Device3", c2);
     c1.setDevices([d1,d2]);
     c2.setDevices([d3]);
+
     this.userData.setDevices([
       d1,
       d2,
       d3,
     ]);
-    let n1 = new Note("Note1");
-    n1.setText("random Text");
-    this.userData.setNotes([n1]);
+
+    this.userData.setNotes([
+      new Note("Note1"),
+      new Note("Note2", "The appointments should maybe have more descriptive names."),
+      new Note("Note3", "Maybe there should be a 'back' button somewhere in this ui..."),
+      new Note("Note4", "Contructor overloading is quite hacky in TypeScript")
+    ]);
+
     let t1 = new Task("Task1");
-    t1.setText("Note1 should be changed");
+    t1.setText("Note1 should get some text");
     this.userData.setTasks([t1]);
+
     let p1 = new Part("PC");
     p1.setPrice(1250.99);
     this.userData.setParts([p1]);
