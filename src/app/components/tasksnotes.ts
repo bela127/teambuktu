@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import { DataService } from '../services/DataService';
 
 @Component({
-  selector: 'tasks-component',
+  selector: 'tasksnotes-component',
   templateUrl: './tasksnotes.html',
   styleUrls: ['./tasksnotes.css']
 })
