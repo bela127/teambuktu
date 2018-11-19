@@ -1,1 +1,9 @@
-<h1>Customer Details</h1>
+<h1>Customer Details: {{getCustomer().getName()}}</h1>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let device of getCustomer().getDevices()">
+    <a mat-list-item [routerLink]="['/device/' + device.getId()]">
+      {{device.getName()}}
+    </a>
+  </mat-list-item>
+</mat-nav-list>
