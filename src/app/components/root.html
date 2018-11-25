@@ -1,23 +1,23 @@
-
-
 <mat-sidenav-container class="container">
-    <mat-sidenav closed #sidenav mode="side" class="sidenav"
-                 [fixedInViewport]="true" [fixedTopGap]="0"
-                 [fixedBottomGap]="0">
-    
-        <mat-nav-list>
-            <a mat-list-item [routerLink]="['/appointments']">Appointments</a>
-            <a mat-list-item [routerLink]="['/tasks']">Tasks</a>
-            <a mat-list-item [routerLink]="['/customerlist']">Customers</a>
-            <a mat-list-item [routerLink]="['/appointments']">Orders</a>
+  <mat-sidenav #sidenav mode="side" class="sidenav"
+               [fixedInViewport]="true" [fixedTopGap]="0"
+               [fixedBottomGap]="0">
 
-            <!-- TODO: make this a list item-->
-            <button (click)="logout()" mat-raised-button color="primary">Logout</button>
-        </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['/appointments']">Appointments</a>
+      <a mat-list-item [routerLink]="['/tasks']">Tasks</a>
+      <a mat-list-item [routerLink]="['/customerlist']">Customers</a>
+      <a mat-list-item [routerLink]="['/appointments']">Orders</a>
+      <mat-divider></mat-divider>
+      <mat-list-item (click)="logout()">
+        <a matLine (click)="logout()">Logout</a>
+        <mat-icon (click)="logout()">logout</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
 
-    </mat-sidenav>
+  </mat-sidenav>
 
-    <mat-sidenav-content class="content">
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>
