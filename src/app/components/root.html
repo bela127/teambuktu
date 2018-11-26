@@ -4,14 +4,31 @@
                [fixedBottomGap]="0">
 
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/appointments']">Appointments</a>
-      <a mat-list-item [routerLink]="['/tasks']">Tasks</a>
-      <a mat-list-item [routerLink]="['/customerlist']">Customers</a>
-      <a mat-list-item [routerLink]="['/appointments']">Orders</a>
+      <mat-list-item [routerLink]="['/appointments']">
+        <a matLine>Appointments</a>
+        <mat-icon>event</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/tasks']">
+        <a matLine>Tasks / Notes</a>
+        <mat-icon>assignment</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/customerlist']">
+        <a matLine>Customers</a>
+        <mat-icon>supervisor_account</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/appointments']">
+        <a matLine>Orders</a>
+        <mat-icon>shopping_cart</mat-icon>
+      </mat-list-item>
+
       <mat-divider></mat-divider>
+
       <mat-list-item (click)="logout()">
-        <a matLine (click)="logout()">Logout</a>
-        <mat-icon (click)="logout()">logout</mat-icon>
+        <a matLine>Logout</a>
+        <mat-icon>logout</mat-icon>
       </mat-list-item>
     </mat-nav-list>
 
