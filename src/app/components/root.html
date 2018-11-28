@@ -27,7 +27,7 @@
       <mat-divider></mat-divider>
 
       <mat-list-item (click)="logout()">
-        <a matLine>Logout</a>
+        <a matLine>Logout <strong>{{dataservice.getUser()}}</strong></a>
         <mat-icon>logout</mat-icon>
       </mat-list-item>
     </mat-nav-list>
