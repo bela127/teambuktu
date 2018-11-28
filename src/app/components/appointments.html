@@ -1,9 +1,19 @@
 <h1>Appointments</h1>
-<mat-nav-list>
-    <mat-list-item *ngFor="let appointment of dataService.getAppointments()">
-        <a mat-list-item [routerLink]="['/appointment/' + appointment.getId()]">
-             {{appointment.getName()}} 
-        </a>
-        <mat-divider></mat-divider>
-    </mat-list-item>
-</mat-nav-list>
+
+<mat-accordion [multi]="true">
+  <mat-expansion-panel *ngFor="let aptmnt of dataService.getAppointments()">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{aptmnt.getName()}}</mat-panel-title>
+      <mat-panel-description>{{aptmnt.getCustomer().getName()}}</mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <!-- TODO: Improve layout for appointment data -->
+    <p matLine>Starts: {{aptmnt.getStartDate()}}</p>
+    <p matLine>Ends: {{aptmnt.getEndDate()}}</p>
+
+    <!-- TODO: Fill Footer row with suitable actions -->
+    <mat-action-row>
+      <button mat-button>Click Me!</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>

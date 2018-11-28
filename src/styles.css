@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .snack-bar-warning {
@@ -12,5 +11,9 @@
 }
 
 .mat-snack-bar-container {
-   max-width: 300px !important;
+  max-width: 300px !important;
+}
+
+h1 {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
