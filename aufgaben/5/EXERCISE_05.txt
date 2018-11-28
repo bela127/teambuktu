@@ -1,0 +1,26 @@
+-------------------------------------
+:. HSKA SOFTWARE-ARCHITECTURES LAB .:
+-------------------------------------
+\ ARCHITECTURE/PRODUCT EVALUATION  /
+ ----------------------------------
+		   
+EXERCISE-05: Tasks/Notes, Warehouse
+-----------------------------------
+Exercise date : 26.November 2018 
+Due date      : 03.December 2018 (Next lab meeting)
+-----------------------------------
+Task-1: 
+
+- Tasks/Notes and the warehouse
+-- Implement and test the features
+-- Create and apply your tests and metrics to the features/data
+-- Research, which further metrics and methods can help evaluate your architecture/project
+
+Objectives:
+- Improve the app
+- Each team will prepare and make a short presentation and upload it to Ilias
+-- The current state for the app
+-- The build system and the metrics
+-- Explain: Lessons learned
+
+
