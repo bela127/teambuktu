@@ -1,4 +1,11 @@
-<h1>Appointments</h1>
+<mat-toolbar color="primary">
+  <span>Appointments</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="flexible-fill-remaining-space"></span>
+
+  <button mat-mini-fab matTooltip="Add Appointment"><mat-icon>add</mat-icon></button>
+</mat-toolbar>
 
 <mat-accordion [multi]="true">
   <mat-expansion-panel *ngFor="let aptmnt of dataService.getAppointments()">
@@ -11,9 +18,12 @@
     <p matLine>Starts: {{aptmnt.getStartDate()}}</p>
     <p matLine>Ends: {{aptmnt.getEndDate()}}</p>
 
-    <!-- TODO: Fill Footer row with suitable actions -->
     <mat-action-row>
-      <button mat-button>Click Me!</button>
+      <button mat-icon-button matTooltip="Apply Modifications" disabled><mat-icon>check_circle</mat-icon></button>
+      <button mat-icon-button matTooltip="Discard Modifications" disabled><mat-icon>close</mat-icon></button>
+
+      <button mat-icon-button matTooltip="Edit Appointment"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button matTooltip="Delete Appointment" color="primary"><mat-icon>delete</mat-icon></button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
