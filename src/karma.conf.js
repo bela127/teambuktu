@@ -26,7 +26,16 @@ module.exports = function (config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     watch: false,
-    browsers: ['Chrome'],
-    singleRun: true
+    //browsers: ['Chrome'],
+    //singleRun: true
+    //browsers: ['Chrome'],
+    browsers: ['Chrome_without_security'],
+    customLaunchers: {
+      Chrome_without_security: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
+    singleRun: false
   });
 };
