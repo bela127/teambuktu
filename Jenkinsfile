@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm e2e'
+                sh 'npm run e2e'
             }
         }
     }
