@@ -6,6 +6,7 @@
     "electron": "ng build --base-href ./ && electron .",
     "ng": "ng",
     "start": "ng serve",
+    "start2": "electron .",
     "build": "ng build",
     "test": "karma start --single-run",
     "lint": "ng lint",
