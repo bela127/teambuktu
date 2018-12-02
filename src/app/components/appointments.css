@@ -1,0 +1,25 @@
+.tbkt-form-wrapper > * {
+  width: 100%;
+}
+
+.tbkt-form-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tbkt-form-line > * {
+  width: 100%;
+  padding-right: 10px;
+}
+
+.tbkt-form-line > *:last-child {
+  padding-right: 0;
+}
+
+.tbkt-time-field {
+  min-width: 60px;
+}
+
+.tbkt-table-full-width {
+  width: 100%;
+}

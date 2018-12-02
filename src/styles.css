@@ -19,3 +19,7 @@
 .flexible-fill-remaining-space {
   flex: 1 1 auto;
 }
+
+.mat-form-field-infix {
+  width: auto !important;
+}
