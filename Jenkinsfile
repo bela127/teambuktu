@@ -4,16 +4,16 @@ pipeline {
 					CHROME_BIN = 'chrome'
 	}
     stages {
-        stage('Build') { 
+        stage('Build') {
             steps {
                 sh 'npm install'
-				sh 'npm run electron-build'
-				sh 'npm run electron-package-darwin'
+				        sh 'npm run electron-build'
+				        sh 'npm run electron-package-darwin'
             }
         }
-        stage('Test') { 
+        stage('Test') {
             steps {
-                sh 'npm install'
+                sh 'npm test'
             }
         }
     }
