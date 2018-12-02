@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
 					CHROME_BIN = 'chrome'
-					PATH=$PATH./usr/local/bin
 	}
     stages {
         stage('Build') {
