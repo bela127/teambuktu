@@ -81,7 +81,16 @@ export class MockDataBase {
 
     let t1 = new Task("Task1");
     t1.setText("Note1 should get some text");
-    this.userData.setTasks([t1]);
+    this.userData.setTasks([
+      t1,
+      new Task("Task2", "This is the second mock task with some text. It also has a fancy list in it:" +
+        "\n" +
+        "\n - [ ] Item 1" +
+        "\n - [ ] Item 2" +
+        "\n - [ ] Item 3" +
+        "\n" +
+        "\nNot that bad, right?")
+    ]);
 
     let p1 = new Part("PC");
     p1.setPrice(1250.99);
