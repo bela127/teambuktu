@@ -16,7 +16,7 @@ import {AppointmentsComponent} from './components/appointments';
 import {SidenavService} from './services/SidenavService';
 import {DataService} from './services/DataService';
 import {AppointmentComponent} from './components/appointment';
-import {CustomerlistComponent} from "./components/customerlist";
+import {CustomerlistComponent} from "./components/customers";
 import {CustomerdetailComponent} from "./components/customerdetail";
 import {DataBaseService} from "./services/DataBaseService";
 

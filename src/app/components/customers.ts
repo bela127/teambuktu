@@ -5,7 +5,7 @@ import {DataService} from '../services/DataService';
 
 @Component({
   selector: 'customerlist-component',
-  templateUrl: './customerlist.html',
+  templateUrl: './customers.html',
 })
 export class CustomerlistComponent {
 

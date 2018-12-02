@@ -4,7 +4,7 @@ import {LoginComponent} from './components/login';
 import {AppointmentsComponent} from './components/appointments';
 import {TasksComponent} from './components/tasksnotes';
 import {TaskComponent} from "./components/task";
-import {CustomerlistComponent} from "./components/customerlist";
+import {CustomerlistComponent} from "./components/customers";
 import {AppointmentComponent} from './components/appointment';
 import {CustomerdetailComponent} from "./components/customerdetail";
 
@@ -14,8 +14,8 @@ const routes: Routes = [
   {path: 'task/:id', component: TaskComponent},
   {path: 'appointments', component: AppointmentsComponent},
   {path: 'appointment/:id', component: AppointmentComponent},
-  {path: 'customerlist', component: CustomerlistComponent},
-  {path: 'customer/:id', component: CustomerdetailComponent},
+  {path: 'customers', component: CustomerlistComponent},
+  {path: 'customers/:id', component: CustomerdetailComponent},
 ];
 
 @NgModule({

@@ -1,9 +1,0 @@
-<h1>Customers</h1>
-
-<mat-nav-list>
-  <mat-list-item *ngFor="let customer of dataService.getCustomers()">
-    <a mat-list-item [routerLink]="['/customer/' + customer.getId()]">
-      {{customer.getName()}}
-    </a>
-  </mat-list-item>
-</mat-nav-list>
