@@ -16,4 +16,7 @@ export class TasksComponent {
     this.session.checkLogin(router);
   }
 
+  //TODO Show all open and in progress objects.
+  //--> Newest first: Sort by creationDate
+  //Show the last 10 finished objects.
 }
