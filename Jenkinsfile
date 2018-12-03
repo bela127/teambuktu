@@ -16,6 +16,11 @@ pipeline {
                 sh 'npm install'
                 sh 'npm run test'
             }
+            post {
+                always {
+                    junit 'src/PhantomJS_2.1.1_(Linux_0.0.0)/test-results.xml'
+                }
+            }
         }
     }
 }
