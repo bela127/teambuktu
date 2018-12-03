@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron-build": "ng build --base-href",
-    "electron-package-darwin":"electron-packager . --platform=darwin --no-prune --ignore=/node_modules --ignore=/e2e --ignore=/src --overwrite"
+    "electron-package-darwin": "electron-packager . --platform=darwin --no-prune --ignore=/node_modules --ignore=/e2e --ignore=/src --overwrite"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +27,7 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "core-js": "^2.5.4",
+    "karma-phantomjs-launcher": "^1.0.4",
     "requirejs": "^2.3.5",
     "rxjs": "~6.3.3",
     "zone.js": "~0.8.26"
@@ -56,7 +57,7 @@
     "tslint": "~5.11.0",
     "typescript": "~3.1.1",
     "typescript.list": "~6.7.0",
-    "electron-packager":"~12.2.0",
+    "electron-packager": "~12.2.0",
     "electron-builder": "latest"
   }
 }
