@@ -29,10 +29,10 @@ module.exports = function (config) {
     //browsers: ['Chrome'],
     //singleRun: true
     //browsers: ['Chrome'],
-    browsers: ['Chrome_without_security'],
+    browsers: ['ChromeNoSandbox'],
     customLaunchers: {
-      Chrome_without_security: {
-        base: 'ChromeHeadless',
+      ChromeNoSandbox: {
+        base: 'Chrome',
         flags: ['--no-sandbox']
       }
     },
