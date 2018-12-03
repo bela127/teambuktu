@@ -1,0 +1,91 @@
+<mat-toolbar color="primary">
+  <span>Customer: {{getCustomer().getName()}}</span>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-content>
+
+    <h3>Contact Information:</h3>
+
+    <div class="tbkt-form-wrapper">
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput [value]="getCustomer().getName()">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Website</mat-label>
+          <input matInput [value]="'example.org'">
+        </mat-form-field>
+      </div>
+
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput [value]="'+49 160 12345678'">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>E-mail</mat-label>
+          <input matInput [value]="'mail@example.org'">
+        </mat-form-field>
+      </div>
+
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput [value]="'Beispielstraße 42, 12345, Beispielstadt'">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Geolocation</mat-label>
+          <input matInput [value]="'123,1337'">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <h3>Devices:</h3>
+
+    <mat-accordion [multi]="true">
+      <mat-expansion-panel *ngFor="let device of getCustomer().getDevices()">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{device.getName()}}</mat-panel-title>
+          <mat-panel-description>(some useful information)</mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="tbkt-form-wrapper">
+
+        </div>
+
+        <mat-action-row>
+          <button mat-icon-button matTooltip="Apply Modifications" disabled>
+            <mat-icon>check_circle</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Discard Modifications" disabled>
+            <mat-icon>cancel</mat-icon>
+          </button>
+
+          <button mat-icon-button matTooltip="Edit Device">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Delete Device" color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <h3>Service History:</h3>
+
+    <mat-accordion [multi]="true">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Appointments made with this Customer</mat-panel-title>
+          <mat-panel-description>(description)</mat-panel-description>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-card-content>
+</mat-card>

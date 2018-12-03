@@ -1,0 +1,14 @@
+<mat-toolbar color="primary">
+  <span>Customers</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="flexible-fill-remaining-space"></span>
+
+  <button mat-mini-fab matTooltip="Add Customer"><mat-icon>add</mat-icon></button>
+</mat-toolbar>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let customer of dataService.getCustomers()" [routerLink]="['/customers/' + customer.getId()]">
+    <p>{{customer.getName()}}</p>
+  </mat-list-item>
+</mat-nav-list>

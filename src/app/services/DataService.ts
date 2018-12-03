@@ -53,7 +53,11 @@ export class DataService {
   }
 
   getUser(): string {
-    return this.userData.getUser().getName();
+    if (this.userData != null) {
+      return this.userData.getUser().getName();
+    } else {
+      return "(none)"
+    }
   }
 
   getCustomers(): Customer[] {

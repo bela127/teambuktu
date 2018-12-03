@@ -1,20 +1,40 @@
-
-
 <mat-sidenav-container class="container">
-    <mat-sidenav closed #sidenav mode="side" class="sidenav"
-                 [fixedInViewport]="true" [fixedTopGap]="0"
-                 [fixedBottomGap]="0">
-    
-        <mat-nav-list>
-            <a mat-list-item [routerLink]="['/appointments']">Appointments</a>
-            <a mat-list-item [routerLink]="['/tasks']">Tasks</a>
-            <a mat-list-item [routerLink]="['/appointments']">Customers</a>
-            <a mat-list-item [routerLink]="['/appointments']">Orders</a>
-        </mat-nav-list>
+  <mat-sidenav #sidenav mode="side" class="sidenav"
+               [fixedInViewport]="true" [fixedTopGap]="0"
+               [fixedBottomGap]="0">
 
-    </mat-sidenav>
+    <mat-nav-list>
+      <mat-list-item [routerLink]="['/appointments']">
+        <a matLine>Appointments</a>
+        <mat-icon>event</mat-icon>
+      </mat-list-item>
 
-    <mat-sidenav-content class="content">
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
+      <mat-list-item [routerLink]="['/tasks']">
+        <a matLine>Tasks / Notes</a>
+        <mat-icon>assignment</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/customers']">
+        <a matLine>Customers</a>
+        <mat-icon>people</mat-icon>
+      </mat-list-item>
+
+      <mat-list-item [routerLink]="['/appointments']">
+        <a matLine>Orders</a>
+        <mat-icon>shopping_cart</mat-icon>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item (click)="logout()">
+        <a matLine>Logout <strong>{{dataservice.getUser()}}</strong></a>
+        <mat-icon>logout</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
 </mat-sidenav-container>

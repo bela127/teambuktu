@@ -1,6 +1,5 @@
 import {Info} from "./Info";
 import {Device} from "./Device";
-import {Part} from "./Part";
 
 export class Customer extends Info{
   private devices: Device[] = [];

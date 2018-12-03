@@ -1,0 +1,32 @@
+-------------------------------------
+:. HSKA SOFTWARE-ARCHITECTURES LAB .:
+-------------------------------------
+\ ARCHITECTURE/PRODUCT EVALUATION  /
+ ----------------------------------
+		   
+EXERCISE-04: Second project iteration
+--------------------------------
+Exercise date : 05.November 2018 
+Due date      : 19.November 2018 (Next lab meeting)
+--------------------------------
+Task-1: 
+
+- Improve the app project with the basic structure
+-- Improve the model
+-- Improve the screens and the navigation
+-- Use more data, and a real REST service, if you can (inter-team-service)
+
+- Build system
+-- Make your app build with your build system
+-- Create tests and test results
+-- Apply first metrics (test, code coverage, code metrics) and list more metrics
+-- Metrics is one thing... but how can you evaluate a software system as a whole? Start the investigation.
+
+Objectives:
+- Improve the app
+- Each team will prepare and make a short presentation and upload it to Ilias
+-- The current state for the app
+-- The build system and the first metrics
+-- Explain: Lessons learned
+
+

@@ -1,0 +1,66 @@
+Technician:
+-----------
+id:Long
+email:String
+name:String
+password:String
+phone:String
+
+
+Task,Note: Aufgaben/Notizen
+(Create,Read,Update)
+---------------------
+title:String
+description:String
+status:Enum[Open,Finished]
+creationDate:Date
+
+Show all open and in progress objects. 
+--> Newest first: Sort by creationDate
+Show the last 10 finished objects.
+
+Part: 
+(Read only: Given by the system)
+---------------------------------
+number:String (Artikelnummer)
+name:String
+description:String
+unit:[piece,meter,kg,liter,box]
+price:Number
+currency:[EUR,USD]
+
+##########################
+Warehouse: 
+(Read only: Given by the system)
+--------------------------------
+name:String
+description:String
+
+WarehouseItem:
+The items in the warehouse
+--------------
+part:REF(Part)
+quantity:Number
+##########################
+
+
+WarehouseOrder:
+(Create, Read)
+---------------
+orderNumber:String
+description:String
+orderDate:Date
+lastUpdate:Date
+status:[New,InProgress,Cancelled,Delivered]
+statusNote:String (Info on the status change)
+
+Once delivered, the WarehouseOrderItem's are transferred to the
+Warehouse as WarehouseItem's automatically by the system (Umbuchung) 
+Show the last 10 cancelled or delivered objects.
+
+WarehouseOrderItem:
+The items in the warehouse order
+-------------------
+part:REF(Part)
+quantity:Number
+
