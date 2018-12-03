@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-					CHROME_BIN = 'chrome'
+					CHROME_BIN = "chromium"
 	}
     stages {
         stage('Build') {
