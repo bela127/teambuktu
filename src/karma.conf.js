@@ -31,7 +31,8 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
     singleRun: true, //Was true for jenkins
     junitReporter: {
-      outputFile: 'test-results.xml'
+      outputFile: 'test-results.xml',
+      suite: ''
     }
   });
 };
