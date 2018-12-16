@@ -29,6 +29,14 @@ pipeline {
 			      reportFiles: 'index.html',
 			      reportName: "Coverage Report"
 			])
+			publishHTML (target: [
+			      allowMissing: false,
+			      alwaysLinkToLastBuild: false,
+			      keepAll: true,
+			      reportDir: 'src/reports',
+			      reportFiles: 'lint-results.xml',
+			      reportName: "Lint Report"
+			])
 
                 }
             }
