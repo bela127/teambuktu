@@ -41,7 +41,7 @@ export class LoginComponent {
   login(email: string, password: string) {
     console.log(email + " " + password);
     if (this.dataBase.validateUser(email, password)) {
-      this.data.setUserData(this.dataBase.loadUserData(email, password));
+      this.data.userData =this.dataBase.loadUserData(email, password);
       this.session.login();
       this.snackBar.open("Login successful!", "", {
         duration: 2000,

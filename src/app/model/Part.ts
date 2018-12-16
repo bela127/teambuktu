@@ -14,50 +14,50 @@ enum Currency {
 }
 
 export class Part extends Info{
-  private price: number;
-  private partNo :string;
-  private description: string;
-  private unit: Unit;
-  private currency: Currency;
+  private _price: number;
+  private _partNo :string;
+  private _description: string;
+  private _unit: Unit;
+  private _currency: Currency;
 
-  getPrice(): number {
-    return this.price;
+  get price(): number {
+    return this._price;
   }
 
-  setPrice(price : number){
-    this.price = price;
+  set price(price : number){
+    this._price = price;
   }
 
-  getPartNo(): string {
-    return this.partNo;
+  get partNo(): string {
+    return this._partNo;
   }
 
-  setPartNo(partNo: string){
-    this.partNo = partNo;
+  set partNo(partNo: string){
+    this._partNo = partNo;
   }
 
-  getDescription(): string {
-    return this.description;
+  get description(): string {
+    return this._description;
   }
 
-  setDescription(description: string){
-    this.description = description;
+  set description(description: string){
+    this._description = description;
   }
 
-  getUnit(): string {
-    return this.unit.toString();
+  get unit(): Unit {
+    return this._unit;
   }
 
-  setUnit(unit: Unit){
-    this.unit = unit;
+  set unit(unit: Unit){
+    this._unit = unit;
   }
 
-  getCurrency(): string {
-    return this.currency.toString();
+  get currency(): Currency {
+    return this._currency;
   }
 
-  setCurrencyn(currency: Currency){
-    this.currency = currency;
+  set currencyn(currency: Currency){
+    this._currency = currency;
   }
 
 }

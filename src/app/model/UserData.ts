@@ -6,134 +6,144 @@ import {Task} from "./Task";
 import {Device} from "./Device";
 import {Order} from "./Order";
 import {Part} from "./Part";
+import {Stock} from "./Stock";
 
 export class UserData {
 
-  constructor(private user: User){
+  constructor(private _user: User){
 
   }
 
-  getUser() : User{
-    return this.user;
+  get user() : User{
+    return this._user;
   }
 
-  private customers: Customer[] = [];
-  getCustomers(){
-    return this.customers;
+  private _customers: Customer[] = [];
+  get customers(){
+    return this._customers;
   }
 
-  setCustomers(customers: Customer[]){
-    this.customers = customers;
+  set customers(customers: Customer[]){
+    this._customers = customers;
   }
 
   addCustomer(customer: Customer){
-    this.customers.push(customer);
+    this._customers.push(customer);
   }
 
   addCustomers(customers: Customer[]){
-    this.customers = this.customers.concat(customers);
+    this._customers = this._customers.concat(customers);
   }
 
-  private appointments: Appointment[] = [];
-  getAppointments(){
-    return this.appointments;
+  private _appointments: Appointment[] = [];
+  get appointments(){
+    return this._appointments;
   }
 
-  setAppointments(appointments: Appointment[]){
-    this.appointments = appointments;
+  set appointments(appointments: Appointment[]){
+    this._appointments = appointments;
   }
 
   addAppointment(appointment: Appointment){
-    this.appointments.push(appointment);
+    this._appointments.push(appointment);
   }
 
   addAppointments(appointments: Appointment[]){
-    this.appointments = this.appointments.concat(appointments);
+    this._appointments = this._appointments.concat(appointments);
   }
 
-  private notes: Note[] = [];
-  getNotes(){
-    return this.notes;
+  private _notes: Note[] = [];
+  get notes(){
+    return this._notes;
   }
 
-  setNotes(notes: Note[]){
-    this.notes = notes;
+  set notes(notes: Note[]){
+    this._notes = notes;
   }
 
   addNote(note: Note){
-    this.notes.push(note);
+    this._notes.push(note);
   }
 
   addNotes(notes: Note[]){
-    this.notes = this.notes.concat(notes);
+    this._notes = this._notes.concat(notes);
   }
 
-  private tasks: Task[] = [];
-  getTasks(){
-    return this.tasks;
+  private _tasks: Task[] = [];
+  get tasks(){
+    return this._tasks;
   }
 
-  setTasks(tasks: Task[]){
-    this.tasks = tasks;
+  set tasks(tasks: Task[]){
+    this._tasks = tasks;
   }
 
   addTask(task: Task){
-    this.tasks.push(task);
+    this._tasks.push(task);
   }
 
   addTasks(tasks: Task[]){
-    this.tasks = this.tasks.concat(tasks);
+    this._tasks = this._tasks.concat(tasks);
   }
 
-  private devices: Device[] = [];
-  getDevices(){
-    return this.devices;
+  private _devices: Device[] = [];
+  get devices(){
+    return this._devices;
   }
 
-  setDevices(devices: Device[]){
-    this.devices = devices;
+  set devices(devices: Device[]){
+    this._devices = devices;
   }
 
   addDevice(device: Device){
-    this.devices.push(device);
+    this._devices.push(device);
   }
 
   addDevices(devices: Device[]){
-    this.devices = this.devices.concat(devices);
+    this._devices = this._devices.concat(devices);
   }
 
-  private orders: Order[] = [];
-  getOrders(){
-    return this.orders;
+  private _orders: Order[] = [];
+  get orders(){
+    return this._orders;
   }
 
-  setOrders(orders: Order[]){
-    this.orders = orders;
+  set orders(orders: Order[]){
+    this._orders = orders;
   }
 
   addOrder(order: Order){
-    this.orders.push(order);
+    this._orders.push(order);
   }
 
   addOrders(orders: Order[]){
-    this.orders = this.orders.concat(orders);
+    this._orders = this._orders.concat(orders);
   }
 
-  private parts: Part[] = [];
-  getParts(){
-    return this.parts;
+  private _parts: Part[] = [];
+  get parts(){
+    return this._parts;
   }
 
-  setParts(parts: Part[]){
-    this.parts = parts;
+  set parts(parts: Part[]){
+    this._parts = parts;
   }
 
   addPart(part: Part){
-    this.parts.push(part);
+    this._parts.push(part);
   }
 
   addParts(parts: Part[]){
-    this.parts = this.parts.concat(parts);
+    this._parts = this._parts.concat(parts);
+  }
+
+  private _stock: Stock;
+  get stock(){
+    return this._stock;
+  }
+
+  set stock(stock: Stock){
+    this._stock = stock;
   }
 
 }

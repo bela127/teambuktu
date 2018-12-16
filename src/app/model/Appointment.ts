@@ -3,12 +3,12 @@ import {Customer} from "./Customer";
 
 export class Appointment extends Task{
 
-  constructor(name: string, private customer: Customer) {
+  constructor(name: string, private _customer: Customer) {
     super(name);
   }
 
-  getCustomer(): Customer {
-    return this.customer;
+  get customer(): Customer {
+    return this._customer;
   }
 
 

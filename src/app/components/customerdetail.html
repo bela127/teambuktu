@@ -11,7 +11,7 @@
       <div class="tbkt-form-line">
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
-          <input matInput [value]="getCustomer().getName()">
+          <input matInput [value]="customer.name">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
@@ -48,9 +48,9 @@
     <h3>Devices:</h3>
 
     <mat-accordion [multi]="true">
-      <mat-expansion-panel *ngFor="let device of getCustomer().getDevices()">
+      <mat-expansion-panel *ngFor="let device of customer.devices">
         <mat-expansion-panel-header>
-          <mat-panel-title>{{device.getName()}}</mat-panel-title>
+          <mat-panel-title>{{device.name}}</mat-panel-title>
           <mat-panel-description>(some useful information)</mat-panel-description>
         </mat-expansion-panel-header>
 

@@ -1,12 +1,24 @@
+import {Datasource, Timestamp} from "./Timestamp";
+
 export class Info {
-  constructor(private name: string) {
+  private _timestamp;
+
+  constructor(private _name: string) {
   }
 
-  getName(): string {
-    return this.name;
+  get name(): string {
+    return this._name;
   }
 
-  getId() {
-    return this.name;
+  get id() {
+    return this._name;
+  }
+
+  get timestamp(){
+    return this._timestamp;
+  }
+
+  updateData(datasource: Datasource){
+    this._timestamp = new Timestamp(new Date(Date.now()),datasource);
   }
 }

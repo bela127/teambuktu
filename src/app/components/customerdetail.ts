@@ -11,14 +11,14 @@ import {Appointment} from "../model/Appointment";
 })
 export class CustomerdetailComponent {
 
-  private customer: Customer;
+  private _customer: Customer;
 
   constructor(private route: ActivatedRoute, private session: SessionService, private router: Router, private dataService: DataService) {
     this.session.checkLogin(router);
   }
 
-  getCustomer(): Customer {
-    return this.customer;
+  get customer(): Customer {
+    return this._customer;
   }
 
   ngOnInit() {
@@ -26,8 +26,8 @@ export class CustomerdetailComponent {
       let id = params['id'];
       console.log(params)
       console.log("ID: " + id)
-      this.customer = this.dataService.getCustomer(id);
-      console.log(this.customer)
+      this._customer = this.dataService.customer(id);
+      console.log(this._customer)
     });
   }
 }

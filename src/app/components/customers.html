@@ -8,7 +8,7 @@
 </mat-toolbar>
 
 <mat-nav-list>
-  <mat-list-item *ngFor="let customer of dataService.getCustomers()" [routerLink]="['/customers/' + customer.getId()]">
-    <p>{{customer.getName()}}</p>
+  <mat-list-item *ngFor="let customer of dataService.customers" [routerLink]="['/customers/' + customer.id]">
+    <p>{{customer.name}}</p>
   </mat-list-item>
 </mat-nav-list>
