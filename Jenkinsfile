@@ -16,20 +16,10 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'npm run test'
-		sh "node_modules/tslint/bin/tslint --project tsconfig.json -c tslint.json 'src/**/*.ts' --format prose --out src/reports/lint-results.txt"
             }
             post {
                 always {
                     	junit 'src/reports/test-results.xml'
-			publishHTML (target: [
-			      allowMissing: false,
-			      alwaysLinkToLastBuild: false,
-			      keepAll: true,
-			      reportDir: 'src/reports',
-			      reportFiles: 'lint-results.txt',
-			      reportName: "Lint Report"
-			])
-
                 }
             }
         }
