@@ -21,7 +21,6 @@ pipeline {
             post {
                 always {
                     	junit 'src/reports/test-results.xml'
-			junit allowEmptyResults: true, testResults: "src/reports/lint-results.xml"
 			publishHTML (target: [
 			      allowMissing: false,
 			      alwaysLinkToLastBuild: false,
