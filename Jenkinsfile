@@ -1,14 +1,14 @@
 pipeline {
     agent any
     environment {
-					CHROME_BIN = 'chrome'
+		CHROME_BIN = 'chrome'
 	}
     stages {
         stage('Build') {
             steps {
                 sh 'npm install'
-				        sh 'npm run electron-build'
-				        sh 'npm run electron-package-darwin'
+		sh 'npm run electron-build'
+		sh 'npm run electron-package-darwin'
             }
         }
         stage('Test') {
@@ -26,7 +26,7 @@ pipeline {
 			      reportDir: 'src/coverage/PhantomJS 2.1.1 (Linux 0.0.0)',
 			      reportFiles: 'index.html',
 			      reportName: "Coverage Report"
-			    ])
+			])
 
                 }
             }
