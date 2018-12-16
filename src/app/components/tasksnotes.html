@@ -8,17 +8,14 @@
 </mat-toolbar>
 
 <mat-accordion [multi]="true">
-  <mat-expansion-panel *ngFor="let tasknote of dataService.tasks">
+  <mat-expansion-panel *ngFor="let tasknote of displayItems">
     <mat-expansion-panel-header>
       <mat-panel-title>{{tasknote.name}}</mat-panel-title>
 
-      <!-- TODO: get status from data model -->
-      <mat-panel-description>Open</mat-panel-description>
+      <mat-panel-description>{{tasknote.open ? 'Open' : 'Closed'}}</mat-panel-description>
     </mat-expansion-panel-header>
 
     <div class="tbkt-form-wrapper">
-      <p>Created on: {{tasknote.startDate}}</p>
-
       <div class="tbkt-form-line">
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
@@ -28,11 +25,13 @@
     </div>
 
     <mat-action-row>
+      <p class="tbkt-action-row-leftalign">Created on: {{dateformatter.transform(tasknote.creationDate, "dd.MM.yyyy HH:mm:ss")}}</p>
+
       <button mat-icon-button matTooltip="Apply Modifications" disabled><mat-icon>check_circle</mat-icon></button>
       <button mat-icon-button matTooltip="Discard Modifications" disabled><mat-icon>cancel</mat-icon></button>
 
       <button mat-icon-button matTooltip="Edit Item"><mat-icon>edit</mat-icon></button>
-      <button mat-icon-button matTooltip="Delete Item" color="warn"><mat-icon>delete</mat-icon></button>
+      <button mat-icon-button matTooltip="Delete Item" color="warn" (click)="removeNote(tasknote)"><mat-icon>delete</mat-icon></button>
 
       <button mat-icon-button matTooltip="Close Item"><mat-icon>check</mat-icon></button>
     </mat-action-row>

@@ -20,6 +20,10 @@
   flex: 1 1 auto;
 }
 
+.tbkt-action-row-leftalign {
+  margin-right: auto;
+}
+
 .mat-form-field-infix {
   width: auto !important;
 }
