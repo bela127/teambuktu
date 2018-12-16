@@ -18,7 +18,7 @@ pipeline {
             }
             post {
                 always {
-                    	junit 'src/PhantomJS_2.1.1_(Linux_0.0.0)/test-results.xml'
+                    	junit 'src/reports/test-results.xml'
 			publishHTML (target: [
 			      allowMissing: false,
 			      alwaysLinkToLastBuild: false,

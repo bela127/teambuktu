@@ -26,7 +26,8 @@ module.exports = function (config) {
       dir: require('path').join(__dirname, '../coverage'),
       reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true,
-      combineBrowserReports: true
+      combineBrowserReports: true,
+      useBrowserName: false
     },
     preprocessors: {
       // source files, that you wanna generate coverage for
@@ -43,8 +44,10 @@ module.exports = function (config) {
     browsers: ['PhantomJS'],
     singleRun: true, //Was true for jenkins
     junitReporter: {
+      outputDir: 'reports',
       outputFile: 'test-results.xml',
-      suite: ''
+      suite: '',
+      useBrowserName: false
     }
   });
 };
