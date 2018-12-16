@@ -23,7 +23,7 @@ pipeline {
 			      allowMissing: false,
 			      alwaysLinkToLastBuild: false,
 			      keepAll: true,
-			      reportDir: 'src/coverage',
+			      reportDir: 'src/coverage/PhantomJS 2.1.1 (Linux 0.0.0)',
 			      reportFiles: 'index.html',
 			      reportName: "Coverage Report"
 			    ])
