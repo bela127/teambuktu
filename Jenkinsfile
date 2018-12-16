@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'npm run test'
-		sh "node_modules/tslint/bin/tslint --project tsconfig.json -c tslint.json 'src/**/*.ts' --format junit --out src/reports/lint-results.xml"
+		sh "node_modules/tslint/bin/tslint --project tsconfig.json -c tslint.json 'src/**/*.ts' --format prose --out src/reports/lint-results.txt"
             }
             post {
                 always {
@@ -34,7 +34,7 @@ pipeline {
 			      alwaysLinkToLastBuild: false,
 			      keepAll: true,
 			      reportDir: 'src/reports',
-			      reportFiles: 'lint-results.xml',
+			      reportFiles: 'lint-results.txt',
 			      reportName: "Lint Report"
 			])
 
