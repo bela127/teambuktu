@@ -3,6 +3,10 @@
 
 module.exports = function (config) {
   config.set({
+    files: [
+      'src/**/*.js',
+      'test/**/*.js'
+    ],
     basePath: '',
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
