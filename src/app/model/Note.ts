@@ -6,36 +6,36 @@ enum Status {
 }
 
 export class Note extends Info {
-  private text: string;
-  private status: Status;
-  private creationDate: Date;
+  private _text: string;
+  private _status: Status;
+  private _creationDate: Date;
 
   constructor(name: string, text?: string) {
     super(name);
-    this.text = text && text || "(no text)";
+    this._text = text && text || "(no text)";
   }
 
-  getText(): string {
-    return this.text;
+  get text(): string {
+    return this._text;
   }
 
-  setText(text : string){
-    this.text = text;
+  set text(text : string){
+    this._text = text;
   }
 
-  getStatus(): Status {
-    return this.status;
+  get status(): Status {
+    return this._status;
   }
 
-  setStatus(status : Status){
-    this.status = status;
+  set status(status : Status){
+    this._status = status;
   }
 
-  getCreationDate(): Date {
-    return this.creationDate;
+  get creationDate(): Date {
+    return this._creationDate;
   }
 
-  setCreationDate(creationDate : Date){
-    this.creationDate = creationDate;
+  set creationDate(creationDate : Date){
+    this._creationDate = creationDate;
   }
 }

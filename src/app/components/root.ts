@@ -27,7 +27,7 @@ export class RootComponent {
 
   public logout(): void {
     this.session.logout();
-    this.dataservice.setUserData(null);
+    this.dataservice.userData = null;
     this.sidenav.close()
       .finally(() => console.log("Sidenav finally closed."));
     this.router.navigate(["/login"])

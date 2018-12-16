@@ -9,100 +9,100 @@ import {Part} from "../model/Part";
 
 export class DataService {
 
-  private userData: UserData;
+  private _userData: UserData;
 
-  setUserData(userData: UserData){
-    this.userData = userData;
+  set userData(userData: UserData){
+    this._userData = userData;
   }
 
 
-    getAppointments(): Appointment[] {
-    return this.userData.getAppointments()
+    get appointments(): Appointment[] {
+    return this._userData.appointments
     }
 
-    getAppointment(id:String): Appointment {
-        for (let entry of this.userData.getAppointments()) {
-            if(entry.getName() == id)
+    appointment(id:String): Appointment {
+        for (let entry of this._userData.appointments) {
+            if(entry.id == id)
                 return entry;    
         }
         return null;
     }
 
-    getTasks(): Task[] {
-        return this.userData.getTasks();
+    get tasks(): Task[] {
+        return this._userData.tasks;
     }
 
-  getTask(id:String): Task {
-    for (let entry of this.userData.getTasks()) {
-      if(entry.getName() == id)
+  task(id:String): Task {
+    for (let entry of this._userData.tasks) {
+      if(entry.id == id)
         return entry;
     }
     return null;
   }
 
-  getNotes(): Note[] {
-    return this.userData.getNotes();
+  get notes(): Note[] {
+    return this._userData.notes;
   }
 
-  getNote(id:String): Note {
-    for (let entry of this.userData.getNotes()) {
-      if(entry.getName() == id)
+  note(id:String): Note {
+    for (let entry of this._userData.notes) {
+      if(entry.id == id)
         return entry;
     }
     return null;
   }
 
-  getUser(): string {
-    if (this.userData != null) {
-      return this.userData.getUser().getName();
+  get user(): string {
+    if (this._userData != null) {
+      return this._userData.user.name;
     } else {
       return "(none)"
     }
   }
 
-  getCustomers(): Customer[] {
-    return this.userData.getCustomers();
+  get customers(): Customer[] {
+    return this._userData.customers;
   }
 
-  getCustomer(id:String): Customer {
-    for (let entry of this.userData.getCustomers()) {
-      if(entry.getName() == id)
+  customer(id:String): Customer {
+    for (let entry of this._userData.customers) {
+      if(entry.id == id)
         return entry;
     }
     return null;
   }
 
-  getOrders(): Order[] {
-    return this.userData.getOrders();
+  get orders(): Order[] {
+    return this._userData.orders;
   }
 
-  getOrder(id:String): Order {
-    for (let entry of this.userData.getOrders()) {
-      if(entry.getName() == id)
+  order(id:String): Order {
+    for (let entry of this._userData.orders) {
+      if(entry.id == id)
         return entry;
     }
     return null;
   }
 
-  getDevices(): Device[] {
-    return this.userData.getDevices();
+  get devices(): Device[] {
+    return this._userData.devices;
   }
 
-  getDevice(id:String): Device {
-    for (let entry of this.userData.getDevices()) {
-      if(entry.getName() == id)
+  device(id:String): Device {
+    for (let entry of this._userData.devices) {
+      if(entry.id == id)
         return entry;
     }
     return null;
   }
 
-  getParts(): Part[] {
-    return this.userData.getParts();
+  get parts(): Part[] {
+    return this._userData.parts;
   }
 
-  getPart(id:String): Part {
-    for (let entry of this.userData.getParts()) {
-      if(entry.getName() == id)
+  part(id:String): Part {
+    for (let entry of this._userData.parts) {
+      if(entry.id == id)
         return entry;
     }
     return null;

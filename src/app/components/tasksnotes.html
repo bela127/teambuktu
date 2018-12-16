@@ -8,21 +8,21 @@
 </mat-toolbar>
 
 <mat-accordion [multi]="true">
-  <mat-expansion-panel *ngFor="let tasknote of dataService.getTasks()">
+  <mat-expansion-panel *ngFor="let tasknote of dataService.tasks">
     <mat-expansion-panel-header>
-      <mat-panel-title>{{tasknote.getName()}}</mat-panel-title>
+      <mat-panel-title>{{tasknote.name}}</mat-panel-title>
 
       <!-- TODO: get status from data model -->
       <mat-panel-description>Open</mat-panel-description>
     </mat-expansion-panel-header>
 
     <div class="tbkt-form-wrapper">
-      <p>Created on: {{tasknote.getStartDate()}}</p>
+      <p>Created on: {{tasknote.startDate}}</p>
 
       <div class="tbkt-form-line">
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea matInput [value]="tasknote.getText()" rows="7"></textarea>
+          <textarea matInput [value]="tasknote.text" rows="7"></textarea>
         </mat-form-field>
       </div>
     </div>

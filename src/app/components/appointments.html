@@ -8,9 +8,9 @@
 </mat-toolbar>
 
 <mat-accordion [multi]="true">
-  <mat-expansion-panel *ngFor="let appointment of dataService.getAppointments()">
+  <mat-expansion-panel *ngFor="let appointment of dataService.appointments">
     <mat-expansion-panel-header>
-      <mat-panel-title>{{appointment.getName()}}</mat-panel-title>
+      <mat-panel-title>{{appointment.name}}</mat-panel-title>
 
       <!-- TODO: get status from data model -->
       <mat-panel-description>Open</mat-panel-description>
@@ -25,11 +25,11 @@
           <mat-label>Customer</mat-label>
           <mat-icon matPrefix>person</mat-icon>
           <!-- TODO: preselect the customer of the appointment; -->
-          <!-- '[(ngModel)]="appointment.getCustomer().getName()"' throws a critical error -->
+          <!-- '[(ngModel)]="appointment.customer.name"' throws a critical error -->
           <!-- maybe do this programmatically? -->
           <mat-select>
-            <mat-option *ngFor="let customer of dataService.getCustomers()" [value]="customer.getName()">
-              {{customer.getName()}}
+            <mat-option *ngFor="let customer of dataService.customers" [value]="customer.name">
+              {{customer.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -37,15 +37,15 @@
         <mat-form-field appearance="outline">
           <mat-label>Service Product</mat-label>
           <mat-select>
-            <mat-option *ngFor="let device of appointment.getCustomer().getDevices()" [value]="device.getName()">
-              {{device.getName()}}
+            <mat-option *ngFor="let device of appointment.customer.devices" [value]="device.name">
+              {{device.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Technician</mat-label>
-          <input matInput [value]="dataService.getUser()" readonly>
+          <input matInput [value]="dataService.user" readonly>
         </mat-form-field>
       </div>
 

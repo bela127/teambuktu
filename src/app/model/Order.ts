@@ -1,30 +1,84 @@
 import {Info} from "./Info";
-import {Part} from "./Part";
+import {PartPack} from "./PartPack";
+
+enum Status {
+  New,
+  InProgress,
+  Cancelled,
+  Delivered,
+}
 
 export class Order extends Info{
-  private parts: Part[] = [];
+  private _orderItems: PartPack[] = [];
+  private _orderNumber: string;
+  private _description: string;
+  private _orderDate: Date;
+  private _lastUpdate: Date;
+  private _status: Status;
+  private _statusNote: string;
 
-  getPrice(): number {
-    let price: number;
-    for(let part of this.parts){
-      price += part.getPrice();
-    }
-    return price;
+
+  get orderItems(): PartPack[] {
+    return this._orderItems;
   }
 
-  getParts(): Part[] {
-    return this.parts;
+  set orderItems(orderItems : PartPack[]){
+    this._orderItems = orderItems;
   }
 
-  setParts(parts : Part[]){
-    this.parts = parts;
+  addorderItem(orderItem : PartPack){
+    this._orderItems.push(orderItem);
   }
 
-  addPart(part : Part){
-    this.parts.push(part);
+  addorderItems(orderItems : PartPack[]){
+    this._orderItems = this._orderItems.concat(orderItems);
   }
 
-  addParts(parts : Part[]){
-    this.parts = this.parts.concat(parts);
+  set description(description: string){
+    this._description = description;
+  }
+
+  get description(){
+    return this._description;
+  }
+
+  set orderNumber(orderNumber: string){
+    this._orderNumber = orderNumber;
+  }
+
+  get orderNumber(){
+    return this._orderNumber;
+  }
+
+  set statusNote(statusNote: string){
+    this._statusNote = statusNote;
+  }
+
+  get statusNote(){
+    return this._statusNote;
+  }
+
+  set orderDate(orderDate: Date){
+    this._orderDate = orderDate;
+  }
+
+  get orderDate(){
+    return this._orderDate;
+  }
+
+  set lastUpdate(lastUpdate: Date){
+    this._lastUpdate = lastUpdate;
+  }
+
+  get lastUpdate(){
+    return this._lastUpdate;
+  }
+
+  set status(status: Status){
+    this._status = status;
+  }
+
+  get status(){
+    return this._status;
   }
 }

@@ -2,48 +2,48 @@ import {Info} from "./Info";
 import {Customer} from "./Customer";
 
 export class Device extends Info{
-  private serialNo: string;
-  private description: string;
-  private purchaseDate: Date;
+  private _serialNo: string;
+  private _description: string;
+  private _purchaseDate: Date;
 
-  constructor(name: string, private customer: Customer, private location?: [number,number]){
+  constructor(name: string, private _customer: Customer, private _location?: [number,number]){
     super(name);
   }
 
-  getCustomer(){
-    return this.customer;
+  get customer(){
+    return this._customer;
   }
 
-  getLocation(){
-    return this.location;
+  get location(){
+    return this._location;
   }
 
-  setLocation(location: [number,number]){
-    return this.location = location;
+  set location(location: [number,number]){
+    this._location = location;
   }
 
-  setSerialNo(serialNo: string){
-    this.serialNo = serialNo;
+  set serialNo(serialNo: string){
+    this._serialNo = serialNo;
   }
 
-  getSerialNo(){
-    return this.serialNo;
+  get serialNo(){
+    return this._serialNo;
   }
 
-  setPurchaseDate(purchaseDate: Date){
-    this.purchaseDate = purchaseDate;
+  set purchaseDate(purchaseDate: Date){
+    this._purchaseDate = purchaseDate;
   }
 
-  getPurchaseDate(){
-    return this.purchaseDate;
+  get purchaseDate(){
+    return this._purchaseDate;
   }
 
-  setDescription(description: string){
-    this.description = description;
+  set description(description: string){
+    this._description = description;
   }
 
-  getDescription(){
-    return this.description;
+  get description(){
+    return this._description;
   }
 
 }

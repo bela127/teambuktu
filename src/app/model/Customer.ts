@@ -2,20 +2,20 @@ import {Info} from "./Info";
 import {Device} from "./Device";
 
 export class Customer extends Info{
-  private devices: Device[] = [];
-  getDevices(){
-    return this.devices;
+  private _devices: Device[] = [];
+  get devices(){
+    return this._devices;
   }
 
-  setDevices(devices: Device[]){
-    this.devices = devices;
+  set devices(devices: Device[]){
+    this._devices = devices;
   }
 
   addDevice(device: Device){
-    this.devices.push(device);
+    this._devices.push(device);
   }
 
   addDevices(devices: Device[]){
-    this.devices = this.devices.concat(devices);
+    this._devices = this._devices.concat(devices);
   }
 }

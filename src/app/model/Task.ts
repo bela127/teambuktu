@@ -1,23 +1,23 @@
 import {Note} from "./Note";
 
 export class Task extends Note{
-  private startDate: Date;
+  private _startDate: Date;
 
-  private endDate: Date;
+  private _endDate: Date;
 
-  getStartDate(): Date {
-    return this.startDate;
+  get startDate(): Date {
+    return this._startDate;
   }
 
-  setStartDate(date : Date){
-    this.startDate = date;
+  set startDate(date : Date){
+    this._startDate = date;
   }
 
-  getEndDate(): Date {
-    return this.endDate;
+  get endDate(): Date {
+    return this._endDate;
   }
 
-  setEndDate(date : Date){
-    this.endDate = date;
+  set endDate(date : Date){
+    this._endDate = date;
   }
 }

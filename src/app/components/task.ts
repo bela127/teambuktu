@@ -12,14 +12,14 @@ import {DataService} from "../services/DataService";
 })
 export class TaskComponent {
 
-  private task: Task;
+  private _task: Task;
 
   constructor(private route: ActivatedRoute, private session: SessionService, private router: Router, private dataService: DataService) {
     this.session.checkLogin(router);
   }
 
-  getTask(): Task {
-    return this.task;
+  get task(): Task {
+    return this._task;
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class TaskComponent {
       let id = params['id'];
       console.log(params);
       console.log("ID: " + id);
-      this.task = this.dataService.getTask(id);
+      this._task = this.dataService.task(id);
       console.log(this.task)
     });
   }

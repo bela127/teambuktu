@@ -1,12 +1,12 @@
 export class Info {
-  constructor(private name: string) {
+  constructor(private _name: string) {
   }
 
-  getName(): string {
-    return this.name;
+  get name(): string {
+    return this._name;
   }
 
-  getId() {
-    return this.name;
+  get id() {
+    return this._name;
   }
 }
