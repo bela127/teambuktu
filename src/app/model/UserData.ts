@@ -6,6 +6,7 @@ import {Task} from "./Task";
 import {Device} from "./Device";
 import {Order} from "./Order";
 import {Part} from "./Part";
+import {Stock} from "./Stock";
 
 export class UserData {
 
@@ -134,6 +135,15 @@ export class UserData {
 
   addParts(parts: Part[]){
     this._parts = this._parts.concat(parts);
+  }
+
+  private _stock: Stock;
+  get stock(){
+    return this._stock;
+  }
+
+  set stock(stock: Stock){
+    this._stock = stock;
   }
 
 }

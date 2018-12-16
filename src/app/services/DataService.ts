@@ -6,6 +6,7 @@ import {Customer} from "../model/Customer";
 import {Order} from "../model/Order";
 import {Device} from "../model/Device";
 import {Part} from "../model/Part";
+import {Stock} from "../model/Stock";
 
 export class DataService {
 
@@ -106,6 +107,10 @@ export class DataService {
         return entry;
     }
     return null;
+  }
+
+  get stock(){
+    return this._userData.stock;
   }
 
 }
