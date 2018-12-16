@@ -23,11 +23,11 @@ export class Stock extends Info{
     this._stockItems = stockItems;
   }
 
-  addStockItems(stockItem: PartPack){
+  addStockItem(stockItem: PartPack){
     this._stockItems.push(stockItem);
   }
 
-  addDevices(stockItems: PartPack[]){
+  addStockItems(stockItems: PartPack[]){
     this._stockItems = this._stockItems.concat(stockItems);
   }
 }

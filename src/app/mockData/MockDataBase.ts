@@ -6,6 +6,9 @@ import {Device} from "../model/Device";
 import {Note} from "../model/Note";
 import {Task} from "../model/Task";
 import {Part} from "../model/Part";
+import {Order} from "../model/Order";
+import {PartPack} from "../model/PartPack";
+import {Stock} from "../model/Stock";
 
 export class MockDataBase {
 
@@ -92,7 +95,32 @@ export class MockDataBase {
 
     let p1 = new Part("PC");
     p1.price = 1250.99;
-    this.userData.parts =[p1];
+    let p2 = new Part("Monitor");
+    p2.price = 250.99;
+    let p3 = new Part("Keyboard");
+    p3.price = 15.99;
+    this.userData.parts =[p1,p2,p3];
+
+    this.userData.orders =
+      [
+        new Order("order 1"),
+        new Order("order 2"),
+        new Order("order 3"),
+      ];
+
+    this.userData.orders[0].orderItems=
+      [
+      new PartPack(p1,5),
+        new PartPack(p2,5),
+      ];
+
+    this.userData.stock = new Stock("MyCar")
+    this.userData.stock.stockItems =
+      [
+        new PartPack(p1,1),
+        new PartPack(p2,1),
+        new PartPack(p3,6),
+      ];
   }
 
   readonly user: User;
