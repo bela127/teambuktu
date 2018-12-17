@@ -46,7 +46,7 @@ pipeline {
 			      alwaysLinkToLastBuild: false,
 			      keepAll: true,
 			      reportDir: 'src/reports',
-			      reportFiles: 'loc.html',
+			      reportFiles: 'loc.txt',
 			      reportName: "Code statistics"
 			])
                 }
