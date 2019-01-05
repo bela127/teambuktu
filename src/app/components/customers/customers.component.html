@@ -3,7 +3,7 @@
 </mat-toolbar>
 
 <mat-nav-list>
-  <mat-list-item *ngFor="let customer of dataService.customers" [routerLink]="['/customers/' + customer.id]">
+  <mat-list-item *ngFor="let customer of dataService.customers" [routerLink]="['/customer/' + customer.id]">
     <p matLine>{{customer.name}}</p>
     <mat-icon matSuffix>person</mat-icon>
   </mat-list-item>

@@ -1,12 +1,11 @@
-import {Component} from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
-import {SessionService} from '../services/SessionService';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {SidenavService} from '../services/SidenavService';
-import {MatSnackBar, MatSnackBarHorizontalPosition} from '@angular/material';
-import {DataBaseService} from "../services/DataBaseService";
-import {DataService} from "../services/DataService";
+import {SessionService} from "../../services/SessionService";
+import {DataBaseService} from "../../services/DataBaseService";
+import {DataService} from "../../services/DataService";
+import {SidenavService} from "../../services/SidenavService";
+import {ErrorStateMatcher, MatSnackBar, MatSnackBarHorizontalPosition} from "@angular/material";
+import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -16,18 +15,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 }
 
 @Component({
-  selector: 'login-component',
-  templateUrl: './login.html',
-  styleUrls: ['./login.css']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
+
   constructor(private router: Router,
               private session: SessionService,
               private dataBase: DataBaseService,
               private data: DataService,
               private sideNav: SidenavService,
               public snackBar: MatSnackBar) {
-
   }
 
   emailFormControl = new FormControl('', [
@@ -41,7 +40,7 @@ export class LoginComponent {
   login(email: string, password: string) {
     console.log(email + " " + password);
     if (this.dataBase.validateUser(email, password)) {
-      this.data.userData =this.dataBase.loadUserData(email, password);
+      this.data.userData = this.dataBase.loadUserData(email, password);
       this.session.login();
       this.snackBar.open("Login successful!", "", {
         duration: 2000,
@@ -61,4 +60,8 @@ export class LoginComponent {
       });
     }
   }
+
+  ngOnInit(): void {
+  }
+
 }
