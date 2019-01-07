@@ -7,6 +7,7 @@ import {AppointmentDetailComponent} from "./components/appointment-detail/appoin
 import {LoginComponent} from "./components/login/login.component";
 import {TasksComponent} from "./components/tasks/tasks.component";
 import {AppointmentsComponent} from "./components/appointments/appointments.component";
+import {WarehouseComponent} from "./components/warehouse/warehouse.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'appointment/:id', component: AppointmentDetailComponent},
   {path: 'customers', component: CustomersComponent},
   {path: 'customer/:id', component: CustomerDetailComponent},
+  {path: 'warehouse', component: WarehouseComponent},
 ];
 
 @NgModule({
