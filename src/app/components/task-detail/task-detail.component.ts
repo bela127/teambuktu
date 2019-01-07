@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Note} from "../../model/Note";
 
 @Component({
   selector: 'app-task-detail',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskDetailComponent implements OnInit {
 
+  @Input() tasknote: Note;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  toggle(): void {
+    this.tasknote.open = !this.tasknote.open;
   }
 
 }

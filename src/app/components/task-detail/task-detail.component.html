@@ -1,3 +1,26 @@
-<p>
-  task-detail works!
-</p>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{tasknote.name}}</mat-panel-title>
+
+    <mat-panel-description>{{tasknote.open ? 'Open' : 'Closed'}} {{tasknote.text}}</mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div class="tbkt-form-wrapper">
+    <div class="tbkt-form-line">
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput [(ngModel)]="tasknote.text" rows="7"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <mat-action-row>
+    <p class="tbkt-action-row-leftalign">Created on: {{tasknote.creationDate.valueOf() | date:'dd.MM.yyyy HH:mm:ss'}}</p>
+
+    <button mat-icon-button matTooltip="Apply Modifications"><mat-icon>check_circle</mat-icon></button>
+
+    <button mat-icon-button matTooltip="Delete Item" color="warn" (click)="remove()"><mat-icon>delete</mat-icon></button>
+
+    <button mat-icon-button matTooltip="Close Item" (click)="toggle()"><mat-icon>{{tasknote.open ? 'check' : 'close'}}</mat-icon></button>
+  </mat-action-row>
+</mat-expansion-panel>

@@ -14,14 +14,10 @@ export class TasksComponent implements OnInit {
 
   private displayItems: Note[] = [];
 
-  private dateformatter = new DatePipe("en-US");
-
   constructor(private session: SessionService, private router: Router, private dataService: DataService) {
   }
 
   ngOnInit() {
-    this.session.checkLogin(this.router);
-
     this.displayItems = this.dataService.notes
       .filter(item => item.open)
       .sort(this.compareNotes);
