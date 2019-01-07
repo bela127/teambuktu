@@ -1,9 +1,9 @@
 import {Info} from "./Info";
+import {ContactInfo} from "./ContactInfo";
 
 export class User extends Info{
 
-  private _email: string;
-  private _phone: string;
+  private _contactInfo: ContactInfo;
 
   constructor(name: string, private pwHash: string) {
     super(name);
@@ -13,19 +13,13 @@ export class User extends Info{
     return this.pwHash == pwHash;
   }
 
-  set email(email: string){
-    this._email = email;
+  set contactInfo(contactInfo: ContactInfo){
+    this._contactInfo = contactInfo;
   }
 
-  get email(){
-    return this._email;
+  get contactInfo(){
+    return this._contactInfo;
   }
 
-  set phone(phone: string){
-    this._phone = phone;
-  }
 
-  get phone(){
-    return this._phone;
-  }
 }

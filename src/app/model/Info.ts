@@ -1,24 +1,12 @@
-import {Datasource, Timestamp} from "./Timestamp";
+import {DataObject} from "./DataObject";
 
-export class Info {
-  private _timestamp;
+export class Info extends DataObject{
 
   constructor(private _name: string) {
+    super(_name);
   }
 
   get name(): string {
     return this._name;
-  }
-
-  get id() {
-    return this._name;
-  }
-
-  get timestamp(){
-    return this._timestamp;
-  }
-
-  updateData(datasource: Datasource){
-    this._timestamp = new Timestamp(new Date(Date.now()),datasource);
   }
 }

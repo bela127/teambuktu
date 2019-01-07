@@ -1,7 +1,22 @@
 Technician:
 -----------
-email,name,password,phone
+name
+password (Hash)
+contact(phone,mail,web,address)
 
 Customer:
 ---------
-name,geolocation,contact(phone,mail,web),address,serviceProducts[],serviceHistory[]
+name
+geolocation
+contact(phone,mail,web,address)
+serviceProducts[]
+serviceHistory[]
+
+ServiceOrder(Appointment):
+--------------------------
+description
+technician
+serviceProduct
+customer,plannedTime,
+plannedPartsAndServices,creationDate,datetimeFrom,dateTimeTo
+status[Open,Completed],usedPartsAndService,serviceDateTime,realDateFrom,realDateTo

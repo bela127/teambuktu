@@ -6,12 +6,8 @@ export class Device extends Info{
   private _description: string;
   private _purchaseDate: Date;
 
-  constructor(name: string, private _customer: Customer, private _location?: [number,number]){
+  constructor(name: string, private _location?: [number,number]){
     super(name);
-  }
-
-  get customer(){
-    return this._customer;
   }
 
   get location(){

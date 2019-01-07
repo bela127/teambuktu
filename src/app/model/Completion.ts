@@ -1,5 +1,3 @@
-import {Task} from "./Task";
-import {Customer} from "./Customer";
 import {Appointment} from "./Appointment";
 
 export class Completion extends Appointment{

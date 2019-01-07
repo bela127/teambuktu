@@ -1,22 +1,21 @@
 import {Info} from "./Info";
 
-enum Status {
+export enum Status {
   Open,
   Finished,
+  Canceld,
 }
 
 export class Note extends Info {
   private _text: string;
   private _status: Status;
-  public open: boolean; // alternative to two-option-enum?
   private _creationDate: Date;
 
   constructor(name: string, text?: string, open?: boolean, creationDate?: Date) {
     super(name);
     this._text = text && text || "(no text)";
     this._creationDate = creationDate && creationDate || new Date();
-    this._status = this.open ? Status.Open : Status.Finished;
-    this.open = open == undefined ? true : open;
+    this._status = Status.Open;
   }
 
   get text(): string {
