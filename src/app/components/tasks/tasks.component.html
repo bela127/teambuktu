@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <span>Task / Notes</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="flexible-fill-remaining-space"></span>
+
+  <button mat-mini-fab matTooltip="Add Item"><mat-icon>add</mat-icon></button>
+</mat-toolbar>
+
+<mat-accordion [multi]="true">
+  <app-task-detail *ngFor="let currentNote of displayItems" [tasknote]="currentNote"></app-task-detail>
+</mat-accordion>
+

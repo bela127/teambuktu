@@ -1,14 +1,15 @@
-import {Component} from "@angular/core";
+import { Component, OnInit } from '@angular/core';
+import {Customer} from "../../model/Customer";
 import {ActivatedRoute, Params, Router} from "@angular/router";
-import {SessionService} from "../services/SessionService";
-import {DataService} from "../services/DataService";
-import {Customer} from "../model/Customer";
+import {SessionService} from "../../services/SessionService";
+import {DataService} from "../../services/DataService";
 
 @Component({
-  selector: 'customerdetail-component',
-  templateUrl: './customerdetail.html',
+  selector: 'app-customer-detail',
+  templateUrl: './customer-detail.component.html',
+  styleUrls: ['./customer-detail.component.css']
 })
-export class CustomerdetailComponent {
+export class CustomerDetailComponent implements OnInit {
 
   private _customer: Customer;
 
@@ -29,4 +30,5 @@ export class CustomerdetailComponent {
       console.log(this._customer)
     });
   }
+
 }

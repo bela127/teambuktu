@@ -1,15 +1,20 @@
 import {Router} from "@angular/router";
+import {environment} from "../../environments/environment";
 
 export class SessionService {
-  private loggedIn: Boolean = false;
+  private loggedIn: boolean = false;
   private router: Router;
 
   constructor() {
     console.log("Technician con!")
   }
 
-  public isLoggedIn(): Boolean {
-    return this.loggedIn;
+  public isLoggedIn(): boolean {
+    if (environment.production) {
+      return this.loggedIn;
+    } else {
+      return true;
+    }
   }
 
   public login() {

@@ -21,7 +21,7 @@ export class DataService {
     return this._userData.appointments
     }
 
-    appointment(id:String): Appointment {
+    appointment(id:string): Appointment {
         for (let entry of this._userData.appointments) {
             if(entry.id == id)
                 return entry;    
@@ -33,7 +33,7 @@ export class DataService {
         return this._userData.tasks;
     }
 
-  task(id:String): Task {
+  task(id:string): Task {
     for (let entry of this._userData.tasks) {
       if(entry.id == id)
         return entry;
@@ -45,7 +45,7 @@ export class DataService {
     return this._userData.notes;
   }
 
-  note(id:String): Note {
+  note(id:string): Note {
     for (let entry of this._userData.notes) {
       if(entry.id == id)
         return entry;
@@ -65,7 +65,7 @@ export class DataService {
     return this._userData.customers;
   }
 
-  customer(id:String): Customer {
+  customer(id:string): Customer {
     for (let entry of this._userData.customers) {
       if(entry.id == id)
         return entry;
@@ -77,7 +77,7 @@ export class DataService {
     return this._userData.orders;
   }
 
-  order(id:String): Order {
+  order(id:string): Order {
     for (let entry of this._userData.orders) {
       if(entry.id == id)
         return entry;
@@ -89,7 +89,7 @@ export class DataService {
     return this._userData.devices;
   }
 
-  device(id:String): Device {
+  device(id:string): Device {
     for (let entry of this._userData.devices) {
       if(entry.id == id)
         return entry;
@@ -101,7 +101,7 @@ export class DataService {
     return this._userData.parts;
   }
 
-  part(id:String): Part {
+  part(id:string): Part {
     for (let entry of this._userData.parts) {
       if(entry.id == id)
         return entry;

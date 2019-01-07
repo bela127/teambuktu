@@ -1,28 +1,28 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatSidenav} from "@angular/material";
 import {Router} from "@angular/router";
-import {SessionService} from '../services/SessionService';
-import {SidenavService} from '../services/SidenavService';
-import {MatSidenav} from '@angular/material';
-import {DataService} from "../services/DataService";
+import {SessionService} from "../../services/SessionService";
+import {SidenavService} from "../../services/SidenavService";
+import {DataService} from "../../services/DataService";
 
 @Component({
-  selector: 'root-component',
-  templateUrl: './root.html',
-  styleUrls: ['./root.css']
+  selector: 'app-root',
+  templateUrl: './root.component.html',
+  styleUrls: ['./root.component.css']
 })
-export class RootComponent {
+export class RootComponent implements OnInit {
 
   @ViewChild('sidenav') public sidenav: MatSidenav;
 
   constructor(private router: Router, private session: SessionService, private sidenavService: SidenavService, private dataservice: DataService) {
-    console.log("Root cons");
-    session.setRouter(router);
-    router.navigate(["/login"])
-      .finally(() => console.log("Navigated to '/login', after initialization."));
   }
 
   ngOnInit(): void {
     this.sidenavService.setSidenav(this.sidenav);
+    console.log("Root cons");
+    this.session.setRouter(this.router);
+    this.router.navigate(["/login"])
+      .finally(() => console.log("Navigated to '/login', after initialization.")); // */
   }
 
   public logout(): void {
@@ -33,4 +33,5 @@ export class RootComponent {
     this.router.navigate(["/login"])
       .finally(() => console.log("Navigated to '/login', after logout."));
   }
+
 }

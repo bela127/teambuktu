@@ -1,35 +1,39 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
-import {LoginComponent} from './components/login';
 
+import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {MaterialModule} from './material-module';
-import {RootComponent} from './components/root';
+
 import {SessionService} from './services/SessionService';
-import {TasksComponent} from './components/tasksnotes';
-import {TaskComponent} from "./components/task";
-import {AppointmentsComponent} from './components/appointments';
 import {SidenavService} from './services/SidenavService';
 import {DataService} from './services/DataService';
-import {AppointmentComponent} from './components/appointment';
-import {CustomerlistComponent} from "./components/customers";
-import {CustomerdetailComponent} from "./components/customerdetail";
 import {DataBaseService} from "./services/DataBaseService";
+
+import {RootComponent} from './components/root/root.component';
+import {LoginComponent} from "./components/login/login.component";
+import {AppointmentsComponent} from "./components/appointments/appointments.component";
+import {AppointmentDetailComponent} from './components/appointment-detail/appointment-detail.component';
+import {TasksComponent} from "./components/tasks/tasks.component";
+import {TaskDetailComponent} from './components/task-detail/task-detail.component';
+import {CustomersComponent} from './components/customers/customers.component';
+import {CustomerDetailComponent} from './components/customer-detail/customer-detail.component';
+import {WarehouseComponent} from './components/warehouse/warehouse.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
     RootComponent,
-    TasksComponent,
-    TaskComponent,
+    LoginComponent,
     AppointmentsComponent,
-    AppointmentComponent,
-    CustomerlistComponent,
-    CustomerdetailComponent,
+    AppointmentDetailComponent,
+    TasksComponent,
+    TaskDetailComponent,
+    CustomersComponent,
+    CustomerDetailComponent,
+    WarehouseComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -45,7 +49,7 @@ import {DataBaseService} from "./services/DataBaseService";
     SidenavService,
     DataService,
     DataBaseService],
-  bootstrap: [RootComponent]
+  bootstrap: [RootComponent],
 })
 export class AppModule {
 }
