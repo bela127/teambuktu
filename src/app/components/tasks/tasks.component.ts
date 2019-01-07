@@ -18,9 +18,17 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit() {
+    let amountClosed = this.dataService.notes
+      .filter(item => item.open == false)
+      .length;
+
+    let excessClosedTasks = amountClosed > 10 ? amountClosed - 10 : 0;
+
+    console.log("Amount of closed Notes: " + amountClosed);
+
     this.displayItems = this.dataService.notes
-      .filter(item => item.open)
-      .sort(this.compareNotes);
+      .sort(this.compareNotes)
+      .slice(0,this.dataService.notes.length - excessClosedTasks);
 
     console.log("Notes after filter and sort: " + this.displayItems.length)
   }
