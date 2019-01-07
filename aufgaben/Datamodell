@@ -1,0 +1,7 @@
+Technician:
+-----------
+email,name,password,phone
+
+Customer:
+---------
+name,geolocation,contact(phone,mail,web),address,serviceProducts[],serviceHistory[]
