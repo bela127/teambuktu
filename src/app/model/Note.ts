@@ -1,9 +1,9 @@
 import {Info} from "./Info";
 
 export enum Status {
-  Open,
-  Finished,
-  Canceld,
+  Open="Open",
+  Finished="Finished",
+  Canceled="Canceled",
 }
 
 export class Note extends Info {

@@ -8,7 +8,9 @@ name,geolocation,contact(phone,mail,web),address,serviceProducts[],serviceHistor
 
 ServiceOrder(Appointment):
 --------------------------
-description,technician,serviceProduct,customer,plannedTime,
+description
+technician
+serviceProduct,customer,plannedTime,
 plannedPartsAndServices,creationDate,datetimeFrom,dateTimeTo
 status[Open,Completed],usedPartsAndService,serviceDateTime,realDateFrom,realDateTo
 

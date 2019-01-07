@@ -2,7 +2,6 @@ import {Note} from "./Note";
 
 export class Task extends Note{
   private _startDate: Date;
-
   private _endDate: Date;
 
   get startDate(): Date {

@@ -1,10 +1,14 @@
 import {Info} from "./Info";
 import {Device} from "./Device";
 import {ContactInfo} from "./ContactInfo";
+import {Appointment} from "./Appointment";
+import {Completion} from "./Completion";
 
 export class Customer extends Info{
   private _devices: Device[] = [];
- private _location?: [number,number];
+  private _appointments: Appointment[] = [];
+  private _completions: Completion[] = [];
+  private _location?: [number,number];
   private _contactInfo: ContactInfo;
 
   get devices(){
@@ -37,5 +41,37 @@ export class Customer extends Info{
 
   get contactInfo(){
     return this._contactInfo;
+  }
+
+  get appointments(){
+    return this._appointments;
+  }
+
+  set appointments(appointments: Appointment[]){
+    this._appointments = appointments;
+  }
+
+  addAppointment(appointment: Appointment){
+    this._appointments.push(appointment);
+  }
+
+  addAppointments(appointments: Appointment[]){
+    this._appointments = this._appointments.concat(appointments);
+  }
+
+  get completions(){
+    return this._completions;
+  }
+
+  set completions(completions: Completion[]){
+    this._completions = completions;
+  }
+
+  addCompletion(completion: Completion){
+    this._completions.push(completion);
+  }
+
+  addCompletions(completions: Completion[]){
+    this._completions = this._completions.concat(completions);
   }
 }

@@ -10,13 +10,20 @@ name
 geolocation
 contact(phone,mail,web,address)
 serviceProducts[]
+appointmentHistory[]
 serviceHistory[]
 
 ServiceOrder(Appointment):
 --------------------------
-description
+description (text)
 technician
-serviceProduct
-customer,plannedTime,
-plannedPartsAndServices,creationDate,datetimeFrom,dateTimeTo
-status[Open,Completed],usedPartsAndService,serviceDateTime,realDateFrom,realDateTo
+serviceProduct (device)
+plannedPartsAndServices
+creationDate ?
+datetimeFrom
+dateTimeTo
+status[Open,Completed]
+usedPartsAndService
+serviceDateTime ?
+realDateFrom
+realDateTo
