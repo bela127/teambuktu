@@ -53,3 +53,7 @@
 .tbkt-table-full-width {
   width: 100%;
 }
+
+.tbkt-link {
+  color: white; /* to see it on the background, temporary */
+}
