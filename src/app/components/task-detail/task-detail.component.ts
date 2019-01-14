@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Note} from "../../model/Note";
+import {Note, Status} from "../../model/Note";
 
 @Component({
   selector: 'app-task-detail',
@@ -10,13 +10,20 @@ export class TaskDetailComponent implements OnInit {
 
   @Input() tasknote: Note;
 
+  // work-around for not being able to access Status enum
+  Status = Status;
+
   constructor() { }
 
   ngOnInit() {
   }
 
   toggle(): void {
-    this.tasknote.open = !this.tasknote.open;
+    if (this.tasknote.status == Status.Open) {
+      this.tasknote.status = Status.Finished;
+    } else {
+      this.tasknote.status = Status.Open;
+    }
   }
 
 }

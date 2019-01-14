@@ -2,7 +2,7 @@
   <mat-expansion-panel-header>
     <mat-panel-title>{{tasknote.name}}</mat-panel-title>
 
-    <mat-panel-description>{{tasknote.open ? 'Open' : 'Closed'}} {{tasknote.text}}</mat-panel-description>
+    <mat-panel-description>{{tasknote.status}}</mat-panel-description>
   </mat-expansion-panel-header>
 
   <div class="tbkt-form-wrapper">
@@ -21,6 +21,6 @@
 
     <button mat-icon-button matTooltip="Delete Item" color="warn" (click)="remove()"><mat-icon>delete</mat-icon></button>
 
-    <button mat-icon-button matTooltip="Close Item" (click)="toggle()"><mat-icon>{{tasknote.open ? 'check' : 'close'}}</mat-icon></button>
+    <button mat-icon-button matTooltip="Close Item" (click)="toggle()"><mat-icon>{{tasknote.status == Status.Open ? 'check' : 'close'}}</mat-icon></button>
   </mat-action-row>
 </mat-expansion-panel>
