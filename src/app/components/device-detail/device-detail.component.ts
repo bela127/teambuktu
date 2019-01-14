@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Device} from "../../model/Device";
+import {DataService} from "../../services/DataService";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-device-detail',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeviceDetailComponent implements OnInit {
 
-  constructor() { }
+  device: Device;
+
+  constructor(private dataService: DataService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    let id = this.route.snapshot.paramMap.get("id");
+    this.device = this.dataService.device(id);
   }
 
 }
