@@ -16,22 +16,39 @@ export class DataService {
     this._userData = userData;
   }
 
-
-    get appointments(): Appointment[] {
+  get appointments(): Appointment[] {
     return this._userData.appointments
-    }
+  }
 
-    appointment(id:string): Appointment {
-        for (let entry of this._userData.appointments) {
-            if(entry.id == id)
-                return entry;    
-        }
-        return null;
+  appointment(id:string): Appointment {
+    for (let entry of this._userData.appointments) {
+      if(entry.id == id)
+        return entry;    
     }
+    return null;
+  }
 
-    get tasks(): Task[] {
-        return this._userData.tasks;
-    }
+  addAppointment(a:Appointment){
+    this._userData.appointments.push(a);
+  }
+
+  updateAppointment(a:Appointment){
+    let index = this._userData.appointments.findIndex((entry: Appointment) => {
+      return entry.id == a.id;
+    });
+    this._userData.appointments[index] = a;
+  }
+
+  removeAppointment(id:string){
+    let index = this._userData.appointments.findIndex((entry: Appointment) => {
+      return entry.id == id;
+    });
+    this._userData.appointments.splice(index, 1);
+  }
+
+  get tasks(): Task[] {
+      return this._userData.tasks;
+  }
 
   task(id:string): Task {
     for (let entry of this._userData.tasks) {
@@ -39,6 +56,24 @@ export class DataService {
         return entry;
     }
     return null;
+  }
+
+  addTask(a:Task){
+    this._userData.tasks.push(a);    
+  }
+
+  updateTask(a:Task){
+    let index = this._userData.tasks.findIndex((entry: Task) => {
+      return entry.id == a.id;
+    });
+    this._userData.tasks[index] = a;
+  }
+
+  removeTask(id:string){
+    let index = this._userData.tasks.findIndex((entry: Task) => {
+      return entry.id == id;
+    });
+    this._userData.tasks.splice(index, 1);
   }
 
   get notes(): Note[] {
@@ -51,6 +86,24 @@ export class DataService {
         return entry;
     }
     return null;
+  }
+
+  addNote(a:Note){
+    this._userData.notes.push(a);    
+  }
+
+  updateNote(a:Note){
+    let index = this._userData.notes.findIndex((entry: Note) => {
+      return entry.id == a.id;
+    });
+    this._userData.notes[index] = a;
+  }
+
+  removeNote(id:string){
+    let index = this._userData.notes.findIndex((entry: Task) => {
+      return entry.id == id;
+    });
+    this._userData.notes.splice(index, 1);
   }
 
   get user(): string {
@@ -85,6 +138,24 @@ export class DataService {
     return null;
   }
 
+  addOrder(a:Order){
+    this._userData.orders.push(a);    
+  }
+
+  updateOrder(a:Order){
+    let index = this._userData.orders.findIndex((entry: Order) => {
+      return entry.id == a.id;
+    });
+    this._userData.orders[index] = a;
+  }
+
+  removeOrder(id:string){
+    let index = this._userData.orders.findIndex((entry: Order) => {
+      return entry.id == id;
+    });
+    this._userData.orders.splice(index, 1);
+  }
+
   get devices(): Device[] {
     return this._userData.devices;
   }
@@ -97,6 +168,24 @@ export class DataService {
     return null;
   }
 
+  addDevice(a:Device){
+    this._userData.devices.push(a);    
+  }
+
+  updateDevice(a:Device){
+    let index = this._userData.devices.findIndex((entry: Device) => {
+      return entry.id == a.id;
+    });
+    this._userData.devices[index] = a;
+  }
+
+  removeDevice(id:string){
+    let index = this._userData.devices.findIndex((entry: Device) => {
+      return entry.id == id;
+    });
+    this._userData.orders.splice(index, 1);
+  }
+
   get parts(): Part[] {
     return this._userData.parts;
   }
@@ -107,6 +196,24 @@ export class DataService {
         return entry;
     }
     return null;
+  }
+
+  addPart(a:Part){
+    this._userData.parts.push(a);    
+  }
+
+  updatePart(a:Part){
+    let index = this._userData.parts.findIndex((entry: Part) => {
+      return entry.id == a.id;
+    });
+    this._userData.parts[index] = a;
+  }
+
+  removePart(id:string){
+    let index = this._userData.parts.findIndex((entry: Part) => {
+      return entry.id == id;
+    });
+    this._userData.parts.splice(index, 1);
   }
 
   get stock(){
