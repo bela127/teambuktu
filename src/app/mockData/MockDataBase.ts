@@ -68,6 +68,25 @@ export class MockDataBase {
     let d3 = new Device("Device3", [1234567,9876543]);
     let d4 = new Device("Device4", [764,876]);
     let d5 = new Device("Device5", [67,43]);
+
+    d1.serialNo = "6324-3460-0401";
+    d2.serialNo = "1324-1023-0403";
+    d3.serialNo = "8968-2134-0405";
+    d4.serialNo = "0266-5001-0407";
+    d5.serialNo = "7824-3521-0409";
+
+    d1.description = "The first service product ever.";
+    d2.description = "Another one.";
+    d3.description = "(no description)";
+    d4.description = "4: 0266-5001-0407";
+    d5.description = "5: 7824-3521-0409";
+
+    d1.purchaseDate = new Date();
+    d2.purchaseDate = new Date();
+    d3.purchaseDate = new Date();
+    d4.purchaseDate = new Date();
+    d5.purchaseDate = new Date();
+
     c1.devices=[d1,d2];
     c2.devices=[d3];
     c3.devices=[d4];

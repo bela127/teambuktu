@@ -10,7 +10,7 @@
       <tr><td>serial</td><td>{{device.serialNo}}</td></tr>
       <tr><td>description</td><td>{{device.description}}</td></tr>
       <tr><td>location</td><td>{{device.location}}</td></tr>
-      <tr><td>purchase date</td>{{device.purchaseDate}}<td></td></tr>
+      <tr><td>purchase date</td>{{device.purchaseDate | date:'dd.MM.yyyy HH:mm:ss'}}<td></td></tr>
     </table>
 
   </mat-card-content>
