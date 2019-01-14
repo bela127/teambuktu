@@ -85,7 +85,7 @@ export class MockDataBase {
     this.userData.appointments[3].startDateReal = new Date();
     this.userData.appointments[4].startDateReal = new Date();
 
-    this.userData.devices=[d1, d2, d3,];
+    this.userData.devices=[d1, d2, d3, d4, d5];
 
     this.userData.notes=
       [
