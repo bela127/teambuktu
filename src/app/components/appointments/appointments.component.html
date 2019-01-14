@@ -8,7 +8,7 @@
 </mat-toolbar>
 
 <mat-accordion [multi]="true">
-  <mat-expansion-panel *ngFor="let appointment of dataService.appointments">
+  <mat-expansion-panel *ngFor="let appointment of displayAppointments">
     <mat-expansion-panel-header>
       <mat-panel-title>{{appointment.name}}</mat-panel-title>
 
@@ -28,24 +28,24 @@
           <!-- '[(ngModel)]="appointment.customer.name"' throws a critical error -->
           <!-- maybe do this programmatically? -->
           <mat-select>
-            <mat-option *ngFor="let customer of dataService.customers" [value]="customer.name">
+            <mat-option *ngFor="let customer of displayCustomers" [value]="customer.name">
               {{customer.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <!-- <mat-form-field appearance="outline">
           <mat-label>Service Product</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let device of appointment.customer.devices" [value]="device.name">
+           <mat-select>
+            <mat-option [value]="appointment.device.name">
               {{device.name}}
             </mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
 
         <mat-form-field appearance="outline">
           <mat-label>Technician</mat-label>
-          <input matInput [value]="dataService.user" readonly>
+          <input matInput [value]="displayUser" readonly>
         </mat-form-field>
       </div>
 

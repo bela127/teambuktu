@@ -30,6 +30,10 @@ const PART_DATA_USED: Part[] = [
 })
 export class AppointmentsComponent implements OnInit {
 
+  displayAppointments = [];
+  displayCustomers = [];
+  displayUser;
+
   constructor(private session: SessionService, private router: Router, private dataService: DataService) {
   }
 
@@ -39,6 +43,9 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit() {
     this.session.checkLogin(this.router);
+    this.displayUser = this.dataService.user;
+    this.displayAppointments = this.dataService.appointments;
+    this.displayCustomers = this.dataService.customers;
   }
 
 }

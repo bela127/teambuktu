@@ -49,12 +49,17 @@ export class MockDataBase {
     let c4 = new Customer("PH");
 
     this.userData.appointments=[
-      new Appointment("Appointment 1", c1),
-      new Appointment("Appointment 2", c1),
-      new Appointment("Appointment 3", c2),
-      new Appointment("Appointment 4", c1),
-      new Appointment("Appointment 5", c4),
+      new Appointment("Appointment 1"),
+      new Appointment("Appointment 2"),
+      new Appointment("Appointment 3"),
+      new Appointment("Appointment 4"),
+      new Appointment("Appointment 5"),
     ];
+    this.userData.appointments[0].device = new Device("SomeDevice1", [1,1]);
+    this.userData.appointments[1].device = new Device("SomeDevice2", [1,2]);
+    this.userData.appointments[2].device = new Device("SomeDevice3", [1,3]);
+    this.userData.appointments[3].device = new Device("SomeDevice4", [1,4]);
+    this.userData.appointments[4].device = new Device("SomeDevice5", [1,5]);
 
     this.userData.customers=[
       c1,
@@ -63,9 +68,9 @@ export class MockDataBase {
       c4,
     ];
 
-    let d1 = new Device("Device1", c1, [0,0]);
-    let d2 = new Device("Device2", c1, [42,1337]);
-    let d3 = new Device("Device3", c2, [1234567,9876543]);
+    let d1 = new Device("Device1", [0,0]);
+    let d2 = new Device("Device2", [42,1337]);
+    let d3 = new Device("Device3", [1234567,9876543]);
     c1.devices=[d1,d2];
     c2.devices=[d3];
 
