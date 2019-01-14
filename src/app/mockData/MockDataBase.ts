@@ -55,11 +55,6 @@ export class MockDataBase {
       new Appointment("Appointment 4"),
       new Appointment("Appointment 5"),
     ];
-    this.userData.appointments[0].device = new Device("SomeDevice1", [1,1]);
-    this.userData.appointments[1].device = new Device("SomeDevice2", [1,2]);
-    this.userData.appointments[2].device = new Device("SomeDevice3", [1,3]);
-    this.userData.appointments[3].device = new Device("SomeDevice4", [1,4]);
-    this.userData.appointments[4].device = new Device("SomeDevice5", [1,5]);
 
     this.userData.customers=[
       c1,
@@ -71,8 +66,24 @@ export class MockDataBase {
     let d1 = new Device("Device1", [0,0]);
     let d2 = new Device("Device2", [42,1337]);
     let d3 = new Device("Device3", [1234567,9876543]);
+    let d4 = new Device("Device4", [764,876]);
+    let d5 = new Device("Device5", [67,43]);
     c1.devices=[d1,d2];
     c2.devices=[d3];
+    c3.devices=[d4];
+    c4.devices=[d5];
+
+    this.userData.appointments[0].device = d1;
+    this.userData.appointments[1].device = d2;
+    this.userData.appointments[2].device = d3;
+    this.userData.appointments[3].device = d4;
+    this.userData.appointments[4].device = d5;
+
+    this.userData.appointments[0].startDateReal = new Date();
+    this.userData.appointments[1].startDateReal = new Date();
+    this.userData.appointments[2].startDateReal = new Date();
+    this.userData.appointments[3].startDateReal = new Date();
+    this.userData.appointments[4].startDateReal = new Date();
 
     this.userData.devices=[d1, d2, d3,];
 
