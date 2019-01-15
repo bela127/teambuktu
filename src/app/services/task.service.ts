@@ -31,4 +31,12 @@ export class TaskService {
         catchError(this.baseService.handleHttpError<any>('updateTask'))
       );
   }
+
+  addTask(task: Task): Observable<Task> {
+    return this.http.post(this.tasksUrl, task, this.baseService.httpOptions)
+      .pipe(
+        tap((t: Task) => this.baseService.log(`added task with id=${t.id}`)),
+        catchError(this.baseService.handleHttpError<Task>('addTask'))
+      );
+  }
 }

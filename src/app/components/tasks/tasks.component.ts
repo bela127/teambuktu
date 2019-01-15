@@ -52,6 +52,23 @@ export class TasksComponent implements OnInit {
       .subscribe(tasks => this.tasks = tasks);
   }
 
+  add(title: string): void {
+    title = title.trim();
+    if (!title) {
+      return;
+    }
+
+    let task = new Task();
+    task.userId = 1; // TODO: fetch id of current user
+    task.title = title;
+    task.description = "";
+    task.creationDate = new Date();
+    task.status = TaskStatus.Open;
+
+    this.taskService.addTask(task)
+      .subscribe(task => this.tasks.push(task));
+  }
+
   compareTasks(a: Task, b: Task) {
     if (a.status == b.status) {
       return Math.sign(b.creationDate.valueOf() - a.creationDate.valueOf());
