@@ -1,8 +1,10 @@
 <mat-expansion-panel *ngIf="task">
   <mat-expansion-panel-header>
-    <mat-panel-title>{{task.title}}</mat-panel-title>
+    <mat-panel-title>
+      <span class="tbkt-task-status">[{{task.status.toString()}}]</span> {{task.title}}
+    </mat-panel-title>
 
-    <mat-panel-description>{{task.status.toString()}}</mat-panel-description>
+    <mat-panel-description>{{task.description.length > 32 ? task.description.slice(0,32) + ' (...)' : task.description}}</mat-panel-description>
   </mat-expansion-panel-header>
 
   <div class="tbkt-form-wrapper">
@@ -19,6 +21,6 @@
 
     <button mat-icon-button matTooltip="Apply Modifications" (click)="save()"><mat-icon>check_circle</mat-icon></button>
     <button mat-icon-button matTooltip="Delete Item" color="warn" (click)="delete()"><mat-icon>delete</mat-icon></button>
-    <button mat-icon-button matTooltip="Close Item" (click)="toggle()"><mat-icon>{{task.status == TaskStatus.Open ? 'check' : 'close'}}</mat-icon></button>
+    <button mat-icon-button matTooltip="{{task.status == TaskStatus.Open ? 'Close Item' : 'Reopen Item'}}" (click)="toggle()"><mat-icon>{{task.status == TaskStatus.Open ? 'check' : 'close'}}</mat-icon></button>
   </mat-action-row>
 </mat-expansion-panel>

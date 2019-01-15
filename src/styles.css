@@ -57,3 +57,9 @@
 .tbkt-link {
   color: white; /* to see it on the background, temporary */
 }
+
+.tbkt-task-status {
+  color: rgba(255,255,255,.7);
+  font-style: italic;
+  padding-right: 10px;
+}
