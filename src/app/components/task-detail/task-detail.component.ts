@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Task} from "../../container/Task";
 import {TaskStatus} from "../../container/TaskStatus";
 import {TaskService} from "../../services/task.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-task-detail',
@@ -15,7 +16,8 @@ export class TaskDetailComponent implements OnInit {
   // work-around for not being able to access Status enum
   TaskStatus = TaskStatus;
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService,
+              private router: Router) { }
 
   ngOnInit() {
   }
@@ -23,6 +25,11 @@ export class TaskDetailComponent implements OnInit {
   save(): void {
     this.taskService.updateTask(this.task)
       .subscribe(); // don't do anything but subscribe
+  }
+
+  delete(): void {
+    this.taskService.deleteTask(this.task)
+      .subscribe(() => this.task = undefined);
   }
 
   toggle(): void {

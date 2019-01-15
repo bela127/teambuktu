@@ -27,7 +27,7 @@ export class TaskService {
   updateTask(task: Task): Observable<any> {
     return this.http.put(`${this.tasksUrl}/${task.id}`, task, this.baseService.httpOptions)
       .pipe(
-        tap(_ => this.baseService.log(`updated task id=${task.id}`)),
+        tap(_ => this.baseService.log(`updated task with id=${task.id}`)),
         catchError(this.baseService.handleHttpError<any>('updateTask'))
       );
   }
@@ -37,6 +37,14 @@ export class TaskService {
       .pipe(
         tap((t: Task) => this.baseService.log(`added task with id=${t.id}`)),
         catchError(this.baseService.handleHttpError<Task>('addTask'))
+      );
+  }
+
+  deleteTask(task: Task): Observable<any> {
+    return this.http.delete(`${this.tasksUrl}/${task.id}`, this.baseService.httpOptions)
+      .pipe(
+        tap(_ => this.baseService.log(`deleted task with id=${task.id}`)),
+        catchError(this.baseService.handleHttpError<any>('deleteTask'))
       );
   }
 }
