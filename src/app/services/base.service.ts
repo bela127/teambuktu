@@ -1,5 +1,6 @@
 import {Observable, of} from "rxjs";
 import {Injectable} from "@angular/core";
+import {HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
@@ -10,6 +11,9 @@ export class BaseService {
    * URL to the REST service root.
    */
   baseUrl = "http://localhost:3000/";
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  };
 
   /**
    * Handle http operation that failed.

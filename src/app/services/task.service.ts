@@ -24,4 +24,11 @@ export class TaskService {
       );
   }
 
+  updateTask(task: Task): Observable<any> {
+    return this.http.put(`${this.tasksUrl}/${task.id}`, task, this.baseService.httpOptions)
+      .pipe(
+        tap(_ => this.baseService.log(`updated task id=${task.id}`)),
+        catchError(this.baseService.handleHttpError<any>('updateTask'))
+      );
+  }
 }
