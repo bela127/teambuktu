@@ -22,7 +22,8 @@ import {TaskDetailComponent} from './components/task-detail/task-detail.componen
 import {CustomersComponent} from './components/customers/customers.component';
 import {CustomerDetailComponent} from './components/customer-detail/customer-detail.component';
 import {WarehouseComponent} from './components/warehouse/warehouse.component';
-import { DeviceDetailComponent } from './components/device-detail/device-detail.component';
+import {DeviceDetailComponent} from './components/device-detail/device-detail.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DeviceDetailComponent } from './components/device-detail/device-detail.
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
   ],
   providers: [
     SessionService,

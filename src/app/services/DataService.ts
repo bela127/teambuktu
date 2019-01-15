@@ -6,11 +6,21 @@ import {Customer} from "../model/Customer";
 import {Order} from "../model/Order";
 import {Device} from "../model/Device";
 import {Part} from "../model/Part";
-import {Stock} from "../model/Stock";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Injectable} from "@angular/core";
 
+const httpOptions = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
+
+@Injectable({
+  providedIn: 'root'
+})
 export class DataService {
 
   private _userData: UserData;
+
+  constructor (private http: HttpClient) { }
 
   set userData(userData: UserData){
     this._userData = userData;
