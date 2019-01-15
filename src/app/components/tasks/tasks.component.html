@@ -8,6 +8,6 @@
 </mat-toolbar>
 
 <mat-accordion [multi]="true">
-  <app-task-detail *ngFor="let currentNote of displayItems" [tasknote]="currentNote"></app-task-detail>
+  <app-task-detail *ngFor="let currentTask of tasks" [task]="currentTask"></app-task-detail>
 </mat-accordion>
 

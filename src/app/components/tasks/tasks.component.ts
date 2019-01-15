@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Note, Status} from "../../model/Note";
-import {SessionService} from "../../services/SessionService";
 import {Router} from "@angular/router";
-import {DataService} from "../../services/DataService";
+import {TaskService} from "../../services/task.service";
+import {Task} from 'src/app/container/Task';
+import {TaskStatus} from "../../container/TaskStatus";
 
 @Component({
   selector: 'app-tasks',
@@ -11,36 +11,52 @@ import {DataService} from "../../services/DataService";
 })
 export class TasksComponent implements OnInit {
 
-  private displayItems: Note[] = [];
+  tasks: Task[];
 
-  constructor(private session: SessionService, private router: Router, private dataService: DataService) {
+  constructor(private router: Router, private taskService: TaskService) {
   }
 
   ngOnInit() {
-    let allNotes = this.dataService.notes;
-    let amountClosed = allNotes
-      .filter(item => item.status == Status.Finished)
+    this.taskService.getTasks()
+      .subscribe(tasks => {
+        this.tasks = tasks;
+
+        // space for further statements
+        // ...
+
+      });
+
+    /*
+    let amountClosed = this.tasks
+      .filter(item => item.status == TaskStatus.Finished)
       .length;
 
     let excessClosedTasks = amountClosed > 10 ? amountClosed - 10 : 0;
 
     console.log("Amount of closed Notes: " + amountClosed);
 
-    this.displayItems = this.dataService.notes
-      .filter(task => task.status != Status.Canceled);
+    this.displayItems = this.taskService.notes
+      .filter(task => task.status != TaskStatus.Canceled);
 
     this.displayItems = this.displayItems
-      .sort(this.compareNotes)
-      .slice(0,this.dataService.notes.length - excessClosedTasks);
+      .sort(this.compareTasks)
+      .slice(0,this.taskService.notes.length - excessClosedTasks);
 
     console.log("Notes after filter and sort: " + this.displayItems.length)
+    */
+
   }
 
-  compareNotes(a: Note, b: Note) {
+  getTasks(): void {
+    this.taskService.getTasks()
+      .subscribe(tasks => this.tasks = tasks);
+  }
+
+  compareTasks(a: Task, b: Task) {
     if (a.status == b.status) {
       return Math.sign(b.creationDate.valueOf() - a.creationDate.valueOf());
     } else {
-      if (a.status == Status.Open) {
+      if (a.status == TaskStatus.Open) {
         return -1;
       } else {
         return 1;
