@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Task} from "../../container/Task";
-import {TaskStatus} from "../../container/TaskStatus";
+import {Task} from "../../container/task";
+import {TaskStatus} from "../../container/task-status";
 import {TaskService} from "../../services/task.service";
 import {Router} from "@angular/router";
 

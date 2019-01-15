@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {TaskService} from "../../services/task.service";
-import {Task} from 'src/app/container/Task';
-import {TaskStatus} from "../../container/TaskStatus";
+import {Task} from 'src/app/container/task';
+import {TaskStatus} from "../../container/task-status";
 
 @Component({
   selector: 'app-tasks',

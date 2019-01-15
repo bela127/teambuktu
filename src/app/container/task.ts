@@ -1,4 +1,4 @@
-import {TaskStatus} from "./TaskStatus";
+import {TaskStatus} from "./task-status";
 
 export class Task {
   id: number;
