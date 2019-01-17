@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
-  <span>Customer: {{customer.name}}</span>
+  <span *ngIf="customer">Customer: {{customer.name}}</span>
 </mat-toolbar>
 
 <mat-card>
-  <mat-card-content>
+  <mat-card-content *ngIf="customer">
 
     <h3>Contact Information:</h3>
 
@@ -15,32 +15,32 @@
         </mat-form-field>
 
         <mat-form-field appearance="outline">
-          <mat-label>Website</mat-label>
-          <input matInput [value]="'example.org'">
+          <mat-label>Number</mat-label>
+          <input matInput [value]="customer.number">
         </mat-form-field>
       </div>
 
       <div class="tbkt-form-line">
         <mat-form-field appearance="outline">
           <mat-label>Phone</mat-label>
-          <input matInput [value]="'+49 160 12345678'">
+          <input matInput [value]="customer.phone">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>E-mail</mat-label>
-          <input matInput [value]="'mail@example.org'">
+          <input matInput [value]="customer.email">
         </mat-form-field>
       </div>
 
       <div class="tbkt-form-line">
         <mat-form-field appearance="outline">
           <mat-label>Address</mat-label>
-          <input matInput [value]="'Beispielstraße 42, 12345, Beispielstadt'">
+          <input matInput [value]="customer.address">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Geolocation</mat-label>
-          <input matInput [value]="'123,1337'">
+          <input matInput [value]="customer.geolocation">
         </mat-form-field>
       </div>
     </div>

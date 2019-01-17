@@ -1,9 +1,15 @@
 <mat-toolbar color="primary">
   <span>Customers</span>
+
+  <span class="flexible-fill-remaining-space"></span>
+
+  <button mat-mini-fab matTooltip="Add Customer" (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-nav-list>
-  <mat-list-item *ngFor="let customer of dataService.customers" [routerLink]="['/customer/' + customer.id]">
+  <mat-list-item *ngFor="let customer of customers" [routerLink]="['/customer/' + customer.id]">
     <p matLine>{{customer.name}}</p>
     <mat-icon matSuffix>person</mat-icon>
   </mat-list-item>

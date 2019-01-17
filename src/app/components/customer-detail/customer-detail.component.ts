@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Customer} from "../../model/Customer";
-import {ActivatedRoute, Params, Router} from "@angular/router";
-import {SessionService} from "../../services/SessionService";
-import {DataService} from "../../services/DataService";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params} from "@angular/router";
+import {Customer} from "../../container/customer";
+import {CustomerService} from "../../services/customer.service";
 
 @Component({
   selector: 'app-customer-detail',
@@ -11,23 +10,16 @@ import {DataService} from "../../services/DataService";
 })
 export class CustomerDetailComponent implements OnInit {
 
-  private _customer: Customer;
+  private customer: Customer;
 
-  constructor(private route: ActivatedRoute, private session: SessionService, private router: Router, private dataService: DataService) {
-    this.session.checkLogin(router);
-  }
-
-  get customer(): Customer {
-    return this._customer;
+  constructor(private customerService: CustomerService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       let id = params['id'];
-      console.log(params);
-      console.log("ID: " + id);
-      this._customer = this.dataService.customer(id);
-      console.log(this._customer)
+      this.customerService.getCustomer(id)
+        .subscribe(customer => this.customer = customer);
     });
   }
 
