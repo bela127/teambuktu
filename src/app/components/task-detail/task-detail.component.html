@@ -11,7 +11,7 @@
     <div class="tbkt-form-line">
       <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea matInput [(ngModel)]="task.description" rows="7"></textarea>
+        <textarea matInput cdkTextareaAutosize [(ngModel)]="task.description" rows="7"></textarea>
       </mat-form-field>
     </div>
   </div>
@@ -19,7 +19,7 @@
   <mat-action-row>
     <p class="tbkt-action-row-leftalign">Created on: {{task.creationDate.valueOf() | date:'dd.MM.yyyy HH:mm:ss'}}</p>
 
-    <button mat-icon-button matTooltip="Apply Modifications" (click)="save()"><mat-icon>check_circle</mat-icon></button>
+    <button mat-icon-button matTooltip="Save Changes" (click)="save()"><mat-icon>save</mat-icon></button>
     <button mat-icon-button matTooltip="Delete Item" color="warn" (click)="delete()"><mat-icon>delete</mat-icon></button>
     <button mat-icon-button matTooltip="{{task.status == TaskStatus.Open ? 'Close Item' : 'Reopen Item'}}" (click)="toggle()"><mat-icon>{{task.status == TaskStatus.Open ? 'check' : 'close'}}</mat-icon></button>
   </mat-action-row>
