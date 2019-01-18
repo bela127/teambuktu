@@ -1,35 +1,63 @@
 <mat-toolbar color="primary">
-  <span>Appointment: {{appointment.name}} ({{appointment.status}})</span>
+  <span *ngIf="appointment">Appointment: [{{appointment.status}}] {{appointment.number}}</span>
 
   <!-- This fills the remaining space of the current row -->
   <span class="flexible-fill-remaining-space"></span>
 
+  <button mat-mini-fab matTooltip="Save Changes" (click)="save()" style="margin-right: 10px">
+    <mat-icon>save</mat-icon>
+  </button>
   <button mat-mini-fab matTooltip="Complete Appointment">
     <mat-icon>check</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-card>
-  <mat-card-content>
-    <p>Customer: <a [routerLink]="'/customer/' + customer.id" class="tbkt-link">{{customer.name}}</a></p>
-    <p>Service Product: <a [routerLink]="'/device/' + appointment.device.id"
-                           class="tbkt-link">{{appointment.device.name}}</a></p>
+  <mat-card-content *ngIf="appointment">
+    <div class="tbkt-form-line">
+      <mat-form-field appearance="outline">
+        <mat-label>Customer</mat-label>
+        <mat-select placeholder="Customer" [(ngModel)]="appointment.customer">
+          <mat-option *ngFor="let customer of allCustomers" [value]="customer.id">
+            {{customer.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Service Product</mat-label>
+        <mat-select placeholder="Service Product" [(ngModel)]="appointment.device">
+          <mat-option *ngFor="let device of allDevices" [value]="device.id">
+            {{device.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
     <div class="tbkt-form-line">
       <mat-form-field appearance="outline" class="tbkt-time-field">
         <mat-label>Service Date</mat-label>
-        <input matInput [matDatepicker]="serviceDate" readonly [value]="appointment.startDateReal">
-        <mat-datepicker #serviceDate></mat-datepicker>
+        <input matInput [matDatepicker]="serviceDate" readonly [(ngModel)]="appointment.serviceDate">
         <mat-datepicker-toggle matSuffix [for]="serviceDate"></mat-datepicker-toggle>
+        <mat-datepicker #serviceDate></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="tbkt-time-field">
-        <mat-label>From (planned)</mat-label>
-        <input matInput placeholder="08:00" value="08:00" readonly>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="tbkt-time-field">
-        <mat-label>To (planned)</mat-label>
-        <input matInput placeholder="11:00" value="11:00" readonly>
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline" class="tbkt-time-field">
+          <mat-label>From (Hour)</mat-label>
+          <input matInput placeholder="08" type="number" [(ngModel)]="appointment.plannedTime.hours">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="tbkt-time-field">
+          <mat-label>From (Minute)</mat-label>
+          <input matInput placeholder="00" type="number" [(ngModel)]="appointment.plannedTime.minutes">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="tbkt-form-line">
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput cdkTextareaAutosize [(ngModel)]="appointment.description"></textarea>
       </mat-form-field>
     </div>
 

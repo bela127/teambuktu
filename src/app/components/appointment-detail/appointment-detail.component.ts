@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {DataService} from "../../services/DataService";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Appointment} from "../../model/Appointment";
-import {Customer} from "../../model/Customer";
+import {Appointment} from "../../container/Appointment";
+import {Customer} from "../../container/Customer";
+import {AppointmentService} from "../../services/appointment.service";
+import {CustomerService} from "../../services/customer.service";
+import {Device} from "../../container/device";
+import {DeviceService} from "../../services/device.service";
 
 @Component({
   selector: 'app-appointment-detail',
@@ -11,24 +14,37 @@ import {Customer} from "../../model/Customer";
 })
 export class AppointmentDetailComponent implements OnInit {
 
-  appointment: Appointment;
-  customer: Customer;
+  private appointment: Appointment;
+  private allCustomers: Customer[];
+  private allDevices: Device[];
 
-  displayedColumns: string[];
-  dataSourcePlanned: Part[];
+  private displayedColumns: string[];
+  private dataSourcePlanned: Part[];
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) { }
+  constructor(private appointmentService: AppointmentService,
+              private customerService: CustomerService,
+              private deviceService: DeviceService,
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get("id");
-    this.appointment = this.dataService.appointment(id);
-    this.customer = this.dataService.customers
-      .find(c => c.devices
-        .find(d => d.id == this.appointment.device.id) != undefined);
-    // appointment detail cannot load unless this.customer ist defined!
+    let id = +this.route.snapshot.paramMap.get("id");
+    this.appointmentService.getAppointment(id)
+      .subscribe(appointment => this.appointment = appointment);
+
+    this.customerService.getCustomers()
+      .subscribe(customers => this.allCustomers = customers);
+
+    this.deviceService.getDevices()
+      .subscribe(devices => this.allDevices = devices);
 
     this.displayedColumns = ['amount', 'name'];
     this.dataSourcePlanned = PART_DATA;
+  }
+
+  save(): void {
+    this.appointmentService.updateAppointment(this.appointment)
+      .subscribe();
   }
 
 }

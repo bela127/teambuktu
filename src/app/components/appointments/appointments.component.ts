@@ -1,27 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {SessionService} from "../../services/SessionService";
 import {Router} from "@angular/router";
-import {DataService} from "../../services/DataService";
-
-export interface Part {
-  name: string;
-  amount: number;
-}
-
-const PART_DATA: Part[] = [
-  {name: 'Hammer', amount: 1},
-  {name: 'Glue', amount: 1},
-  {name: 'Plank', amount: 3},
-  {name: 'Nail', amount: 4},
-];
-
-const PART_DATA_USED: Part[] = [
-  {name: 'Hammer', amount: 1},
-  {name: 'Glue', amount: 1},
-  {name: 'Plank', amount: 4},
-  {name: 'Nail', amount: 5},
-  {name: 'Tape', amount: 1},
-];
+import {AppointmentService} from "../../services/appointment.service";
+import {Appointment} from "../../container/appointment";
+import {AppointmentStatus} from "../../container/appointment-status";
 
 @Component({
   selector: 'app-appointments',
@@ -30,22 +12,34 @@ const PART_DATA_USED: Part[] = [
 })
 export class AppointmentsComponent implements OnInit {
 
-  displayAppointments = [];
-  displayCustomers = [];
-  displayUser;
+  private appointments: Appointment[];
 
-  constructor(private session: SessionService, private router: Router, private dataService: DataService) {
+  constructor(private session: SessionService,
+              private router: Router,
+              private appointmentService: AppointmentService) {
   }
 
-  displayedColumns: string[] = ['amount', 'name'];
-  dataSourcePlanned = PART_DATA;
-  dataSourceActual = PART_DATA_USED;
-
   ngOnInit() {
-    this.session.checkLogin(this.router);
-    this.displayUser = this.dataService.user;
-    this.displayAppointments = this.dataService.appointments;
-    this.displayCustomers = this.dataService.customers;
+    this.getAppointments();
+  }
+
+  getAppointments(): void {
+    this.appointmentService.getAppointments()
+      .subscribe(appointments => this.appointments = appointments);
+  }
+
+  add(appointmentNumber: string): void {
+    let a = new Appointment();
+    a.number = appointmentNumber;
+    a.plannedTime = {hours: 8, minutes: 0};
+    a.status = AppointmentStatus.Open;
+
+    this.appointmentService.addAppointment(a)
+      .subscribe(appointment => {
+        this.appointments.push(appointment);
+        this.router.navigate(['/appointment/' + appointment.id])
+          .catch(e => console.log("Navigating to new app. didn't work: " + e));
+      });
   }
 
 }

@@ -4,12 +4,17 @@
   <!-- This fills the remaining space of the current row -->
   <span class="flexible-fill-remaining-space"></span>
 
-  <button mat-mini-fab matTooltip="Add Appointment"><mat-icon>add</mat-icon></button>
+  <mat-form-field appearance="standard" style="padding-right: 10px">
+    <input matInput #aptmntNumber placeholder="New Aptmnt. Number ...">
+  </mat-form-field>
+  <button mat-mini-fab matTooltip="Add Appointment" (click)="add(aptmntNumber.value); aptmntNumber.value = ''">
+    <mat-icon>add</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-nav-list>
-  <mat-list-item *ngFor="let appointment of displayAppointments" [routerLink]="['/appointment/' + appointment.id]">
-    <p matLine>{{appointment.name}}</p>
+  <mat-list-item *ngFor="let appointment of appointments" [routerLink]="['/appointment/' + appointment.id]">
+    <p matLine>{{appointment.number}}</p>
     <mat-icon matSuffix>event_note</mat-icon>
   </mat-list-item>
 </mat-nav-list>
