@@ -42,7 +42,7 @@ export class CustomersComponent implements OnInit {
               .catch(e => console.log("Navigation didn't work:" + e));
           });
       },
-      _ => console.log("this didn't work"),
+      _ => console.log("getCurrentPosition didn't work"),
     );
   }
 
