@@ -1,5 +1,11 @@
 <mat-toolbar color="primary">
   <span *ngIf="customer">Customer: {{customer.name}}</span>
+
+  <span class="flexible-fill-remaining-space"></span>
+
+  <button mat-mini-fab matTooltip="Save Changes" (click)="save()">
+    <mat-icon>save</mat-icon>
+  </button>
 </mat-toolbar>
 
 <mat-card>
@@ -11,37 +17,43 @@
       <div class="tbkt-form-line">
         <mat-form-field appearance="outline">
           <mat-label>Name</mat-label>
-          <input matInput [value]="customer.name">
+          <input matInput type="text" [(ngModel)]="customer.name">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Number</mat-label>
-          <input matInput [value]="customer.number">
+          <input matInput type="text" [(ngModel)]="customer.number">
         </mat-form-field>
       </div>
 
       <div class="tbkt-form-line">
         <mat-form-field appearance="outline">
           <mat-label>Phone</mat-label>
-          <input matInput [value]="customer.phone">
+          <input matInput type="tel" [(ngModel)]="customer.phone">
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>E-mail</mat-label>
-          <input matInput [value]="customer.email">
+          <input matInput type="email" [(ngModel)]="customer.email">
         </mat-form-field>
       </div>
 
       <div class="tbkt-form-line">
         <mat-form-field appearance="outline">
           <mat-label>Address</mat-label>
-          <input matInput [value]="customer.address">
+          <input matInput type="text" [(ngModel)]="customer.address">
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Geolocation</mat-label>
-          <input matInput [value]="customer.geolocation">
-        </mat-form-field>
+        <div class="tbkt-form-line">
+          <mat-form-field appearance="outline">
+            <mat-label>Latitude</mat-label>
+            <input matInput type="number" [(ngModel)]="customer.geolocation[0]">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Longitude</mat-label>
+            <input matInput type="number" [(ngModel)]="customer.geolocation[1]">
+          </mat-form-field>
+        </div>
       </div>
     </div>
 

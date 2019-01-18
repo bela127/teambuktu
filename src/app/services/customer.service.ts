@@ -40,4 +40,12 @@ export class CustomerService {
         catchError(this.baseService.handleHttpError<Customer>('addCustomer'))
       );
   }
+
+  updateCustomer(customer: Customer): Observable<any> {
+    return this.http.put(this.customersUrl + '/' + customer.id, customer, this.baseService.httpOptions)
+      .pipe(
+        tap(_ => this.baseService.log(`updated customer with id=${customer.id}`)),
+        catchError(this.baseService.handleHttpError<Customer>('updateCustomer'))
+      );
+  }
 }

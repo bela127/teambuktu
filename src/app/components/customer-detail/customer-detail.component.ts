@@ -23,4 +23,8 @@ export class CustomerDetailComponent implements OnInit {
     });
   }
 
+  save(): void {
+    this.customerService.updateCustomer(this.customer)
+      .subscribe(() => console.log("updated customer in back end"))
+  }
 }
