@@ -1,17 +1,56 @@
 <mat-toolbar color="primary">
-  <span>Service Product: {{device.name}}</span>
+  <span *ngIf="device">Service Product: {{device.name}}</span>
+
+  <span class="flexible-fill-remaining-space"></span>
+
+  <button mat-mini-fab matTooltip="Save Changes" (click)="save()">
+    <mat-icon>save</mat-icon>
+  </button>
 </mat-toolbar>
 <mat-card>
-  <mat-card-content>
+  <mat-card-content *ngIf="device">
 
-    <table>
-      <tr><td>id</td><td>{{device.id}}</td></tr>
-      <tr><td>name</td><td>{{device.name}}</td></tr>
-      <tr><td>serial</td><td>{{device.serialNo}}</td></tr>
-      <tr><td>description</td><td>{{device.description}}</td></tr>
-      <tr><td>location</td><td>{{device.location}}</td></tr>
-      <tr><td>purchase date</td>{{device.purchaseDate | date:'dd.MM.yyyy HH:mm:ss'}}<td></td></tr>
-    </table>
+    <div class="tbkt-form-wrapper">
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" [(ngModel)]="device.name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Number</mat-label>
+          <input matInput type="number" [(ngModel)]="device.number">
+        </mat-form-field>
+      </div>
+
+      <div class="tbkt-form-line">
+        <div class="tbkt-form-line">
+          <mat-form-field appearance="outline">
+            <mat-label>Serial Number</mat-label>
+            <input matInput type="text" [(ngModel)]="device.serialNumber">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="tbkt-time-field">
+            <mat-label>Purchase Date</mat-label>
+            <input matInput readonly [matDatepicker]="pickedDate" [(ngModel)]="device.purchaseDate">
+            <mat-datepicker-toggle matSuffix [for]="pickedDate"></mat-datepicker-toggle>
+            <mat-datepicker #pickedDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Customer</mat-label>
+          <input matInput type="number" [(ngModel)]="device.customer">
+        </mat-form-field>
+      </div>
+
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput cdkTextareaAutosize [(ngModel)]="device.description"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
 
   </mat-card-content>
 </mat-card>

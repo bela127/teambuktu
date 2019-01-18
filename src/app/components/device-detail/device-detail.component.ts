@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {Device} from "../../model/Device";
-import {DataService} from "../../services/DataService";
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {Device} from "../../container/device";
+import {DeviceService} from "../../services/device.service";
 
 @Component({
   selector: 'app-device-detail',
@@ -10,13 +10,21 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class DeviceDetailComponent implements OnInit {
 
-  device: Device;
+  private device: Device;
 
-  constructor(private dataService: DataService, private route: ActivatedRoute) { }
+  constructor(private deviceService: DeviceService,
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
-    let id = this.route.snapshot.paramMap.get("id");
-    this.device = this.dataService.device(id);
+    let id = +this.route.snapshot.paramMap.get("id");
+    this.deviceService.getDevice(id)
+      .subscribe(device => this.device = device);
+  }
+
+  save(): void {
+    this.deviceService.updateDevice(this.device)
+      .subscribe();
   }
 
 }
