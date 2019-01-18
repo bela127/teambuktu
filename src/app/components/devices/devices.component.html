@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span>Devices</span>
+
+  <span class="flexible-fill-remaining-space"></span>
+
+  <button mat-mini-fab matTooltip="Add Device" (click)="add()">
+    <mat-icon>add</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let device of devices" [routerLink]="['/device/' + device.id]">
+    <p matLine>{{device.name}}</p>
+    <mat-icon matSuffix>devices_other</mat-icon>
+  </mat-list-item>
+</mat-nav-list>

@@ -8,6 +8,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {MaterialModule} from './material-module';
 
+import {HttpClientModule} from "@angular/common/http";
+
 import {SessionService} from './services/SessionService';
 import {SidenavService} from './services/SidenavService';
 import {DataService} from './services/DataService';
@@ -23,7 +25,7 @@ import {CustomersComponent} from './components/customers/customers.component';
 import {CustomerDetailComponent} from './components/customer-detail/customer-detail.component';
 import {WarehouseComponent} from './components/warehouse/warehouse.component';
 import {DeviceDetailComponent} from './components/device-detail/device-detail.component';
-import {HttpClientModule} from "@angular/common/http";
+import {DevicesComponent} from './components/devices/devices.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import {HttpClientModule} from "@angular/common/http";
     CustomerDetailComponent,
     WarehouseComponent,
     DeviceDetailComponent,
+    DevicesComponent,
   ],
   imports: [
     ReactiveFormsModule,

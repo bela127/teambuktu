@@ -9,6 +9,7 @@ import {TasksComponent} from "./components/tasks/tasks.component";
 import {AppointmentsComponent} from "./components/appointments/appointments.component";
 import {WarehouseComponent} from "./components/warehouse/warehouse.component";
 import {DeviceDetailComponent} from "./components/device-detail/device-detail.component";
+import {DevicesComponent} from "./components/devices/devices.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'customers', component: CustomersComponent},
   {path: 'customer/:id', component: CustomerDetailComponent},
   {path: 'warehouse', component: WarehouseComponent},
+  {path: 'devices', component: DevicesComponent},
   {path: 'device/:id', component: DeviceDetailComponent}
 ];
 
