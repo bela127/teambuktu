@@ -60,22 +60,21 @@
     <h3>Service Products:</h3>
 
     <mat-nav-list>
-      <mat-list-item *ngFor="let device of customer.devices" [routerLink]="['/device/' + device.id]">
-        <p matLine>{{device.name}}</p>
+      <mat-list-item *ngFor="let device of customerDevices" [routerLink]="['/device/' + device.id]">
+        <p matLine>{{device.name}} ({{device.serialNumber}})</p>
         <mat-icon matSuffix>devices_other</mat-icon>
       </mat-list-item>
     </mat-nav-list>
 
     <h3>Service History:</h3>
 
-    <mat-accordion [multi]="true">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>Appointments made with this Customer</mat-panel-title>
-          <mat-panel-description>Coming sooner or later...</mat-panel-description>
-        </mat-expansion-panel-header>
-      </mat-expansion-panel>
-    </mat-accordion>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let appointment of customerAppointments"
+                     [routerLink]="['/appointment/' + appointment.id]">
+        <p matLine>{{appointment.number}} ({{appointment.serviceDate | date: 'dd-MM-yyyy'}})</p>
+        <mat-icon matSuffix>event</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
 
   </mat-card-content>
 </mat-card>
