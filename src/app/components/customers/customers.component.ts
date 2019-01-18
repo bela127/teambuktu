@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CustomerService} from "../../services/customer.service";
 import {Customer} from "../../container/customer";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-customers',
@@ -11,7 +12,8 @@ export class CustomersComponent implements OnInit {
 
   private customers: Customer[];
 
-  constructor(private customerService: CustomerService) {
+  constructor(private customerService: CustomerService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -23,23 +25,25 @@ export class CustomersComponent implements OnInit {
       .subscribe(customers => this.customers = customers);
   }
 
-  // always adds the same test customer, change in the future
-  add() {
+  add(): void {
     let customer = new Customer();
-    customer.name = "TestCustomer";
-    customer.email = "tc@example.org";
-    customer.number = "-13";
-    customer.address = "1 TestStreet 12345 World";
-    customer.phone = "+00 123 45678910";
+    customer.name = "New Customer";
+    customer.email = "";
+    customer.number = "-1";
+    customer.address = "";
+    customer.phone = "";
     navigator.geolocation.getCurrentPosition(
       pos => {
         customer.geolocation = [pos.coords.latitude, pos.coords.longitude];
         this.customerService.addCustomer(customer)
-          .subscribe(customer => this.customers.push(customer));
+          .subscribe(customer => {
+            this.customers.push(customer);
+            this.router.navigate(['/customer/' + customer.id])
+              .catch(e => console.log("Navigation didn't work:" + e));
+          });
       },
       _ => console.log("this didn't work"),
     );
-
   }
 
 }
