@@ -1,5 +1,5 @@
 import {Time} from "@angular/common";
-import {AppointmentStatus} from "./appointment-status";
+import {AppointmentStatus} from "./appointment-status.enum";
 
 export class Appointment {
   id: number;

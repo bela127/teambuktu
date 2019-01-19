@@ -3,7 +3,7 @@ import {SessionService} from "../../services/SessionService";
 import {Router} from "@angular/router";
 import {AppointmentService} from "../../services/appointment.service";
 import {Appointment} from "../../container/appointment";
-import {AppointmentStatus} from "../../container/appointment-status";
+import {AppointmentStatus} from "../../container/appointment-status.enum";
 
 @Component({
   selector: 'app-appointments',
