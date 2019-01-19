@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Appointment} from "../../container/Appointment";
-import {Customer} from "../../container/Customer";
+import {Appointment} from "../../container/appointment";
+import {Customer} from "../../container/customer";
 import {AppointmentService} from "../../services/appointment.service";
 import {CustomerService} from "../../services/customer.service";
 import {Device} from "../../container/device";
