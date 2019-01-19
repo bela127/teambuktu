@@ -26,6 +26,7 @@ import {CustomerDetailComponent} from './components/customer-detail/customer-det
 import {WarehouseComponent} from './components/warehouse/warehouse.component';
 import {DeviceDetailComponent} from './components/device-detail/device-detail.component';
 import {DevicesComponent} from './components/devices/devices.component';
+import {PartsComponent} from './components/parts/parts.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {DevicesComponent} from './components/devices/devices.component';
     WarehouseComponent,
     DeviceDetailComponent,
     DevicesComponent,
+    PartsComponent,
   ],
   imports: [
     ReactiveFormsModule,

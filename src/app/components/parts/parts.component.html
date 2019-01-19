@@ -1,0 +1,77 @@
+<mat-card>
+  <mat-card-content>
+    <h3>New Part:</h3>
+    <div class="tbkt-form-wrapper">
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline">
+          <mat-label>Number</mat-label>
+          <input matInput type="text" [(ngModel)]="newPart.number">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" [(ngModel)]="newPart.name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Unit</mat-label>
+          <mat-select placeholder="Unit" [(ngModel)]="newPart.unit">
+            <mat-option *ngFor="let variant of unitVariants" [value]="variant">{{variant}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input matInput type="text" [(ngModel)]="newPart.description">
+        </mat-form-field>
+
+        <div class="tbkt-form-line">
+          <mat-form-field appearance="outline">
+            <mat-label>Price</mat-label>
+            <input matInput type="number" [(ngModel)]="newPart.price">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Currency</mat-label>
+            <mat-select placeholder="Currency" [(ngModel)]="newPart.currency">
+              <mat-option *ngFor="let variant of currencyVariants" [value]="variant">{{variant}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <button mat-raised-button color="primary" [disabled]="!isFormFilled()" (click)="add()">Add New Part</button>
+
+    <h3>Available Parts: </h3>
+
+    <table mat-table [dataSource]="parts" class="tbkt-table-full-width" id="partsTable" #partsTable>
+      <ng-container matColumnDef="number">
+        <th mat-header-cell *matHeaderCellDef>Number</th>
+        <td mat-cell *matCellDef="let part">{{part.number}}</td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let part">{{part.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let part">{{part.description}}</td>
+      </ng-container>
+      <ng-container matColumnDef="unit">
+        <th mat-header-cell *matHeaderCellDef>Unit</th>
+        <td mat-cell *matCellDef="let part">{{part.unit}}</td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Price</th>
+        <td mat-cell *matCellDef="let part">{{part.price}}</td>
+      </ng-container>
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef>Currency</th>
+        <td mat-cell *matCellDef="let part">{{part.currency}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

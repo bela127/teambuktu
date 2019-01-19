@@ -1,3 +1,30 @@
-<p>
-  warehouse works!
-</p>
+<mat-toolbar color="primary">
+  <span>Warehouse</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="flexible-fill-remaining-space"></span>
+
+  <button mat-mini-fab matTooltip="New Order">
+    <mat-icon>add_shopping_cart</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-tab-group mat-align-tabs="center">
+  <mat-tab label="Stock">
+    <ng-template matTabContent>
+      warehouse desc and stock here
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Orders">
+    <ng-template matTabContent>
+      orders here
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="Parts">
+    <ng-template matTabContent>
+      <app-parts></app-parts>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+
+
