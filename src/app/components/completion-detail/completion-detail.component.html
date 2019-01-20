@@ -1,3 +1,131 @@
-<p>
-  completion works!
-</p>
+<mat-toolbar color="primary">
+  <span *ngIf="completion">Completion: [{{completion.status}}] {{completion.number}}</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="flexible-fill-remaining-space"></span>
+
+  <button mat-mini-fab matTooltip="Save Changes" (click)="save()" style="margin-right: 10px">
+    <mat-icon>save</mat-icon>
+  </button>
+  <button mat-mini-fab matTooltip="Sign Completion" (click)="sign()">
+    <mat-icon>lock</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-content *ngIf="appointmentToComplete">
+    <div class="tbkt-form-line">
+      <mat-form-field appearance="outline" class="tbkt-field-with-button">
+        <mat-label>Customer</mat-label>
+        <mat-select placeholder="Customer" disabled [(ngModel)]="completion.customer">
+          <mat-option *ngFor="let customer of allCustomers" [value]="customer.id">
+            {{customer.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="tbkt-field-with-button">
+        <mat-label>Service Product</mat-label>
+        <mat-select placeholder="Service Product" disabled [(ngModel)]="completion.device">
+          <mat-option *ngFor="let device of allDevices" [value]="device.id">
+            {{device.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="tbkt-form-line">
+      <mat-form-field appearance="outline" class="tbkt-time-field">
+        <mat-label>Service Date</mat-label>
+        <input matInput [matDatepicker]="serviceDate" readonly [(ngModel)]="completion.serviceDate">
+        <mat-datepicker-toggle matSuffix [for]="serviceDate" [disabled]="isSigned()"></mat-datepicker-toggle>
+        <mat-datepicker #serviceDate></mat-datepicker>
+      </mat-form-field>
+
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline" class="tbkt-time-field">
+          <mat-label>From (Hour)</mat-label>
+          <input matInput placeholder="08" type="number" [disabled]="isSigned()" [(ngModel)]="completion.realTime.begin.hours">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="tbkt-time-field">
+          <mat-label>From (Minute)</mat-label>
+          <input matInput placeholder="0" type="number" [disabled]="isSigned()" [(ngModel)]="completion.realTime.begin.minutes">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="tbkt-form-line">
+      <div></div>
+
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline" class="tbkt-time-field">
+          <mat-label>To (Hour)</mat-label>
+          <input matInput placeholder="10" type="number" [disabled]="isSigned()" [(ngModel)]="completion.realTime.end.hours">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="tbkt-time-field">
+          <mat-label>To (Minute)</mat-label>
+          <input matInput placeholder="0" type="number" [disabled]="isSigned()" [(ngModel)]="completion.realTime.end.minutes">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <h3>Actually Used Parts:</h3>
+
+    <div class="tbkt-form-line">
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput placeholder="1" type="number" [disabled]="isSigned()" [(ngModel)]="newCompletionItem.amount">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Part</mat-label>
+        <mat-select placeholder="Part" [disabled]="isSigned()" [(ngModel)]="newCompletionItem.part">
+          <mat-option *ngFor="let part of allParts" [value]="part.id">
+            {{part.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <button mat-raised-button color="primary" [disabled]="!isFormFilled()" (click)="addPart()">Add Used Part</button>
+
+    <table mat-table [dataSource]="displayItems" class="tbkt-table-full-width">
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Amount</th>
+        <td mat-cell *matCellDef="let item">{{item.amount}}</td>
+      </ng-container>
+      <ng-container matColumnDef="unit">
+        <th mat-header-cell *matHeaderCellDef>Unit</th>
+        <td mat-cell *matCellDef="let item">{{item.part.unit}}</td>
+      </ng-container>
+      <ng-container matColumnDef="number">
+        <th mat-header-cell *matHeaderCellDef>Number</th>
+        <td mat-cell *matCellDef="let item">{{item.part.number}}</td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let item">{{item.part.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+        <td mat-cell *matCellDef="let item">{{item.part.price}}</td>
+      </ng-container>
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef>Currency</th>
+        <td mat-cell *matCellDef="let item">{{item.part.currency}}</td>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let item">
+          <button mat-icon-button color="warn" [disabled]="isSigned()" (click)="removeItem(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </mat-card-content>
+</mat-card>
