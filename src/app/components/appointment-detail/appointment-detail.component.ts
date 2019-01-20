@@ -8,6 +8,7 @@ import {Device} from "../../container/device";
 import {DeviceService} from "../../services/device.service";
 import {Part} from "../../container/part";
 import {WarehouseService} from "../../services/warehouse.service";
+import {Item} from "../../container/item";
 
 class DisplayAppointmentItem {
   amount: number;
@@ -26,6 +27,8 @@ export class AppointmentDetailComponent implements OnInit {
   private allDevices: Device[];
   private allParts: Part[];
 
+  private newAppointmentItem: Item;
+
   private displayItems: DisplayAppointmentItem[];
 
   private displayedColumns = ['amount', 'unit', 'number', 'name', 'price', 'currency'];
@@ -39,6 +42,8 @@ export class AppointmentDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.newAppointmentItem = new Item();
+
     let id = +this.route.snapshot.paramMap.get("id");
     this.appointmentService.getAppointment(id)
       .subscribe(appointment => {
@@ -48,14 +53,7 @@ export class AppointmentDetailComponent implements OnInit {
           .subscribe(parts => {
             this.allParts = parts;
 
-            this.displayItems = this.appointment.items
-              .map(ai => {
-                let di = new DisplayAppointmentItem();
-                di.amount = ai.amount;
-                di.part = this.allParts
-                  .find(p => ai.part == p.id);
-                return di;
-              });
+            this.buildDisplayItems();
           });
       });
 
@@ -64,6 +62,17 @@ export class AppointmentDetailComponent implements OnInit {
 
     this.deviceService.getDevices()
       .subscribe(devices => this.allDevices = devices);
+  }
+
+  buildDisplayItems(): void {
+    this.displayItems = this.appointment.items
+      .map(ai => {
+        let di = new DisplayAppointmentItem();
+        di.amount = ai.amount;
+        di.part = this.allParts
+          .find(p => ai.part == p.id);
+        return di;
+      });
   }
 
   save(): void {
@@ -83,6 +92,19 @@ export class AppointmentDetailComponent implements OnInit {
       this.router.navigate(['/device/' + this.appointment.device])
         .catch(reason => console.log("couldn't navigate to device with id=" + this.appointment.device + ": " + reason));
     }
+  }
+
+  isFormFilled(): boolean {
+    return (this.newAppointmentItem != undefined
+      && this.newAppointmentItem.amount != undefined
+      && this.newAppointmentItem.part != undefined
+    );
+  }
+
+  addPart(): void {
+    this.appointment.items.push(this.newAppointmentItem);
+    this.newAppointmentItem = new Item();
+    this.buildDisplayItems();
   }
 
 }

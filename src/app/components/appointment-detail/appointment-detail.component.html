@@ -71,6 +71,24 @@
 
     <h3>Planned Parts:</h3>
 
+    <div class="tbkt-form-line">
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input matInput placeholder="1" type="number" [(ngModel)]="newAppointmentItem.amount">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Part</mat-label>
+        <mat-select placeholder="Part" [(ngModel)]="newAppointmentItem.part">
+          <mat-option *ngFor="let part of allParts" [value]="part.id">
+            {{part.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <button mat-raised-button color="primary" [disabled]="!isFormFilled()" (click)="addPart()">Add Planned Part</button>
+
     <table mat-table [dataSource]="displayItems" class="tbkt-table-full-width">
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef>Amount</th>

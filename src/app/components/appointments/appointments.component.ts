@@ -33,6 +33,7 @@ export class AppointmentsComponent implements OnInit {
     a.number = appointmentNumber;
     a.plannedTime = {hours: 8, minutes: 0};
     a.status = AppointmentStatus.Open;
+    a.items = [];
 
     this.appointmentService.addAppointment(a)
       .subscribe(appointment => {
