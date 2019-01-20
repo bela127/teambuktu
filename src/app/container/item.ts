@@ -1,4 +1,4 @@
-export class AppointmentItem {
+export class Item {
   part: number;
   amount: number;
 }

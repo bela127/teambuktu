@@ -1,6 +1,6 @@
 import {Time} from "@angular/common";
 import {AppointmentStatus} from "./appointment-status.enum";
-import {AppointmentItem} from "./appointment-item";
+import {Item} from "./item";
 
 export class Appointment {
   id: number;
@@ -11,5 +11,5 @@ export class Appointment {
   plannedTime: Time;
   description: string;
   status: AppointmentStatus;
-  items: AppointmentItem[];
+  items: Item[];
 }
