@@ -6,6 +6,13 @@ import {AppointmentService} from "../../services/appointment.service";
 import {CustomerService} from "../../services/customer.service";
 import {Device} from "../../container/device";
 import {DeviceService} from "../../services/device.service";
+import {Part} from "../../container/part";
+import {WarehouseService} from "../../services/warehouse.service";
+
+class DisplayAppointmentItem {
+  amount: number;
+  part: Part;
+}
 
 @Component({
   selector: 'app-appointment-detail',
@@ -17,13 +24,16 @@ export class AppointmentDetailComponent implements OnInit {
   private appointment: Appointment;
   private allCustomers: Customer[];
   private allDevices: Device[];
+  private allParts: Part[];
 
-  private displayedColumns: string[];
-  private dataSourcePlanned: Part[];
+  private displayItems: DisplayAppointmentItem[];
+
+  private displayedColumns = ['amount', 'unit', 'number', 'name', 'price', 'currency'];
 
   constructor(private appointmentService: AppointmentService,
               private customerService: CustomerService,
               private deviceService: DeviceService,
+              private warehouseService: WarehouseService,
               private route: ActivatedRoute,
               private router: Router) {
   }
@@ -31,16 +41,29 @@ export class AppointmentDetailComponent implements OnInit {
   ngOnInit() {
     let id = +this.route.snapshot.paramMap.get("id");
     this.appointmentService.getAppointment(id)
-      .subscribe(appointment => this.appointment = appointment);
+      .subscribe(appointment => {
+        this.appointment = appointment;
+
+        this.warehouseService.getParts()
+          .subscribe(parts => {
+            this.allParts = parts;
+
+            this.displayItems = this.appointment.items
+              .map(ai => {
+                let di = new DisplayAppointmentItem();
+                di.amount = ai.amount;
+                di.part = this.allParts
+                  .find(p => ai.part == p.id);
+                return di;
+              });
+          });
+      });
 
     this.customerService.getCustomers()
       .subscribe(customers => this.allCustomers = customers);
 
     this.deviceService.getDevices()
       .subscribe(devices => this.allDevices = devices);
-
-    this.displayedColumns = ['amount', 'name'];
-    this.dataSourcePlanned = PART_DATA;
   }
 
   save(): void {
@@ -63,16 +86,3 @@ export class AppointmentDetailComponent implements OnInit {
   }
 
 }
-
-export interface Part {
-  name: string;
-  amount: number;
-}
-
-const PART_DATA: Part[] = [
-  {name: 'Hammer', amount: 1},
-  {name: 'Glue', amount: 1},
-  {name: 'Plank', amount: 3},
-  {name: 'Nail', amount: 4},
-];
-

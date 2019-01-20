@@ -71,14 +71,30 @@
 
     <h3>Planned Parts:</h3>
 
-    <table mat-table [dataSource]="dataSourcePlanned" class="tbkt-table-full-width">
+    <table mat-table [dataSource]="displayItems" class="tbkt-table-full-width">
       <ng-container matColumnDef="amount">
         <th mat-header-cell *matHeaderCellDef>Amount</th>
-        <td mat-cell *matCellDef="let part">{{part.amount}}</td>
+        <td mat-cell *matCellDef="let item">{{item.amount}}</td>
+      </ng-container>
+      <ng-container matColumnDef="unit">
+        <th mat-header-cell *matHeaderCellDef>Unit</th>
+        <td mat-cell *matCellDef="let item">{{item.part.unit}}</td>
+      </ng-container>
+      <ng-container matColumnDef="number">
+        <th mat-header-cell *matHeaderCellDef>Number</th>
+        <td mat-cell *matCellDef="let item">{{item.part.number}}</td>
       </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let part">{{part.name}}</td>
+        <td mat-cell *matCellDef="let item">{{item.part.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+        <td mat-cell *matCellDef="let item">{{item.part.price}}</td>
+      </ng-container>
+      <ng-container matColumnDef="currency">
+        <th mat-header-cell *matHeaderCellDef>Currency</th>
+        <td mat-cell *matCellDef="let item">{{item.part.currency}}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
