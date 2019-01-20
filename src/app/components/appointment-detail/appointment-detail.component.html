@@ -15,7 +15,7 @@
 <mat-card>
   <mat-card-content *ngIf="appointment">
     <div class="tbkt-form-line">
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="tbkt-field-with-button">
         <mat-label>Customer</mat-label>
         <mat-select placeholder="Customer" [(ngModel)]="appointment.customer">
           <mat-option *ngFor="let customer of allCustomers" [value]="customer.id">
@@ -23,8 +23,13 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <div class="tbkt-icon-button-wrapper">
+        <button mat-mini-fab class="tbkt-goto-button" matTooltip="Show Customer Details" (click)="gotoCustomer()">
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+      </div>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" class="tbkt-field-with-button">
         <mat-label>Service Product</mat-label>
         <mat-select placeholder="Service Product" [(ngModel)]="appointment.device">
           <mat-option *ngFor="let device of allDevices" [value]="device.id">
@@ -32,6 +37,9 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <button mat-mini-fab class="tbkt-goto-button" matTooltip="Show Service Product Details" (click)="gotoDevice()">
+        <mat-icon>open_in_new</mat-icon>
+      </button>
     </div>
 
     <div class="tbkt-form-line">

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Appointment} from "../../container/appointment";
 import {Customer} from "../../container/customer";
 import {AppointmentService} from "../../services/appointment.service";
@@ -24,7 +24,8 @@ export class AppointmentDetailComponent implements OnInit {
   constructor(private appointmentService: AppointmentService,
               private customerService: CustomerService,
               private deviceService: DeviceService,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -45,6 +46,20 @@ export class AppointmentDetailComponent implements OnInit {
   save(): void {
     this.appointmentService.updateAppointment(this.appointment)
       .subscribe();
+  }
+
+  gotoCustomer(): void {
+    if (this.appointment.customer) {
+      this.router.navigate(['/customer/' + this.appointment.customer])
+        .catch(reason => console.log("couldn't navigate to customer with id=" + this.appointment.customer));
+    }
+  }
+
+  gotoDevice(): void {
+    if (this.appointment.device) {
+      this.router.navigate(['/device/' + this.appointment.device])
+        .catch(reason => console.log("couldn't navigate to device with id=" + this.appointment.device + ": " + reason));
+    }
   }
 
 }

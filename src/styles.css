@@ -63,3 +63,15 @@
   font-style: italic;
   padding-right: 10px;
 }
+
+.tbkt-goto-button {
+  margin-top: 10px !important;
+}
+
+.tbkt-field-with-button {
+  padding-right: 5px;
+}
+
+.tbkt-icon-button-wrapper {
+  width: 40px;
+}
