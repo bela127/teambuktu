@@ -3,8 +3,6 @@
     <mat-panel-title>
       <span class="tbkt-task-status">[{{task.status.toString()}}]</span> {{task.title}}
     </mat-panel-title>
-
-    <mat-panel-description>{{task.description.length > 32 ? task.description.slice(0,32) + ' (...)' : task.description}}</mat-panel-description>
   </mat-expansion-panel-header>
 
   <div class="tbkt-form-wrapper">
