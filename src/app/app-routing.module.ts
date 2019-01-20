@@ -10,6 +10,8 @@ import {AppointmentsComponent} from "./components/appointments/appointments.comp
 import {WarehouseComponent} from "./components/warehouse/warehouse.component";
 import {DeviceDetailComponent} from "./components/device-detail/device-detail.component";
 import {DevicesComponent} from "./components/devices/devices.component";
+import {CompletionDetailComponent} from "./components/completion-detail/completion-detail.component";
+import {CompletionsComponent} from "./components/completions/completions.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -21,7 +23,9 @@ const routes: Routes = [
   {path: 'customer/:id', component: CustomerDetailComponent},
   {path: 'warehouse', component: WarehouseComponent},
   {path: 'devices', component: DevicesComponent},
-  {path: 'device/:id', component: DeviceDetailComponent}
+  {path: 'device/:id', component: DeviceDetailComponent},
+  {path: 'completions', component: CompletionsComponent},
+  {path: 'completion/:id', component: CompletionDetailComponent}
 ];
 
 @NgModule({
