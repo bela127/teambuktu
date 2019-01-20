@@ -1,3 +1,10 @@
 <mat-toolbar color="primary">
   <span>Completions</span>
 </mat-toolbar>
+
+<mat-nav-list>
+  <mat-list-item *ngFor="let completion of completions" [routerLink]="['/completion/' + completion.id]">
+    <p matLine>{{completion.number}}</p>
+    <mat-icon matSuffix>event_available</mat-icon>
+  </mat-list-item>
+</mat-nav-list>

@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {CompletionService} from "../../services/completion.service";
+import {Completion} from "../../container/completion";
 
 @Component({
   selector: 'app-completions',
@@ -7,10 +9,18 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CompletionsComponent implements OnInit {
 
-  constructor() {
+  private completions: Completion[];
+
+  constructor(private completionService: CompletionService) {
   }
 
   ngOnInit() {
+    this.getCompletions();
+  }
+
+  getCompletions(): void {
+    this.completionService.getCompletions()
+      .subscribe(completions => this.completions = completions);
   }
 
 }
