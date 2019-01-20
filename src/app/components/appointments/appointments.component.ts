@@ -31,7 +31,7 @@ export class AppointmentsComponent implements OnInit {
   add(appointmentNumber: string): void {
     let a = new Appointment();
     a.number = appointmentNumber;
-    a.plannedTime = {hours: 8, minutes: 0};
+    a.plannedTime = {begin: {hours: 8, minutes: 0}, end: {hours: 10, minutes: 0}};
     a.status = AppointmentStatus.Open;
     a.items = [];
 

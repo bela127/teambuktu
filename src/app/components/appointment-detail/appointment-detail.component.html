@@ -53,11 +53,26 @@
       <div class="tbkt-form-line">
         <mat-form-field appearance="outline" class="tbkt-time-field">
           <mat-label>From (Hour)</mat-label>
-          <input matInput placeholder="08" type="number" [(ngModel)]="appointment.plannedTime.hours">
+          <input matInput placeholder="08" type="number" [(ngModel)]="appointment.plannedTime.begin.hours">
         </mat-form-field>
         <mat-form-field appearance="outline" class="tbkt-time-field">
           <mat-label>From (Minute)</mat-label>
-          <input matInput placeholder="00" type="number" [(ngModel)]="appointment.plannedTime.minutes">
+          <input matInput placeholder="0" type="number" [(ngModel)]="appointment.plannedTime.begin.minutes">
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="tbkt-form-line">
+      <div></div>
+
+      <div class="tbkt-form-line">
+        <mat-form-field appearance="outline" class="tbkt-time-field">
+          <mat-label>To (Hour)</mat-label>
+          <input matInput placeholder="10" type="number" [(ngModel)]="appointment.plannedTime.end.hours">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="tbkt-time-field">
+          <mat-label>To (Minute)</mat-label>
+          <input matInput placeholder="0" type="number" [(ngModel)]="appointment.plannedTime.end.minutes">
         </mat-form-field>
       </div>
     </div>

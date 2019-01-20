@@ -1,6 +1,6 @@
-import {Time} from "@angular/common";
 import {AppointmentStatus} from "./appointment-status.enum";
 import {Item} from "./item";
+import {TimeRange} from "./time-range";
 
 export class Appointment {
   id: number;
@@ -8,7 +8,7 @@ export class Appointment {
   customer: number;
   device: number;
   serviceDate: Date;
-  plannedTime: Time;
+  plannedTime: TimeRange;
   description: string;
   status: AppointmentStatus;
   items: Item[];
