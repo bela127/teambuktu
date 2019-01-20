@@ -19,7 +19,7 @@ export class PartsComponent implements OnInit {
 
   private parts: Part[];
 
-  @ViewChild('partsTable') partsTable: MatTable<Part>;
+  @ViewChild('partsTable') private partsTable: MatTable<Part>;
   private displayedColumns = ['number', 'name', 'description', 'unit', 'price', 'currency'];
 
   constructor(private warehouseService: WarehouseService) {
