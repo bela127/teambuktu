@@ -15,7 +15,7 @@
 <mat-nav-list>
   <mat-list-item *ngFor="let appointment of appointments" [routerLink]="['/appointment/' + appointment.id]">
     <p matLine>{{appointment.number}}</p>
-    <mat-icon matSuffix>event_note</mat-icon>
+    <mat-icon matSuffix>event</mat-icon>
   </mat-list-item>
 </mat-nav-list>
 
