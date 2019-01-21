@@ -9,8 +9,6 @@ import {DeviceService} from "../../services/device.service";
 import {Part} from "../../container/part";
 import {WarehouseService} from "../../services/warehouse.service";
 import {Item} from "../../container/item";
-import {Completion} from "../../container/completion";
-import {CompletionStatus} from "../../container/completion-status.enum";
 
 class DisplayAppointmentItem {
   amount: number;
@@ -28,6 +26,8 @@ export class AppointmentDetailComponent implements OnInit {
   private allCustomers: Customer[];
   private allDevices: Device[];
   private allParts: Part[];
+
+  private customerDevices: Device[];
 
   private newAppointmentItem: Item;
 
@@ -57,13 +57,17 @@ export class AppointmentDetailComponent implements OnInit {
 
             this.buildDisplayItems();
           });
+
+        this.deviceService.getDevices()
+          .subscribe(devices => {
+            this.allDevices = devices;
+
+            this.buildCustomerDevices();
+          });
       });
 
     this.customerService.getCustomers()
       .subscribe(customers => this.allCustomers = customers);
-
-    this.deviceService.getDevices()
-      .subscribe(devices => this.allDevices = devices);
   }
 
   buildDisplayItems(): void {
@@ -75,6 +79,11 @@ export class AppointmentDetailComponent implements OnInit {
           .find(p => ai.part == p.id);
         return di;
       });
+  }
+
+  buildCustomerDevices(): void {
+    this.customerDevices = this.allDevices
+      .filter(d => d.customer == this.appointment.customer);
   }
 
   save(): void {

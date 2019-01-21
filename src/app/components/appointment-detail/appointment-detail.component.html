@@ -17,7 +17,7 @@
     <div class="tbkt-form-line">
       <mat-form-field appearance="outline" class="tbkt-field-with-button">
         <mat-label>Customer</mat-label>
-        <mat-select placeholder="Customer" [(ngModel)]="appointment.customer">
+        <mat-select placeholder="Customer" [(ngModel)]="appointment.customer" (ngModelChange)="buildCustomerDevices()">
           <mat-option *ngFor="let customer of allCustomers" [value]="customer.id">
             {{customer.name}}
           </mat-option>
@@ -29,10 +29,10 @@
         </button>
       </div>
 
-      <mat-form-field appearance="outline" class="tbkt-field-with-button">
+      <mat-form-field *ngIf="customerDevices" appearance="outline" class="tbkt-field-with-button">
         <mat-label>Service Product</mat-label>
         <mat-select placeholder="Service Product" [(ngModel)]="appointment.device">
-          <mat-option *ngFor="let device of allDevices" [value]="device.id">
+          <mat-option *ngFor="let device of customerDevices" [value]="device.id">
             {{device.name}}
           </mat-option>
         </mat-select>
