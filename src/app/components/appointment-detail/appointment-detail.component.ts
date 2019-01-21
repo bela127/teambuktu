@@ -9,6 +9,8 @@ import {DeviceService} from "../../services/device.service";
 import {Part} from "../../container/part";
 import {WarehouseService} from "../../services/warehouse.service";
 import {Item} from "../../container/item";
+import {Completion} from "../../container/completion";
+import {CompletionStatus} from "../../container/completion-status.enum";
 
 class DisplayAppointmentItem {
   amount: number;
@@ -105,6 +107,11 @@ export class AppointmentDetailComponent implements OnInit {
     this.appointment.items.push(this.newAppointmentItem);
     this.newAppointmentItem = new Item();
     this.buildDisplayItems();
+  }
+
+  complete(): void {
+    this.router.navigate(['/completion/0/' + this.appointment.id])
+      .catch(reason => console.log("couldn't navigate to completion from appointment: " + reason));
   }
 
 }

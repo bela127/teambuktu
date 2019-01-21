@@ -25,7 +25,8 @@ const routes: Routes = [
   {path: 'devices', component: DevicesComponent},
   {path: 'device/:id', component: DeviceDetailComponent},
   {path: 'completions', component: CompletionsComponent},
-  {path: 'completion/:id', component: CompletionDetailComponent}
+  {path: 'completion/:id', component: CompletionDetailComponent},
+  {path: 'completion/:id/:aid', component: CompletionDetailComponent}
 ];
 
 @NgModule({

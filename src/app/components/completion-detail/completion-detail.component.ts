@@ -13,6 +13,8 @@ import {DeviceService} from "../../services/device.service";
 import {Device} from "../../container/device";
 import {CompletionStatus} from "../../container/completion-status.enum";
 import {AppointmentStatus} from "../../container/appointment-status.enum";
+import {TimeRange} from "../../container/time-range";
+import {Time} from '@angular/common';
 
 class DisplayCompletionItem {
   amount: number;
@@ -28,6 +30,8 @@ export class CompletionDetailComponent implements OnInit {
 
   private completion: Completion;
   private appointmentToComplete: Appointment;
+
+  private completionLoaded = false;
 
   private allCustomers: Customer[];
   private allParts: Part[];
@@ -52,28 +56,69 @@ export class CompletionDetailComponent implements OnInit {
     this.newCompletionItem = new Item();
 
     let id = +this.route.snapshot.paramMap.get("id");
-    this.completionService.getCompletion(id)
-      .subscribe(completion => {
-        this.completion = completion;
 
-        this.appointmentService.getAppointment(this.completion.appointment)
-          .subscribe(appointment => {
-            this.appointmentToComplete = appointment;
+    if (this.route.snapshot.paramMap.has("aid")) {
+      // this is a new completion
 
-            this.warehouseService.getParts()
-              .subscribe(parts => {
-                this.allParts = parts;
+      let aid = +this.route.snapshot.paramMap.get("aid");
 
-                this.buildDisplayItems();
-              });
-          });
-      });
+      this.appointmentService.getAppointment(aid)
+        .subscribe(appointment => {
+          this.appointmentToComplete = appointment;
+
+          this.completion = new Completion();
+          this.completion.appointment = this.appointmentToComplete.id;
+          this.completion.number = this.appointmentToComplete.number;
+          this.completion.customer = this.appointmentToComplete.customer;
+          this.completion.device = this.appointmentToComplete.device;
+          this.completion.serviceDate = new Date(this.appointmentToComplete.serviceDate);
+
+          this.completion.realTime = new TimeRange();
+          this.completion.realTime.begin = {} as Time;
+          this.completion.realTime.end = {} as Time;
+          this.completion.realTime.begin.hours = this.appointmentToComplete.plannedTime.begin.hours;
+          this.completion.realTime.begin.minutes = this.appointmentToComplete.plannedTime.begin.minutes;
+          this.completion.realTime.end.hours = this.appointmentToComplete.plannedTime.end.hours;
+          this.completion.realTime.end.minutes = this.appointmentToComplete.plannedTime.end.minutes;
+
+          this.completion.items = JSON.parse(JSON.stringify(this.appointmentToComplete.items));
+          this.completion.status = CompletionStatus.Unsigned;
+          this.completionLoaded = true;
+
+          this.getParts();
+        });
+
+
+    } else {
+
+      this.completionService.getCompletion(id)
+        .subscribe(completion => {
+          this.completion = completion;
+          this.completionLoaded = true;
+
+          this.appointmentService.getAppointment(this.completion.appointment)
+            .subscribe(appointment => {
+              this.appointmentToComplete = appointment;
+
+              this.getParts();
+            });
+        });
+    }
 
     this.customerService.getCustomers()
       .subscribe(customers => this.allCustomers = customers);
 
     this.deviceService.getDevices()
       .subscribe(devices => this.allDevices = devices);
+  }
+
+  getParts(): void {
+    this.warehouseService.getParts()
+      .subscribe(parts => {
+        this.allParts = parts;
+
+        this.buildDisplayItems();
+      });
   }
 
   buildDisplayItems(): void {
@@ -85,11 +130,6 @@ export class CompletionDetailComponent implements OnInit {
           .find(p => ai.part == p.id);
         return di;
       });
-  }
-
-  save(): void {
-    this.completionService.updateCompletion(this.completion)
-      .subscribe();
   }
 
   isFormFilled(): boolean {
@@ -121,9 +161,15 @@ export class CompletionDetailComponent implements OnInit {
 
     this.appointmentService.updateAppointment(this.appointmentToComplete)
       .subscribe(() => {
-        this.completionService.updateCompletion(this.completion)
-          .subscribe(() => this.router.navigate(['/appointments'])
-            .catch(reason => console.log("couldn't navigate to /appointments after signing")));
+        if (this.completion.id) {
+          this.completionService.updateCompletion(this.completion)
+            .subscribe(() => this.router.navigate(['/appointments'])
+              .catch(reason => console.log("couldn't navigate to /appointments after signing")));
+        } else {
+          this.completionService.addCompletion(this.completion)
+            .subscribe(() => this.router.navigate(['/appointments'])
+              .catch(reason => console.log("couldn't navigate to /appointments after signing")));
+        }
       });
 
   }

@@ -1,19 +1,19 @@
 <mat-toolbar color="primary">
-  <span *ngIf="completion">Completion: [{{completion.status}}] {{completion.number}}</span>
+  <span *ngIf="completionLoaded">Completion: [{{completion.status}}] {{completion.number}}</span>
 
   <!-- This fills the remaining space of the current row -->
   <span class="flexible-fill-remaining-space"></span>
 
-  <button mat-mini-fab matTooltip="Save Changes" (click)="save()" style="margin-right: 10px">
+  <!-- <button mat-mini-fab matTooltip="Save Changes" style="margin-right: 10px">
     <mat-icon>save</mat-icon>
-  </button>
-  <button mat-mini-fab matTooltip="Sign Completion" (click)="sign()">
+  </button> -->
+  <button *ngIf="completionLoaded" mat-mini-fab matTooltip="Sign Completion" [disabled]="isSigned()" (click)="sign()">
     <mat-icon>lock</mat-icon>
   </button>
 </mat-toolbar>
 
 <mat-card>
-  <mat-card-content *ngIf="appointmentToComplete">
+  <mat-card-content *ngIf="completionLoaded">
     <div class="tbkt-form-line">
       <mat-form-field appearance="outline" class="tbkt-field-with-button">
         <mat-label>Customer</mat-label>
