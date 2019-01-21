@@ -11,45 +11,36 @@ import {TaskStatus} from "../../container/task-status.enum";
 })
 export class TasksComponent implements OnInit {
 
-  tasks: Task[];
+  private tasks: Task[];
+  private displayTasks: Task[];
 
   constructor(private router: Router, private taskService: TaskService) {
   }
 
   ngOnInit() {
+    this.getTasks();
+  }
+
+  getTasks(): void {
     this.taskService.getTasks()
       .subscribe(tasks => {
         this.tasks = tasks;
 
-        // space for further statements
-        // ...
-
+        this.sortTasks();
       });
+  }
 
-    /*
+  sortTasks(): void {
     let amountClosed = this.tasks
       .filter(item => item.status == TaskStatus.Finished)
       .length;
 
     let excessClosedTasks = amountClosed > 10 ? amountClosed - 10 : 0;
 
-    console.log("Amount of closed Notes: " + amountClosed);
-
-    this.displayItems = this.taskService.notes
-      .filter(task => task.status != TaskStatus.Canceled);
-
-    this.displayItems = this.displayItems
+    this.displayTasks = this.tasks
+      .filter(task => task.status != TaskStatus.Canceled)
       .sort(this.compareTasks)
-      .slice(0,this.taskService.notes.length - excessClosedTasks);
-
-    console.log("Notes after filter and sort: " + this.displayItems.length)
-    */
-
-  }
-
-  getTasks(): void {
-    this.taskService.getTasks()
-      .subscribe(tasks => this.tasks = tasks);
+      .slice(0, this.tasks.length - excessClosedTasks);
   }
 
   add(title: string): void {
@@ -66,12 +57,22 @@ export class TasksComponent implements OnInit {
     task.status = TaskStatus.Open;
 
     this.taskService.addTask(task)
-      .subscribe(task => this.tasks.push(task));
+      .subscribe(task => {
+        this.tasks.push(task);
+
+        this.sortTasks();
+      });
   }
 
   compareTasks(a: Task, b: Task) {
     if (a.status == b.status) {
-      return Math.sign(b.creationDate.valueOf() - a.creationDate.valueOf());
+      if (a.creationDate < b.creationDate) {
+        return 1;
+      } else if (a.creationDate > b.creationDate) {
+        return -1;
+      } else {
+        return 0;
+      }
     } else {
       if (a.status == TaskStatus.Open) {
         return -1;
@@ -80,9 +81,5 @@ export class TasksComponent implements OnInit {
       }
     }
   }
-
-  //TODO Show all open and in progress objects.
-  //--> Newest first: Sort by creationDate
-  //Show the last 10 finished objects.
 
 }
