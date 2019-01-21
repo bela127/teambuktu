@@ -69,9 +69,9 @@
     <h3>Service History:</h3>
 
     <mat-nav-list>
-      <mat-list-item *ngFor="let appointment of customerAppointments"
-                     [routerLink]="['/appointment/' + appointment.id]">
-        <p matLine>{{appointment.number}} ({{appointment.serviceDate | date: 'dd-MM-yyyy'}})</p>
+      <mat-list-item *ngFor="let completion of customerCompletions"
+                     [routerLink]="['/completion/' + completion.id]">
+        <p matLine>{{completion.number}} ({{completion.serviceDate | date: 'dd-MM-yyyy'}})</p>
         <mat-icon matSuffix>event</mat-icon>
       </mat-list-item>
     </mat-nav-list>
