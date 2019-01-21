@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {SessionService} from "../../services/SessionService";
 import {SidenavService} from "../../services/SidenavService";
 import {DataService} from "../../services/DataService";
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,8 @@ export class RootComponent implements OnInit {
 
   @ViewChild('sidenav') public sidenav: MatSidenav;
 
-  constructor(private router: Router, private session: SessionService, private sidenavService: SidenavService, private dataservice: DataService) {
+  constructor(private router: Router, private session: SessionService, private sidenavService: SidenavService, private dataservice: DataService,
+              private location: Location) {
   }
 
   ngOnInit(): void {
@@ -33,5 +35,10 @@ export class RootComponent implements OnInit {
     this.router.navigate(["/login"])
       .finally(() => console.log("Navigated to '/login', after logout."));
   }
+
+  back(): void {
+    this.location.back();
+  }
+
 
 }
