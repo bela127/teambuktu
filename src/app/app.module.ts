@@ -29,6 +29,7 @@ import {DevicesComponent} from './components/devices/devices.component';
 import {PartsComponent} from './components/parts/parts.component';
 import {CompletionDetailComponent} from './components/completion-detail/completion-detail.component';
 import {CompletionsComponent} from './components/completions/completions.component';
+import {StockComponent} from './components/stock/stock.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {CompletionsComponent} from './components/completions/completions.compone
     PartsComponent,
     CompletionDetailComponent,
     CompletionsComponent,
+    StockComponent,
   ],
   imports: [
     ReactiveFormsModule,

@@ -4,6 +4,7 @@ import {Part} from "../container/part";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {catchError, tap} from "rxjs/operators";
+import {Item} from "../container/item";
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,12 @@ import {catchError, tap} from "rxjs/operators";
 export class WarehouseService {
 
   private partsUrl: string;
+  private stockUrl: string;
 
   constructor(private baseService: BaseService,
               private http: HttpClient) {
     this.partsUrl = this.baseService.baseUrl + "parts";
+    this.stockUrl = this.baseService.baseUrl + "stock";
   }
 
   getParts(): Observable<Part[]> {
@@ -30,6 +33,14 @@ export class WarehouseService {
       .pipe(
         tap((p: Part) => this.baseService.log('added part with id=' + p.id)),
         catchError(this.baseService.handleHttpError<Part>('addPart'))
+      );
+  }
+
+  getStock(): Observable<Item[]> {
+    return this.http.get<Item[]>(this.stockUrl)
+      .pipe(
+        tap(_ => this.baseService.log('fetched stock')),
+        catchError(this.baseService.handleHttpError<Item[]>('getStock', []))
       );
   }
 }
