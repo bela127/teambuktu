@@ -25,7 +25,8 @@ export class AppointmentsComponent implements OnInit {
 
   getAppointments(): void {
     this.appointmentService.getAppointments()
-      .subscribe(appointments => this.appointments = appointments);
+      .subscribe(appointments => this.appointments = appointments
+        .filter(a => a.status == AppointmentStatus.Open));
   }
 
   add(appointmentNumber: string): void {
