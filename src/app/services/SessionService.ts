@@ -10,7 +10,6 @@ export class SessionService {
   private router: Router;
 
   constructor() {
-    console.log("Technician con!")
   }
 
   public isLoggedIn(): boolean {

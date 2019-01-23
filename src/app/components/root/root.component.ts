@@ -3,7 +3,6 @@ import {MatSidenav} from "@angular/material";
 import {Router} from "@angular/router";
 import {SessionService} from "../../services/SessionService";
 import {SidenavService} from "../../services/SidenavService";
-import {DataService} from "../../services/DataService";
 import {Location} from '@angular/common';
 
 @Component({
@@ -13,27 +12,33 @@ import {Location} from '@angular/common';
 })
 export class RootComponent implements OnInit {
 
-  @ViewChild('sidenav') public sidenav: MatSidenav;
+  @ViewChild('sidenav') private sidenav: MatSidenav;
 
-  constructor(private router: Router, private session: SessionService, private sidenavService: SidenavService, private dataservice: DataService,
+  constructor(private router: Router,
+              private session: SessionService,
+              private sidenavService: SidenavService,
               private location: Location) {
   }
 
   ngOnInit(): void {
     this.sidenavService.setSidenav(this.sidenav);
-    console.log("Root cons");
     this.session.setRouter(this.router);
+
+    /* // commented out for development
     this.router.navigate(["/login"])
-      .finally(() => console.log("Navigated to '/login', after initialization.")); // */
+      .catch(reason => console.log("couldn't navigate to '/login': " + reason)); // */
+    // /*
+    this.sidenav.open();
+    this.router.navigate(['/warehouse']); // */
+
   }
 
   public logout(): void {
     this.session.logout();
-    this.dataservice.userData = null;
     this.sidenav.close()
-      .finally(() => console.log("Sidenav finally closed."));
+      .catch(reason => console.log("sidenav couldn't be closed: " + reason));
     this.router.navigate(["/login"])
-      .finally(() => console.log("Navigated to '/login', after logout."));
+      .catch(reason => console.log("couldn't navigate to '/login': " + reason));
   }
 
   back(): void {
