@@ -4,7 +4,7 @@
   <!-- This fills the remaining space of the current row -->
   <span class="flexible-fill-remaining-space"></span>
 
-  <button mat-mini-fab matTooltip="New Order">
+  <button mat-mini-fab matTooltip="Add Order" (click)="addOrder()">
     <mat-icon>add_shopping_cart</mat-icon>
   </button>
 </mat-toolbar>
@@ -16,9 +16,7 @@
     </ng-template>
   </mat-tab>
   <mat-tab label="Orders">
-    <ng-template matTabContent>
-      <app-orders></app-orders>
-    </ng-template>
+    <app-orders #orders></app-orders>
   </mat-tab>
   <mat-tab label="Parts">
     <ng-template matTabContent>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {OrdersComponent} from "../orders/orders.component";
 
 @Component({
   selector: 'app-warehouse',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WarehouseComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild("orders") private orders: OrdersComponent;
+
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  addOrder(): void {
+    this.orders.add();
   }
 
 }
