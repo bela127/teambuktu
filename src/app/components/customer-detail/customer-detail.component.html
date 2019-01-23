@@ -71,7 +71,7 @@
     <mat-nav-list>
       <mat-list-item *ngFor="let completion of customerCompletions"
                      [routerLink]="['/completion/' + completion.id]">
-        <p matLine>{{completion.number}} ({{completion.serviceDate | date: 'dd-MM-yyyy'}})</p>
+        <p matLine>{{completion.number}} ({{completion.serviceDate | date: 'dd.MM.yyyy'}})</p>
         <mat-icon matSuffix>how_to_reg</mat-icon>
       </mat-list-item>
     </mat-nav-list>
