@@ -15,11 +15,7 @@ import {CompletionStatus} from "../../container/completion-status.enum";
 import {AppointmentStatus} from "../../container/appointment-status.enum";
 import {TimeRange} from "../../container/time-range";
 import {Time} from '@angular/common';
-
-class DisplayCompletionItem {
-  amount: number;
-  part: Part;
-}
+import {DisplayItem} from "../../container/display-item";
 
 @Component({
   selector: 'app-completion',
@@ -39,7 +35,7 @@ export class CompletionDetailComponent implements OnInit {
 
   private newCompletionItem: Item;
 
-  private displayItems: DisplayCompletionItem[];
+  private displayItems: DisplayItem[];
 
   private displayedColumns = ['amount', 'unit', 'number', 'name', 'price', 'currency', 'action'];
 
@@ -124,7 +120,7 @@ export class CompletionDetailComponent implements OnInit {
   buildDisplayItems(): void {
     this.displayItems = this.completion.items
       .map(ai => {
-        let di = new DisplayCompletionItem();
+        let di = new DisplayItem();
         di.amount = ai.amount;
         di.part = this.allParts
           .find(p => ai.part == p.id);
@@ -145,7 +141,7 @@ export class CompletionDetailComponent implements OnInit {
     this.buildDisplayItems();
   }
 
-  removeItem(item: DisplayCompletionItem): void {
+  removeItem(item: DisplayItem): void {
     let indexToRemove = this.completion.items
       .findIndex(i => i.amount == item.amount && i.part == item.part.id);
 

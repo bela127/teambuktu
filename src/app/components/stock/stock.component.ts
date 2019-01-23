@@ -2,11 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Part} from "../../container/part";
 import {WarehouseService} from "../../services/warehouse.service";
 import {Item} from "../../container/item";
-
-class DisplayStockItem {
-  amount: number;
-  part: Part;
-}
+import {DisplayItem} from "../../container/display-item";
 
 @Component({
   selector: 'app-stock',
@@ -20,7 +16,7 @@ export class StockComponent implements OnInit {
   private allParts: Part[];
 
   private displayedColumns = ['amount', 'unit', 'number', 'name', 'price', 'currency'];
-  private displayItems: DisplayStockItem[];
+  private displayItems: DisplayItem[];
 
   constructor(private warehouseService: WarehouseService) {
   }
@@ -46,7 +42,7 @@ export class StockComponent implements OnInit {
   buildDisplayItems(): void {
     this.displayItems = this.items
       .map(ai => {
-        let di = new DisplayStockItem();
+        let di = new DisplayItem();
         di.amount = ai.amount;
         di.part = this.allParts
           .find(p => ai.part == p.id);

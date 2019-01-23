@@ -9,11 +9,7 @@ import {DeviceService} from "../../services/device.service";
 import {Part} from "../../container/part";
 import {WarehouseService} from "../../services/warehouse.service";
 import {Item} from "../../container/item";
-
-class DisplayAppointmentItem {
-  amount: number;
-  part: Part;
-}
+import {DisplayItem} from "../../container/display-item";
 
 @Component({
   selector: 'app-appointment-detail',
@@ -31,7 +27,7 @@ export class AppointmentDetailComponent implements OnInit {
 
   private newAppointmentItem: Item;
 
-  private displayItems: DisplayAppointmentItem[];
+  private displayItems: DisplayItem[];
 
   private displayedColumns = ['amount', 'unit', 'number', 'name', 'price', 'currency'];
 
@@ -73,7 +69,7 @@ export class AppointmentDetailComponent implements OnInit {
   buildDisplayItems(): void {
     this.displayItems = this.appointment.items
       .map(ai => {
-        let di = new DisplayAppointmentItem();
+        let di = new DisplayItem();
         di.amount = ai.amount;
         di.part = this.allParts
           .find(p => ai.part == p.id);
