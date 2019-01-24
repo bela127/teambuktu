@@ -31,6 +31,7 @@ import {CompletionDetailComponent} from './components/completion-detail/completi
 import {CompletionsComponent} from './components/completions/completions.component';
 import {StockComponent} from './components/stock/stock.component';
 import {OrdersComponent} from './components/orders/orders.component';
+import {OrderDetailDialogComponent} from './components/order-detail-dialog/order-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {OrdersComponent} from './components/orders/orders.component';
     CompletionsComponent,
     StockComponent,
     OrdersComponent,
+    OrderDetailDialogComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -60,6 +62,9 @@ import {OrdersComponent} from './components/orders/orders.component';
     ReactiveFormsModule,
     MaterialModule,
     HttpClientModule,
+  ],
+  entryComponents: [
+    OrderDetailDialogComponent
   ],
   providers: [
     SessionService,
