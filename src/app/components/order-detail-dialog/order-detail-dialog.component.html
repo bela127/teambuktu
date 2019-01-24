@@ -1,3 +1,98 @@
-<p>
-  order-detail works!
-</p>
+<h1 mat-dialog-title>Order Details</h1>
+
+<mat-dialog-content>
+  <div class="tbkt-form-line">
+    <mat-form-field appearance="outline">
+      <mat-label>Number</mat-label>
+      <input matInput [disabled]="!isNewOrder()" [(ngModel)]="order.number">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select placeholder="Status" [disabled]="isNewOrder()" [(ngModel)]="order.status">
+        <mat-option *ngFor="let statusVariant of allStatusVariants" [value]="statusVariant">
+          {{statusVariant}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" style="min-width: 250px">
+      <mat-label>Status Note</mat-label>
+      <input matInput [(ngModel)]="order.statusNote">
+    </mat-form-field>
+  </div>
+
+  <div class="tbkt-form-line">
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput [disabled]="!isNewOrder()" [(ngModel)]="order.description">
+    </mat-form-field>
+  </div>
+
+  <h3 *ngIf="isNewOrder()" class="tbkt-mat-card-h3">New Order Item:</h3>
+
+  <div class="tbkt-form-line" *ngIf="isNewOrder()">
+    <mat-form-field appearance="outline">
+      <mat-label>Amount</mat-label>
+      <input matInput placeholder="1" type="number" [(ngModel)]="newItem.amount">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Part</mat-label>
+      <mat-select placeholder="Part" [(ngModel)]="newItem.part">
+        <mat-option *ngFor="let part of allParts" [value]="part.id">
+          {{part.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" *ngIf="isNewOrder()" [disabled]="!isNewItemFormFilled()"
+          (click)="addPart()">Add Item to Order
+  </button>
+
+  <table mat-table [dataSource]="displayItems" class="tbkt-table-full-width">
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Amount</th>
+      <td mat-cell *matCellDef="let item">{{item.amount}}</td>
+    </ng-container>
+    <ng-container matColumnDef="unit">
+      <th mat-header-cell *matHeaderCellDef>Unit</th>
+      <td mat-cell *matCellDef="let item">{{item.part.unit}}</td>
+    </ng-container>
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef>Number</th>
+      <td mat-cell *matCellDef="let item">{{item.part.number}}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let item">{{item.part.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Unit Price</th>
+      <td mat-cell *matCellDef="let item">{{item.part.price}}</td>
+    </ng-container>
+    <ng-container matColumnDef="currency">
+      <th mat-header-cell *matHeaderCellDef>Currency</th>
+      <td mat-cell *matCellDef="let item">{{item.part.currency}}</td>
+    </ng-container>
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let item">
+        <button mat-icon-button color="warn" [disabled]="!isNewOrder()" (click)="removeItem(item)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" *ngIf="isNewOrder()" [disabled]="!isNewOrderFormFilled()"
+          (click)="saveAndClose()">Place Order
+  </button>
+  <button mat-raised-button color="primary" *ngIf="!isNewOrder()" (click)="saveAndClose()">Save</button>
+</mat-dialog-actions>

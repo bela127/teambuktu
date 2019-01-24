@@ -59,7 +59,7 @@
 }
 
 .tbkt-task-status {
-  color: rgba(255,255,255,.7);
+  color: rgba(255, 255, 255, .7);
   font-style: italic;
   padding-right: 10px;
 }
@@ -74,4 +74,10 @@
 
 .tbkt-icon-button-wrapper {
   width: 40px;
+}
+
+.tbkt-mat-card-h3 {
+  font-size: 14px;
+  color: #fff;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
