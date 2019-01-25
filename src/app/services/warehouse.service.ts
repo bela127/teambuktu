@@ -4,7 +4,7 @@ import {Part} from "../container/part";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {catchError, tap} from "rxjs/operators";
-import {Item} from "../container/item";
+import {Order} from "../container/order";
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,12 @@ import {Item} from "../container/item";
 export class WarehouseService {
 
   private partsUrl: string;
-  private stockUrl: string;
+  private ordersUrl: string;
 
   constructor(private baseService: BaseService,
               private http: HttpClient) {
     this.partsUrl = this.baseService.baseUrl + "parts";
-    this.stockUrl = this.baseService.baseUrl + "stock";
+    this.ordersUrl = this.baseService.baseUrl + "orders";
   }
 
   getParts(): Observable<Part[]> {
@@ -36,11 +36,27 @@ export class WarehouseService {
       );
   }
 
-  getStock(): Observable<Item[]> {
-    return this.http.get<Item[]>(this.stockUrl)
+  getOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(this.ordersUrl)
       .pipe(
-        tap(_ => this.baseService.log('fetched stock')),
-        catchError(this.baseService.handleHttpError<Item[]>('getStock', []))
+        tap(_ => this.baseService.log('fetched orders')),
+        catchError(this.baseService.handleHttpError('getOrders', []))
+      );
+  }
+
+  updateOrder(order: Order): Observable<any> {
+    return this.http.put(`${this.ordersUrl}/${order.id}`, order, this.baseService.httpOptions)
+      .pipe(
+        tap(_ => this.baseService.log(`updated order with id=${order.id}`)),
+        catchError(this.baseService.handleHttpError<any>('updateOrder'))
+      );
+  }
+
+  addOrder(order: Order): Observable<Order> {
+    return this.http.post(this.ordersUrl, order, this.baseService.httpOptions)
+      .pipe(
+        tap((t: Order) => this.baseService.log(`added order with id=${t.id}`)),
+        catchError(this.baseService.handleHttpError<Order>('addOrder'))
       );
   }
 }

@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Order} from "../../container/order";
-import {OrderService} from "../../services/order.service";
 import {MatDialog, MatTable} from "@angular/material";
 import {OrderDetailDialogComponent} from "../order-detail-dialog/order-detail-dialog.component";
 import {OrderStatus} from "../../container/order-status.enum";
+import {WarehouseService} from "../../services/warehouse.service";
 
 @Component({
   selector: 'app-orders',
@@ -19,7 +19,7 @@ export class OrdersComponent implements OnInit {
   @ViewChild('ordersTable') private ordersTable: MatTable<Order>;
 
   constructor(private orderDetailDialog: MatDialog,
-              private orderService: OrderService) {
+              private warehouseService: WarehouseService) {
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class OrdersComponent implements OnInit {
   }
 
   getOrders(): void {
-    this.orderService.getOrders()
+    this.warehouseService.getOrders()
       .subscribe(orders => {
         this.orders = orders;
         this.sortOrders();
@@ -74,7 +74,7 @@ export class OrdersComponent implements OnInit {
           let order: Order = result;
           order.lastUpdate = new Date();
 
-          this.orderService.updateOrder(order)
+          this.warehouseService.updateOrder(order)
             .subscribe(() => {
               this.getOrders();
             });
@@ -101,7 +101,7 @@ export class OrdersComponent implements OnInit {
           let order: Order = result;
           order.lastUpdate = new Date();
 
-          this.orderService.addOrder(order)
+          this.warehouseService.addOrder(order)
             .subscribe(order => {
               this.orders.push(order);
               this.sortOrders();
