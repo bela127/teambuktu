@@ -3,6 +3,8 @@ import {Part} from "../../container/part";
 import {WarehouseService} from "../../services/warehouse.service";
 import {Item} from "../../container/item";
 import {DisplayItem} from "../../container/display-item";
+import {Order} from "../../container/order";
+import {OrderStatus} from "../../container/order-status.enum";
 
 @Component({
   selector: 'app-stock',
@@ -14,6 +16,7 @@ export class StockComponent implements OnInit {
   private items: Item[];
 
   private allParts: Part[];
+  private allOrders: Order[];
 
   private displayedColumns = ['amount', 'unit', 'number', 'name', 'price', 'currency'];
   private displayItems: DisplayItem[];
@@ -31,11 +34,30 @@ export class StockComponent implements OnInit {
   }
 
   getStock(): void {
-    this.warehouseService.getStock()
-      .subscribe(items => {
-        this.items = items;
+    this.warehouseService.getOrders()
+      .subscribe(orders => {
+        console.log("start computing stock");
+        this.allOrders = orders
+          .filter(o => o.status == OrderStatus.Delivered);
+
+        this.items = [];
+        let maxPartId = this.allParts.map(p => p.id)
+          .sort()[this.allParts.length - 1];
+
+        for (let i = 0; i <= maxPartId; i++) {
+          this.items.push({part: i, amount: 0} as Item);
+        }
+
+        this.allOrders
+          .forEach(o => {
+            o.items.forEach(oi => this.items[oi.part].amount += oi.amount)
+          });
+
+        this.items = this.items
+          .filter(i => i.amount > 0);
 
         this.buildDisplayItems();
+        console.log("done computing stock")
       });
   }
 
