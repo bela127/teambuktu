@@ -134,6 +134,18 @@
         8.3899329
       ],
       "id": 4
+    },
+    {
+      "name": "Deutsche Bahn",
+      "email": "",
+      "number": "291",
+      "address": "",
+      "phone": "",
+      "geolocation": [
+        0,
+        0
+      ],
+      "id": 5
     }
   ],
   "devices": [
@@ -172,6 +184,15 @@
       "purchaseDate": "2018-12-09T23:00:00.000Z",
       "customer": 4,
       "description": "Smart Board aus Raum A 101"
+    },
+    {
+      "name": "E-Lok",
+      "number": 32,
+      "id": 5,
+      "customer": 5,
+      "serialNumber": "DB-E-00032",
+      "purchaseDate": "2006-07-09T22:00:00.000Z",
+      "description": "A Train."
     }
   ],
   "appointments": [
@@ -292,13 +313,17 @@
         {
           "part": 3,
           "amount": 1
+        },
+        {
+          "amount": 1,
+          "part": 8
         }
       ],
       "id": 9,
-      "customer": 4,
-      "device": 4,
+      "customer": 5,
+      "device": 5,
       "serviceDate": "2019-01-27T23:00:00.000Z",
-      "description": "The Smart Board does not recognize any input."
+      "description": "Fix information monitor."
     }
   ],
   "completions": [
@@ -441,6 +466,15 @@
       "price": 170,
       "currency": "EUR",
       "id": 7
+    },
+    {
+      "number": "P-08",
+      "name": "Monitor",
+      "unit": "pcs",
+      "description": "Monitor for trains",
+      "price": 219,
+      "currency": "EUR",
+      "id": 8
     }
   ],
   "orders": [
@@ -560,6 +594,21 @@
       "orderDate": "2019-01-25T10:30:39.873Z",
       "lastUpdate": "2019-01-25T10:31:54.701Z",
       "id": 7
+    },
+    {
+      "number": "O-08",
+      "description": "Order parts for appointment with DB.",
+      "status": "New",
+      "statusNote": "",
+      "items": [
+        {
+          "amount": 2,
+          "part": 8
+        }
+      ],
+      "orderDate": "2019-01-27T18:35:16.222Z",
+      "lastUpdate": "2019-01-27T18:35:45.634Z",
+      "id": 8
     }
   ]
 }
