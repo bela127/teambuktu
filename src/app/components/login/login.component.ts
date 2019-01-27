@@ -1,12 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {SessionService} from "../../services/SessionService";
-import {DataBaseService} from "../../services/DataBaseService";
-import {DataService} from "../../services/DataService";
 import {SidenavService} from "../../services/SidenavService";
 import {ErrorStateMatcher, MatSnackBar, MatSnackBarHorizontalPosition} from "@angular/material";
 import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
-import {environment} from "../../../environments/environment";
+import {UserService} from "../../services/user.service";
+import {User} from "../../container/user";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -22,12 +21,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
 
+  private users: User[];
+
   constructor(private router: Router,
               private session: SessionService,
-              private dataBase: DataBaseService,
-              private data: DataService,
+              private userService: UserService,
               private sideNav: SidenavService,
               public snackBar: MatSnackBar) {
+  }
+
+  ngOnInit(): void {
+    this.userService.getUsers()
+      .subscribe(users => this.users = users);
   }
 
   emailFormControl = new FormControl('', [
@@ -40,34 +45,37 @@ export class LoginComponent implements OnInit {
 
   login(email: string, password: string) {
     console.log(email + " " + password);
-    if (this.dataBase.validateUser(email, password)) {
-      this.data.userData = this.dataBase.loadUserData(email, password);
-    } else if (environment.production == false) {
-      this.data.userData = this.dataBase.loadUserData("a", "a");
-    } else {
+
+    let validatedUser = this.validateUser(email, password);
+
+    if (validatedUser == undefined) {
+
       this.snackBar.open("Login failed.", "", {
         panelClass: ['snack-bar-warning'],
         duration: 2000,
         horizontalPosition: this.horizontalPosition
       });
 
-      return;
-    }
+    } else {
 
-    this.session.login();
-    this.snackBar.open("Login successful!", "", {
-      duration: 2000,
-      panelClass: ['snack-bar-success'],
-      horizontalPosition: this.horizontalPosition
-    });
-    console.log("Login successful, navigating...");
-    this.sideNav.open()
-      .finally(() => console.log("Sidenav finally opened."));
-    this.router.navigate(["/appointments"])
-      .finally(() => console.log("Finally navigated to '/appointments', after login."));
+      this.session.login(validatedUser);
+      this.snackBar.open("Login successful!", "", {
+        duration: 2000,
+        panelClass: ['snack-bar-success'],
+        horizontalPosition: this.horizontalPosition
+      });
+
+      console.log("Login successful, navigating...");
+      this.sideNav.open()
+        .finally(() => console.log("Sidenav finally opened."));
+      this.router.navigate(["/appointments"])
+        .finally(() => console.log("Finally navigated to '/appointments', after login."));
+
+    }
   }
 
-  ngOnInit(): void {
+  private validateUser(email: string, password: string): User {
+    return this.users.find(u => u.email == email && u.password == password);
   }
 
 }
