@@ -9,6 +9,9 @@
 /src/coverage/*
 /src/coverage/
 
+/coverage/
+/coverage/*
+
 # compiled output
 /dist
 /tmp
