@@ -24,12 +24,8 @@ export class RootComponent implements OnInit {
     this.sidenavService.setSidenav(this.sidenav);
     this.session.setRouter(this.router);
 
-    /* // commented out for development
     this.router.navigate(["/login"])
-      .catch(reason => console.log("couldn't navigate to '/login': " + reason)); // */
-    // /*
-    this.sidenav.open();
-    this.router.navigate(['/warehouse']); // */
+      .catch(reason => console.log("couldn't navigate to '/login': " + reason));
 
   }
 

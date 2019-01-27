@@ -45,8 +45,8 @@
 
       <mat-divider></mat-divider>
 
-      <mat-list-item (click)="logout()">
-        <a matLine>Logout</a>
+      <mat-list-item (click)="logout()" *ngIf="session.getLoggedInUser()">
+        <a matLine>Logout <strong>{{session.getLoggedInUser().name}}</strong></a>
         <mat-icon>logout</mat-icon>
       </mat-list-item>
     </mat-nav-list>
