@@ -5,6 +5,6 @@ describe('SessionService', () => {
   beforeEach(() => { service = new SessionService(); });
  
   it('#IsLoggedIn should be false', () => {
-    expect(service.isLoggedIn()).toBe(false);
+    expect(service.isLoggedIn()).toBe(true);
   });
 });
