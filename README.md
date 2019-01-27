@@ -1,10 +1,14 @@
+## Installing dependencies
+
+`npm install`
+
 ## Building and running electron
 
 `npm run electron`
 
-## Installing dependencies
+### Running json-server (for the mock data)
 
-`npm install`
+`json-server --watch db.json`
 
 ## Installing angular cli
 
