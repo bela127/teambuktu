@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {SessionService} from "../../services/SessionService";
-import {SidenavService} from "../../services/SidenavService";
+import {SessionService} from "../../services/session.service";
+import {SidenavService} from "../../services/sidenav.service";
 import {ErrorStateMatcher, MatSnackBar, MatSnackBarHorizontalPosition} from "@angular/material";
 import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {UserService} from "../../services/user.service";

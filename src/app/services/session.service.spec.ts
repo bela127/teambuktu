@@ -1,4 +1,4 @@
-import { SessionService } from "./SessionService";
+import {SessionService} from "./session.service";
 
 describe('SessionService', () => {
   let service: SessionService;

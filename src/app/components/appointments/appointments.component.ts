@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SessionService} from "../../services/SessionService";
+import {SessionService} from "../../services/session.service";
 import {Router} from "@angular/router";
 import {AppointmentService} from "../../services/appointment.service";
 import {Appointment} from "../../container/appointment";

@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from "@angular/material";
 import {Router} from "@angular/router";
-import {SessionService} from "../../services/SessionService";
-import {SidenavService} from "../../services/SidenavService";
+import {SessionService} from "../../services/session.service";
+import {SidenavService} from "../../services/sidenav.service";
 import {Location} from '@angular/common';
 
 @Component({

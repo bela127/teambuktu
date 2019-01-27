@@ -10,10 +10,8 @@ import {MaterialModule} from './material-module';
 
 import {HttpClientModule} from "@angular/common/http";
 
-import {SessionService} from './services/SessionService';
-import {SidenavService} from './services/SidenavService';
-import {DataService} from './services/DataService';
-import {DataBaseService} from "./services/DataBaseService";
+import {SessionService} from './services/session.service';
+import {SidenavService} from './services/sidenav.service';
 
 import {RootComponent} from './components/root/root.component';
 import {LoginComponent} from "./components/login/login.component";
@@ -68,9 +66,7 @@ import {OrderDetailDialogComponent} from './components/order-detail-dialog/order
   ],
   providers: [
     SessionService,
-    SidenavService,
-    DataService,
-    DataBaseService],
+    SidenavService],
   bootstrap: [RootComponent],
 })
 export class AppModule {
