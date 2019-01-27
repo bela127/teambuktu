@@ -1,0 +1,565 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "a@teambuktu.de",
+      "name": "Albert",
+      "password": "a",
+      "phone": "+49 1234 5678910"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "userId": 1,
+      "title": "First task",
+      "description": "My first task or note. Updated. Again. You guessed it - again. And once more!\n\nAnother update to the text.",
+      "status": "Finished",
+      "creationDate": "2019-01-15T16:07:52.000Z"
+    },
+    {
+      "userId": 1,
+      "title": "Computer client HSKA proxy",
+      "description": "The proxy settings of the client's computer must be changed.",
+      "creationDate": "2019-01-15T19:31:55.627Z",
+      "status": "Finished",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "title": "Setup pc for PH",
+      "description": "",
+      "creationDate": "2019-01-15T21:29:46.315Z",
+      "status": "Finished",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "title": "Warehouse should be implemented",
+      "description": "Maybe it should be called 'Stock'?\nNav item 'Stock / Orders'?",
+      "creationDate": "2019-01-15T23:33:48.868Z",
+      "status": "Finished",
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "title": "Write Review",
+      "description": "I need to write a review for a customer until tomorrow.",
+      "creationDate": "2019-01-17T23:53:15.399Z",
+      "status": "Finished",
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "title": "Sort & filter notes",
+      "description": "",
+      "creationDate": "2019-01-20T21:16:31.026Z",
+      "status": "Finished",
+      "id": 10
+    },
+    {
+      "userId": 1,
+      "title": "Only allow valid devices for customer",
+      "description": "",
+      "creationDate": "2019-01-20T21:16:54.411Z",
+      "status": "Finished",
+      "id": 11
+    },
+    {
+      "userId": 1,
+      "title": "Only show completions in customer view",
+      "description": "",
+      "creationDate": "2019-01-20T21:17:26.594Z",
+      "status": "Finished",
+      "id": 12
+    },
+    {
+      "userId": 1,
+      "title": "Add completion comp.",
+      "description": "",
+      "creationDate": "2019-01-20T21:17:40.435Z",
+      "status": "Finished",
+      "id": 13
+    },
+    {
+      "userId": 1,
+      "title": "Add stock comp.",
+      "description": "",
+      "creationDate": "2019-01-20T21:17:53.354Z",
+      "status": "Finished",
+      "id": 14
+    },
+    {
+      "userId": 1,
+      "title": "Change tires of service van",
+      "description": "Brace yourself - winter is coming.",
+      "creationDate": "2019-01-27T17:43:34.071Z",
+      "status": "Open",
+      "id": 15
+    }
+  ],
+  "customers": [
+    {
+      "name": "Hochschule Karlsruhe",
+      "email": "mailbox@hs-karlsruhe.de",
+      "number": "1",
+      "address": "Moltkestr. 30 76133 Karlsruhe",
+      "phone": "+49 721 925 0",
+      "geolocation": [
+        49.0156695,
+        8.3874173
+      ],
+      "id": 1
+    },
+    {
+      "name": "Apple Support",
+      "email": "service@apple.com",
+      "number": "4",
+      "address": "1 Infinite Loop Silicon Valley",
+      "phone": "+1 800 MY APPLE",
+      "geolocation": [
+        20,
+        12
+      ],
+      "id": 3
+    },
+    {
+      "name": "PH Karlsruhe",
+      "email": "poststelle@ph-karlsruhe.de",
+      "number": "phk",
+      "address": "Bismarckstraße 10, 76133 Karlsruhe",
+      "phone": "+49 721 925 3",
+      "geolocation": [
+        49.0152712,
+        8.3899329
+      ],
+      "id": 4
+    }
+  ],
+  "devices": [
+    {
+      "name": "iMac Pro",
+      "number": 2,
+      "id": 1,
+      "serialNumber": "IM-03-002",
+      "customer": 3,
+      "description": "This iMac can be found in the design lab.\nSponsored by nobody.",
+      "purchaseDate": "2019-01-14T23:00:00.000Z"
+    },
+    {
+      "name": "MacBook Air",
+      "number": 1,
+      "id": 2,
+      "serialNumber": "MBA-03-001",
+      "customer": 3,
+      "description": "This is a Laptop from Apple.",
+      "purchaseDate": "2014-01-10T23:00:00.000Z"
+    },
+    {
+      "name": "Windows PC",
+      "number": 13,
+      "id": 3,
+      "serialNumber": "WP-01-013",
+      "purchaseDate": "2019-01-09T23:00:00.000Z",
+      "customer": 1,
+      "description": "Raum E 206"
+    },
+    {
+      "name": "Smart Board",
+      "number": null,
+      "id": 4,
+      "serialNumber": "412-4532-01",
+      "purchaseDate": "2018-12-09T23:00:00.000Z",
+      "customer": 4,
+      "description": "Smart Board aus Raum A 101"
+    }
+  ],
+  "appointments": [
+    {
+      "number": "A-01",
+      "plannedTime": {
+        "begin": {
+          "hours": 8,
+          "minutes": 0
+        },
+        "end": {
+          "hours": 9,
+          "minutes": 30
+        }
+      },
+      "status": "Complete",
+      "items": [
+        {
+          "amount": 1,
+          "part": 1
+        }
+      ],
+      "id": 5,
+      "customer": 1,
+      "device": 3,
+      "serviceDate": "2019-01-20T23:00:00.000Z",
+      "description": "Software Architekturen Labor."
+    },
+    {
+      "number": "A-02",
+      "plannedTime": {
+        "begin": {
+          "hours": 7,
+          "minutes": 0
+        },
+        "end": {
+          "hours": 8,
+          "minutes": 0
+        }
+      },
+      "status": "Open",
+      "items": [
+        {
+          "amount": 1,
+          "part": 4
+        }
+      ],
+      "id": 6,
+      "device": 1,
+      "customer": 3,
+      "serviceDate": "2019-01-22T23:00:00.000Z",
+      "description": "Install SSD for fast storage."
+    },
+    {
+      "number": "A-03",
+      "plannedTime": {
+        "begin": {
+          "hours": 8,
+          "minutes": 0
+        },
+        "end": {
+          "hours": 10,
+          "minutes": 45
+        }
+      },
+      "status": "Complete",
+      "items": [
+        {
+          "amount": 7,
+          "part": 1
+        }
+      ],
+      "id": 7,
+      "customer": 3,
+      "device": 2,
+      "serviceDate": "2019-01-21T23:00:00.000Z",
+      "description": "Reinstall OS."
+    },
+    {
+      "number": "A-04",
+      "plannedTime": {
+        "begin": {
+          "hours": 12,
+          "minutes": 50
+        },
+        "end": {
+          "hours": 14,
+          "minutes": 0
+        }
+      },
+      "status": "Complete",
+      "items": [
+        {
+          "amount": 1,
+          "part": 3
+        }
+      ],
+      "id": 8,
+      "customer": 4,
+      "device": 4,
+      "serviceDate": "2019-01-29T23:00:00.000Z",
+      "description": "Check board."
+    },
+    {
+      "number": "A-07",
+      "plannedTime": {
+        "begin": {
+          "hours": 8,
+          "minutes": 0
+        },
+        "end": {
+          "hours": 9,
+          "minutes": 30
+        }
+      },
+      "status": "Open",
+      "items": [
+        {
+          "part": 3,
+          "amount": 1
+        }
+      ],
+      "id": 9,
+      "customer": 4,
+      "device": 4,
+      "serviceDate": "2019-01-27T23:00:00.000Z",
+      "description": "The Smart Board does not recognize any input."
+    }
+  ],
+  "completions": [
+    {
+      "appointment": 5,
+      "number": "A-01",
+      "customer": 1,
+      "device": 3,
+      "serviceDate": "2019-01-20T23:00:00.000Z",
+      "realTime": {
+        "begin": {
+          "hours": 8,
+          "minutes": 0
+        },
+        "end": {
+          "hours": 9,
+          "minutes": 0
+        }
+      },
+      "items": [
+        {
+          "amount": 2,
+          "part": 1
+        }
+      ],
+      "status": "Signed",
+      "id": 1
+    },
+    {
+      "appointment": 8,
+      "number": "A-04",
+      "customer": 4,
+      "device": 4,
+      "serviceDate": "2019-01-29T23:00:00.000Z",
+      "realTime": {
+        "begin": {
+          "hours": 12,
+          "minutes": 50
+        },
+        "end": {
+          "hours": 14,
+          "minutes": 30
+        }
+      },
+      "items": [
+        {
+          "amount": 1.5,
+          "part": 3
+        }
+      ],
+      "status": "Signed",
+      "id": 3
+    },
+    {
+      "appointment": 7,
+      "number": "A-03",
+      "customer": 3,
+      "device": 2,
+      "serviceDate": "2019-01-21T23:00:00.000Z",
+      "realTime": {
+        "begin": {
+          "hours": 8,
+          "minutes": 0
+        },
+        "end": {
+          "hours": 10,
+          "minutes": 45
+        }
+      },
+      "items": [
+        {
+          "amount": 7,
+          "part": 1
+        }
+      ],
+      "status": "Signed",
+      "id": 4
+    }
+  ],
+  "parts": [
+    {
+      "number": "P-01",
+      "name": "Some Part",
+      "unit": "pcs",
+      "description": "This is the first part.",
+      "price": 0.42,
+      "currency": "EUR",
+      "id": 1
+    },
+    {
+      "number": "P-02",
+      "name": "Screws",
+      "unit": "box",
+      "description": "1mm",
+      "price": 0.1,
+      "currency": "EUR",
+      "id": 2
+    },
+    {
+      "number": "P-03",
+      "name": "Duct Tape",
+      "unit": "m",
+      "description": "The omnipotent one.",
+      "price": 2.5,
+      "currency": "EUR",
+      "id": 3
+    },
+    {
+      "number": "P-04",
+      "name": "SSD",
+      "unit": "pcs",
+      "description": "512 GB",
+      "price": 129.89,
+      "currency": "EUR",
+      "id": 4
+    },
+    {
+      "number": "P-05",
+      "name": "RAM",
+      "unit": "pcs",
+      "description": "16 GB",
+      "price": 99,
+      "currency": "EUR",
+      "id": 5
+    },
+    {
+      "number": "P-06",
+      "name": "CPU",
+      "unit": "pcs",
+      "description": "i7-8700",
+      "price": 320,
+      "currency": "EUR",
+      "id": 6
+    },
+    {
+      "number": "P-07",
+      "name": "HDD",
+      "unit": "pcs",
+      "description": "4 TB",
+      "price": 170,
+      "currency": "EUR",
+      "id": 7
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "number": "O-01",
+      "description": "This is the first order ever.",
+      "orderDate": "2019-01-17T23:53:15.399Z",
+      "lastUpdate": "2019-01-24T17:09:42.106Z",
+      "status": "Delivered",
+      "statusNote": "On time.",
+      "items": [
+        {
+          "amount": 4711,
+          "part": 1
+        }
+      ]
+    },
+    {
+      "number": "O-02",
+      "description": "Hardware for upgrading PCs.",
+      "status": "InProgress",
+      "statusNote": "",
+      "items": [
+        {
+          "amount": 10,
+          "part": 4
+        },
+        {
+          "amount": 8,
+          "part": 5
+        }
+      ],
+      "orderDate": "2019-01-24T16:25:23.186Z",
+      "lastUpdate": "2019-01-25T00:43:27.148Z",
+      "id": 2
+    },
+    {
+      "number": "O-03",
+      "description": "Gear for general purposes.",
+      "status": "Delivered",
+      "statusNote": "On time.",
+      "items": [
+        {
+          "amount": 2,
+          "part": 3
+        },
+        {
+          "amount": 3,
+          "part": 1
+        },
+        {
+          "part": 2,
+          "amount": 100
+        }
+      ],
+      "orderDate": "2019-01-24T16:30:32.542Z",
+      "lastUpdate": "2019-01-24T17:09:35.870Z",
+      "id": 3
+    },
+    {
+      "number": "O-04",
+      "description": "Some more gear.",
+      "status": "New",
+      "statusNote": "",
+      "items": [
+        {
+          "part": 1,
+          "amount": 7
+        }
+      ],
+      "orderDate": "2019-01-24T16:33:27.524Z",
+      "lastUpdate": "2019-01-24T17:05:28.248Z",
+      "id": 4
+    },
+    {
+      "number": "O-05",
+      "description": "Another order for PC harware.",
+      "status": "New",
+      "statusNote": "",
+      "items": [
+        {
+          "part": 5,
+          "amount": 2
+        }
+      ],
+      "orderDate": "2019-01-24T16:38:48.939Z",
+      "lastUpdate": "2019-01-25T00:43:36.379Z",
+      "id": 5
+    },
+    {
+      "number": "O-06",
+      "description": "The needed CPU for a customer.",
+      "status": "New",
+      "statusNote": "",
+      "items": [
+        {
+          "amount": 1,
+          "part": 6
+        }
+      ],
+      "orderDate": "2019-01-25T00:44:34.189Z",
+      "lastUpdate": "2019-01-25T00:45:22.041Z",
+      "id": 6
+    },
+    {
+      "number": "O-07",
+      "description": "HDDs for NAS for a customer.",
+      "status": "Delivered",
+      "statusNote": "",
+      "items": [
+        {
+          "amount": 8,
+          "part": 7
+        }
+      ],
+      "orderDate": "2019-01-25T10:30:39.873Z",
+      "lastUpdate": "2019-01-25T10:31:54.701Z",
+      "id": 7
+    }
+  ]
+}
