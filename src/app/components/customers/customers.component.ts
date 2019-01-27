@@ -32,18 +32,14 @@ export class CustomersComponent implements OnInit {
     customer.number = "-1";
     customer.address = "";
     customer.phone = "";
-    navigator.geolocation.getCurrentPosition(
-      pos => {
-        customer.geolocation = [pos.coords.latitude, pos.coords.longitude];
-        this.customerService.addCustomer(customer)
-          .subscribe(customer => {
-            this.customers.push(customer);
-            this.router.navigate(['/customer/' + customer.id])
-              .catch(e => console.log("Navigation didn't work:" + e));
-          });
-      },
-      _ => console.log("getCurrentPosition didn't work"),
-    );
+    customer.geolocation = [0, 0];
+
+    this.customerService.addCustomer(customer)
+      .subscribe(customer => {
+        this.customers.push(customer);
+        this.router.navigate(['/customer/' + customer.id])
+          .catch(e => console.log("Navigation didn't work:" + e));
+      });
   }
 
 }
