@@ -2,15 +2,15 @@
 
 `npm install`
 
-## Building and running electron
-
-`npm run electron`
-
 ### Running json-server (for the mock data)
 
 `json-server --watch db.json`
 
-## Installing angular cli
+## Building and running electron
+
+`npm run electron`
+
+## Installing angular cli (only necessary for development)
 
 `npm i -g @angular/cli`
 
