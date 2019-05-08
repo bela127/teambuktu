@@ -2,6 +2,9 @@
 
 `npm install`
 
+###install json server
+`npm install -g json-server`
+
 ### Running json-server (for the mock data)
 
 `json-server --watch db.json`
